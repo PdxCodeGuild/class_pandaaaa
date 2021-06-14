@@ -71,7 +71,7 @@ A program is a series of instructions given to a computer which perform operatio
 
 ## Course Overview
 
-This course is a kick-start to learning web development, it is immersive and pragmatic. We learn by doing, and focus on understanding the principles of programming practice. Most of the class time will consist of lectures, demos, mob programming, and labs. Tutoring outside of class is free and can be scheduled with the instructor.
+This course is a kick-start to learning web development, it is immersive and pragmatic. We learn by doing, and focus on understanding the principles of programming practice. Most of the class time will consist of lectures, demos, mob programming, and labs.
 
 ## Submitting Lab Solutions
 
