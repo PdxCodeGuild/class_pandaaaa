@@ -19,7 +19,8 @@ def test_is_even():
 # Write a function that returns the ones digit of a number
 
 def ones_digit(num):
-    return int(num//10)
+    #print(type(num))
+    return num%10
 
 def test_ones_digit():
     assert ones_digit(3) == 3
@@ -31,11 +32,16 @@ def test_ones_digit():
 # Write a function that takes two integers, a value and a maximum, and returns a string representing the percentage as an integer
 
 def percentage(v, max):
-    percentage = str((v/max)*100)
-    percentage = percentage + '%'
-    return percentage
+    percentage_int = v/max*100
+    percentage_str = str(int(percentage_int)) + '%'
+    print(percentage_str)
+    return percentage_str
 
 def test_precentage():
     assert percentage(1, 10) == '10%'
     assert percentage(600, 1200) == '50%'
     assert percentage(1, 3) == '33%'
+
+test_is_even()
+test_ones_digit()
+test_precentage()
