@@ -8,7 +8,7 @@
 #prog main
 def main():
     num_list = []
-    num_list = list_fill_prompt(num_list)
+    list_fill_prompt(num_list)
     average = list_averager(num_list)
 
     print("The average is " + str(average))
@@ -42,7 +42,6 @@ def list_averager(list_1):
     sum = 0
     for i in list_1:
         sum += i
-        print(sum)
     return sum / len(list_1)
     
 
