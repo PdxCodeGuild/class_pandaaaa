@@ -24,13 +24,13 @@ def main():
     print("")#padding space
     print(str(num) + " " + str(unit_1) + " = ")
     num = convert_to_meters(num, unit_1)
-    print(convert_from_meters(num, unit_2))
+    print(str(convert_from_meters(num, unit_2)) + " " + str(unit_2))
 
     exit(0)
 
 
 
-#function prompts the user to input a number of feet - then returns it as feet.
+#function prompts the user to input a number(distance)- then returns it as a float
 def user_prompt_num():
     valid = 0
     while(not valid):
@@ -45,7 +45,7 @@ def user_prompt_num():
 
 
 
-#function prompts the user to input a number of feet - then returns it as feet.
+#function prompts the user to input a unit and returns the unit as a string
 def user_prompt_unit():
     valid = 0
     while(not valid):
