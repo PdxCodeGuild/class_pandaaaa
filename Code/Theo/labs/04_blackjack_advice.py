@@ -1,23 +1,43 @@
 import random
 
 def main():
-    card = 0
     total = 0
     cards = [2,3,4,5,6,7,8,9,10,'jack','queen','king','ace']
-    card = deal(cards)
-    total = add_cards(total,card)
-    print(f"What's your first card? {card}")
-    card = deal(cards)
-    total = add_cards(total,card)
-    print(f"What's your second card? {card}")
-    card = deal(cards)
-    total = add_cards(total,card)
-    print(f"What's your third card? {card}")
-    print(f"{total} {advice(total)}")
-
-    test_aces()
+    for i in range(2):
+        total = blackjack(cards,total)
+    print(f"{total} is total.")
+    if total > 21:
+        advice(total)
+        exit()
+    else:
+         advice(total)
+    
+    while True:
+        keep_going = input("Hit or Stay? ")
+        if keep_going == 'Stay':
+            break
+        elif keep_going == 'Hit':
+            total = blackjack(cards,total)
+            print(f"{total} is total.")
+            if total > 21:
+                advice(total)
+                exit()
+            else:
+                advice(total)
+        else:
+            continue
+    #test_aces()
     exit()
     
+def blackjack(cards,total):
+    while True:
+        card = deal(cards)
+        total = add_cards(total,card)
+        print(f"You got: {card}")
+        break
+    return total
+
+
 def deal(cards):
     return (random.choice(cards))
 
@@ -39,13 +59,13 @@ def add_cards(total,card):
 
 def advice(total):
     if total < 17:
-        return "Hit!"
+        print("Recommend Hit!")
     elif total < 21:
-        return "Stay!"
+        print("Recommend Stay!")
     elif total == 21:
-        return "Blackjack!"
+        print("Blackjack!")
     else:
-        return "Busted!"
+        print("Busted!")
 
 def test_aces():
     assert add_cards(0,'ace') == 11
