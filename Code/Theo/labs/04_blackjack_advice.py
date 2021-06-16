@@ -2,52 +2,40 @@ import random
 
 def main():
     total = 0
-    cards = [2,3,4,5,6,7,8,9,10,'jack','queen','king','ace']
     for i in range(2):
-        total = blackjack(cards,total)
-    print(f"{total} is total.")
-    if total > 21:
-        advice(total)
+        total = blackjack(total)
+    if check_total(total) == False:
         exit()
-    else:
-         advice(total)
-    
     while True:
         keep_going = input("Hit or Stay? ")
         if keep_going == 'Stay':
             break
         elif keep_going == 'Hit':
-            total = blackjack(cards,total)
-            print(f"{total} is total.")
-            if total > 21:
-                advice(total)
+            total = blackjack(total)
+            if check_total(total) == False:
                 exit()
-            else:
-                advice(total)
         else:
             continue
-    #test_aces()
     exit()
-    
-def blackjack(cards,total):
+
+
+def blackjack(total):
     while True:
-        card = deal(cards)
+        card = deal()
         total = add_cards(total,card)
         print(f"You got: {card}")
         break
     return total
 
 
-def deal(cards):
+def deal():
+    cards = [2,3,4,5,6,7,8,9,10,'jack','queen','king','ace']
     return (random.choice(cards))
 
+
 def add_cards(total,card):
-    if card == 'jack':
-        total += 11
-    elif card == 'queen':
-        total += 12
-    elif card == 'king':
-        total += 13
+    if card == 'jack' or card == 'queen' or card == 'king':
+        total += 10
     elif card == 'ace':
         if total <= 10:
             total += 11
@@ -56,6 +44,7 @@ def add_cards(total,card):
     else:
         total += card
     return total
+
 
 def advice(total):
     if total < 17:
@@ -67,8 +56,23 @@ def advice(total):
     else:
         print("Busted!")
 
+
 def test_aces():
     assert add_cards(0,'ace') == 11
     assert add_cards(11,'ace') == 12
     assert add_cards(12,'ace') == 13
+
+
+def check_total(total):
+    print(f"{total} is total.")
+    if total > 21:
+        advice(total)
+        return False
+    if total == 21:
+        advice(total)
+        return False
+    else:
+        advice(total)
+        return True
+
 main()
