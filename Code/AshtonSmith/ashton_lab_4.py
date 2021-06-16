@@ -26,7 +26,6 @@ cards = {
 
 
 def main():
-    
     user_hand = []
     playing_card_prompt(user_hand)
     advice_giver(display_points(user_hand))
@@ -60,7 +59,7 @@ def display_points(user_hand):
     
     #check if ace is 1 or 11
     for i in user_hand:
-        if(point_total < 21 and i == 'A'):
+        if(point_total < 21 and i == 'A' and point_total+10 < 22):
             print("Ace counted as 11")
             point_total += 10
     print ("\nTotal Points: " + str(point_total) + '\n')
