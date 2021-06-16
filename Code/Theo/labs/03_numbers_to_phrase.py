@@ -51,6 +51,8 @@ def parse_english(user_input):
         user_input = user_input - (hundreds_num*100)
         if user_input == 0:
             return hundreds + ' hundred'
+        if user_input > 10 and user_input <=19:
+            return hundreds + 'hundred and ' + numbers_dict[user_input][0]
         tens = numbers_dict[user_input // 10][1]
         singles = numbers_dict[user_input % 10][0]
         if singles == 'zero':
