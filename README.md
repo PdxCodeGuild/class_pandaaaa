@@ -49,9 +49,9 @@ Capstone proposal due: TBA
 
 ## Python Labs Assigned:
 
-<!-- 01 Unit Converter  
+ 01 Unit Converter  
 02 Average Numbers  
-03 Number To Phrase  
+<!--03 Number To Phrase  
 04 Blackjack Advice  
 05 Pick 6  
 06 Credit Card Validation  
