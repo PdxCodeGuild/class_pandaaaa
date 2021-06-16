@@ -1,12 +1,6 @@
 # Lab 3: Number to Phrase
 # Convert a given number into its english representation. For example: 67 becomes 'sixty-seven'. Handle numbers from 0-99.
 
-# Hint: you can use modulus to extract the ones and tens digit.
-
-# x = 67
-# tens_digit = x//10
-# ones_digit = x%10
-# Hint 2: use the digit as an index for a list of strings OR as a key for a dict of digit:phrase pairs.
 ones_dict = {
     0 : 'zero',
     1 : 'one',
@@ -29,6 +23,9 @@ ones_dict = {
     18: 'eighteen',
     19: 'nineteen'
 }
+
+
+
 tens_dict = {
     2 : 'twenty',
     3 : 'thirty',
@@ -39,6 +36,9 @@ tens_dict = {
     8 : 'eighty',
     9 : 'ninety',
 }
+
+
+
 roman_ones_dict = {
     0 : '',
     1 : 'I',
@@ -52,6 +52,9 @@ roman_ones_dict = {
     9 : 'IX',
     10: 'X',
 }
+
+
+
 roman_tens_dict = {
     0 : '',
     1 : 'X',
@@ -64,6 +67,9 @@ roman_tens_dict = {
     8 : 'LXXX',
     9 : 'XC',
 }
+
+
+
 roman_hundreds_dict = {
     1 : 'C',
     2 : 'CC',
@@ -75,8 +81,8 @@ roman_hundreds_dict = {
     8 : 'DCCC',
     9 : 'CM',
 }
-# Version 4 (optional)
-# Convert a time given in hours and minutes to a phrase
+
+
 
 #prog main
 def main():
@@ -141,8 +147,6 @@ def roman_converter(num):
 
 
 
-
-
 #This function converts an integer from 0-999 to its english representation and then returns it as a string
 def number_converter(num):
     num2 = str(num) #used to store the number as a string, so it can be indexed
@@ -173,6 +177,7 @@ def number_converter(num):
     return to_return
     #print(num2[0] + num2[1])
 
+#ALTERNATE FUNCTION VERSION
 # thisversion of the function only prints and does not return the result
 # #This function converts an integer from 0-999 to its english representation
 # def number_converter(num):
