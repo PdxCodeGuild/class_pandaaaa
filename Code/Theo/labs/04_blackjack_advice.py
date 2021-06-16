@@ -14,6 +14,8 @@ def main():
     total = add_cards(total,card)
     print(f"What's your third card? {card}")
     print(f"{total} {advice(total)}")
+
+    test_aces()
     exit()
     
 def deal(cards):
@@ -44,4 +46,9 @@ def advice(total):
         return "Blackjack!"
     else:
         return "Busted!"
+
+def test_aces():
+    assert add_cards(0,'ace') == 11
+    assert add_cards(11,'ace') == 12
+    assert add_cards(12,'ace') == 13
 main()
