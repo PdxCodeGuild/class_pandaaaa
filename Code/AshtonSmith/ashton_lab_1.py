@@ -96,5 +96,3 @@ def convert_to_meters(distance, unit_1):
     return result
 
 
-
-main()
