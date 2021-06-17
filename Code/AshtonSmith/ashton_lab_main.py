@@ -6,11 +6,20 @@ import ashton_lab_5 as lab5
 
 def main():
     option = 0
-    option = input('What lab do you want to run? (1-5) Enter x to exit')
-    
-    if(int(option) in dispatch):
-        dispatch[int(option)].main()
-   
+    while(option != 'x'):
+        option = input('What lab do you want to run? (1-5) Enter x to exit\n options: ' +
+        '\n1. unit converter'+
+        '\n2. list averager'+
+        '\n3. number to phrase converter'+
+        '\n4. black jack advice'+
+        '\n5. emoticon generator'+
+        '\n')
+        try:
+            if(int(option) in dispatch):
+                dispatch[int(option)].main()
+        except ValueError:
+            pass
+        
     exit(0)
 
 dispatch = {

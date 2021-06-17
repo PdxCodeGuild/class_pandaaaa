@@ -25,6 +25,6 @@ def main():
         print(random.choice(emoticon_dictionary['eye']) 
         + random.choice(emoticon_dictionary['nose']) 
         + random.choice(emoticon_dictionary['mouth']))
-    exit(0)
+    return(0)
 
 

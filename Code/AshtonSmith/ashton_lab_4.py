@@ -29,7 +29,7 @@ def main():
     user_hand = []
     playing_card_prompt(user_hand)
     advice_giver(display_points(user_hand))
-    exit(0)
+    return(0)
 
 
 

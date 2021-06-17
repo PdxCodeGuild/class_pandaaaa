@@ -15,6 +15,7 @@ conversion_dictionary = {
 
 #program main
 def main():
+    print("Unit Converter")
     num = user_prompt_num()
     print('\nEnter the input unit:')
     unit_1 = user_prompt_unit()
@@ -26,7 +27,7 @@ def main():
     num = convert_to_meters(num, unit_1)
     print(str(convert_from_meters(num, unit_2)) + " " + str(unit_2))
 
-    exit(0)
+    return(0)
 
 
 

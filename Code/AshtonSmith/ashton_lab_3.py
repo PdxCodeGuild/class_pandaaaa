@@ -103,7 +103,7 @@ def main():
                 #time_converter(my_time)
         except ValueError:
             pass
-    exit(0)
+    return(0)
 
 
 
