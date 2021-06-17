@@ -31,3 +31,30 @@
 #             else:
 #                 print(tens_dict[int(num2[1])] + ''+ ones_dict[int(num2[2])])
 
+#lab3 
+#this function was replaced with a function that returns the string instead of printing it inside the function
+# #this function converts the argument to a roman numeral
+# def roman_converter(num):
+#     num2 = str(num) #used to store the number as a string, so it can be indexed
+#     length = len(num2)
+#     #1 digit 
+#     if(length == 1):
+#         num2 = int(num2)
+#         print(roman_ones_dict[int(num)])
+#     #2 digits
+#     elif (length == 2):
+#         if(num2[1] == '0'):
+#             print(roman_tens_dict[int(num2[0])])
+#         else:
+#             print(roman_tens_dict[int(num2[0])] + roman_ones_dict[int(num2[1])])
+#     #3 digits
+#     elif (length == 3):
+#         if(num2[1] == '0' and num2[2] == '0'):
+#             print(roman_hundreds_dict[int(num2[0])])
+#         elif(num2[1] == '0'):
+#             print(roman_hundreds_dict[int(num2[0])] + roman_ones_dict[int(num2[2])])
+#         elif(num2[2] == '0'):
+#             print(roman_hundreds_dict[int(num2[0])] + roman_tens_dict[int(num2[1])])
+#         else: 
+#             print(roman_hundreds_dict[int(num2[0])] + roman_tens_dict[int(num2[1])] + roman_ones_dict[int(num2[2])])
+
