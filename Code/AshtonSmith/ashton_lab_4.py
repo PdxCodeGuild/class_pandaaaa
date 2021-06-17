@@ -26,9 +26,12 @@ cards = {
 
 
 def main():
-    user_hand = []
-    playing_card_prompt(user_hand)
-    advice_giver(display_points(user_hand))
+    again = '1'
+    while(again == '1'):
+        user_hand = []
+        playing_card_prompt(user_hand)
+        advice_giver(display_points(user_hand))
+        again = input('Would you like to try another hand? Enter 1 for yes or not 1 for no')
     return(0)
 
 
