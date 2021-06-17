@@ -1,5 +1,6 @@
+# Ashton Smith
 # Lab 3: Number to Phrase
-# Convert a given number into its english representation. For example: 67 becomes 'sixty-seven'. Handle numbers from 0-99.
+# Convert a given number into its english representation. For example: 67 becomes 'sixty-seven'. Handle numbers from 0-999.
 
 ones_dict = {
     0 : '',
@@ -85,25 +86,23 @@ roman_hundreds_dict = {
 
 #prog main
 #note:dispatch table is defined at the end of this program above the call to main, 
-#because forward funciton declaration is not possible in python
-#this dispatch table is meant to replace the linear searching through the if statements(allowing direct access), however,
-#I have left the if statements.. as there are some inconsitencies with the functions and required arguments.
+#     because forward funciton declaration is not possible in python
+#     this dispatch table is meant to replace the linear searching through the if statements(allowing direct access), however,
+#     I have left the if statements.. as there are some inconsitencies with the functions and required arguments.
 def main():
     option = 0
     while(option != 4):
-        option = int(input("\n1. test number converter\n2. test roman numeral converter\n3. test time converter\n4. exit\n"))
-        if(option == 1):
-            for i in range(999):
-                print(dispatch[option](i))
-                #print(number_converter(i))
-        elif(option == 2):
-            for i in range(999):
-                dispatch[option](i)
-                #roman_converter(i)
-        elif(option == 3):
-            my_time = input("enter a time. format: xx:xx, or x:xx\n")
-            dispatch[option](my_time)
-            #time_converter(my_time)
+        try:
+            option = int(input("\n1. test number converter\n2. test roman numeral converter\n3. test time converter\n4. exit\n"))
+            if(option == 1 or option == 2):
+                for i in range(1000):
+                    print(dispatch[option](i))
+            elif(option == 3):
+                my_time = input("enter a time. format: xx:xx, or x:xx\n")
+                dispatch[option](my_time)
+                #time_converter(my_time)
+        except ValueError:
+            pass
     exit(0)
 
 
@@ -126,28 +125,30 @@ def time_converter(my_time):
 
 #this function converts the argument to a roman numeral
 def roman_converter(num):
+    to_return = ''
     num2 = str(num) #used to store the number as a string, so it can be indexed
     length = len(num2)
     #1 digit 
     if(length == 1):
         num2 = int(num2)
-        print(roman_ones_dict[int(num)])
+        to_return = (roman_ones_dict[int(num)])
     #2 digits
     elif (length == 2):
         if(num2[1] == '0'):
-            print(roman_tens_dict[int(num2[0])])
+            to_return = (roman_tens_dict[int(num2[0])])
         else:
-            print(roman_tens_dict[int(num2[0])] + roman_ones_dict[int(num2[1])])
+            to_return = (roman_tens_dict[int(num2[0])] + roman_ones_dict[int(num2[1])])
     #3 digits
     elif (length == 3):
         if(num2[1] == '0' and num2[2] == '0'):
-            print(roman_hundreds_dict[int(num2[0])])
+            to_return = (roman_hundreds_dict[int(num2[0])])
         elif(num2[1] == '0'):
-            print(roman_hundreds_dict[int(num2[0])] + roman_ones_dict[int(num2[2])])
+            to_return = (roman_hundreds_dict[int(num2[0])] + roman_ones_dict[int(num2[2])])
         elif(num2[2] == '0'):
-            print(roman_hundreds_dict[int(num2[0])] + roman_tens_dict[int(num2[1])])
+            to_return = (roman_hundreds_dict[int(num2[0])] + roman_tens_dict[int(num2[1])])
         else: 
-            print(roman_hundreds_dict[int(num2[0])] + roman_tens_dict[int(num2[1])] + roman_ones_dict[int(num2[2])])
+            to_return = (roman_hundreds_dict[int(num2[0])] + roman_tens_dict[int(num2[1])] + roman_ones_dict[int(num2[2])])
+    return to_return
 
 
 
