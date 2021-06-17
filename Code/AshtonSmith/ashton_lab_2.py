@@ -7,12 +7,14 @@
 
 #prog main
 def main():
-    num_list = []
-    num_list = list_fill_prompt(num_list)
-    average = list_averager(num_list)
-
-    print("The average is " + str(average))
-    exit(0)
+    again = '1'
+    while(again == '1'):
+        num_list = []
+        list_fill_prompt(num_list)
+        average = list_averager(num_list)
+        print("The average is " + str(average))
+        again = input('Would you like to average another list of numbers? Enter 1 for yes or not 1 for no.')
+    return(0)
 
 
 
@@ -42,9 +44,6 @@ def list_averager(list_1):
     sum = 0
     for i in list_1:
         sum += i
-        print(sum)
     return sum / len(list_1)
     
 
-
-main()
