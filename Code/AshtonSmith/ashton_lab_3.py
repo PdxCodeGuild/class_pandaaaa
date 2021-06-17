@@ -83,21 +83,29 @@ roman_hundreds_dict = {
 }
 
 
-
 #prog main
+#note:dispatch table is defined at the end of this program above the call to main, 
+#because forward funciton declaration is not possible in python
+#this dispatch table is meant to replace the linear searching through the if statements(allowing direct access), however,
+#I have left the if statements.. as there are some inconsitencies with the functions and required arguments.
 def main():
     option = 0
     while(option != 4):
-        option = int(input("\n1. test time converter\n2. test roman numeral converter\n3. test time converter\n4. exit\n"))
+        option = int(input("\n1. test number converter\n2. test roman numeral converter\n3. test time converter\n4. exit\n"))
         if(option == 1):
             for i in range(999):
-                print(number_converter(i))
+                print(dispatch[option](i))
+                #print(number_converter(i))
         elif(option == 2):
             for i in range(999):
-                roman_converter(i)
+                dispatch[option](i)
+                #roman_converter(i)
         elif(option == 3):
             my_time = input("enter a time. format: xx:xx, or x:xx\n")
-            time_converter(my_time)
+            dispatch[option](my_time)
+            #time_converter(my_time)
+
+
     exit(0)
 
 
@@ -118,7 +126,7 @@ def time_converter(my_time):
         
 
 
-#this function converts the argument to a roman numberal
+#this function converts the argument to a roman numeral
 def roman_converter(num):
     num2 = str(num) #used to store the number as a string, so it can be indexed
     length = len(num2)
@@ -207,6 +215,12 @@ def number_converter(num):
 #             else:
 #                 print(tens_dict[int(num2[1])] + ''+ ones_dict[int(num2[2])])
 
+
+dispatch = {
+    1:number_converter,
+    2:roman_converter,
+    3:time_converter,
+}
 
 
 main()
