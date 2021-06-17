@@ -1,20 +1,11 @@
 # Lab 5: Pick6
 # Have the computer play pick6 many times and determine net balance.
 
-# Steps
-# Generate a list of 6 random numbers representing the winning tickets
-# Start your balance at 0
-# Loop 100,000 times, for each loop:
-# Generate a list of 6 random numbers representing the ticket
-# Subtract 2 from your balance (you bought a ticket)
-# Find how many numbers match
-# Add to your balance the winnings from your matches
-# After the loop, print the final balance
-
-# Version 2
-# The ROI (return on investment) is defined as (earnings - expenses)/expenses. Calculate your ROI, print it out along with your earnings and expenses.
 import random
 import time
+
+
+
 winnings = {
     0 : 0.00,
     1 : 4.00,
@@ -24,8 +15,11 @@ winnings = {
     5 : 1000000.00,
     6 : 25000000.00
 }
+
+
+
 class ticket:
-    type = 'pick 6 ticket'
+    type = 'pick 6'
     price = 2.00 #in usd
     def __init__(self):
         self.nums = []
@@ -44,6 +38,7 @@ def main():
                 valid = 1
             except ValueError:
                 pass
+        valid = 0
         highest_matches = 0
         match = 0
         earnings = 0.00
@@ -66,6 +61,9 @@ def main():
         again = input('Would you like to play again? Enter 1 for yes or not 1 for no') 
     return 0
 
+
+
+#This function compares the numbers in the arguments and returns the number of matches
 def ticket_checker(ticket_1, ticket_2):
     match_count = 0
     for i in range(6):
