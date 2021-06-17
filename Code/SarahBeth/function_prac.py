@@ -24,15 +24,21 @@ def hello_world():
 
 # A Function that accepts two arguments, and returns the value of
 # those numbers added together.
-def add_numbers(x, y):
-    return x + y
+def add_numbersA(x, y):
+    return x - y
+
+
 
 # functions can have default values:
-def add_numbers(x, y=6):
+def add_numbersB(x, y=6):
     return x + y
 
-def add_numbers(x, y, operation = "add"):
+
+#function parameters can have default values that will be used if no value is passed in
+def add_numbersC(x, y, operation = "add"):
     if operation =="add":
         return x + y
     elif operation == "sub":
         return x - y
+
+print(add_numbersC(4, 10, 'sub'))
