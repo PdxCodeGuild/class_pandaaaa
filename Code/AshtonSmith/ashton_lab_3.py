@@ -2,7 +2,7 @@
 # Convert a given number into its english representation. For example: 67 becomes 'sixty-seven'. Handle numbers from 0-99.
 
 ones_dict = {
-    0 : 'zero',
+    0 : '',
     1 : 'one',
     2 : 'two',
     3 : 'three',
@@ -104,8 +104,6 @@ def main():
             my_time = input("enter a time. format: xx:xx, or x:xx\n")
             dispatch[option](my_time)
             #time_converter(my_time)
-
-
     exit(0)
 
 
@@ -130,20 +128,18 @@ def time_converter(my_time):
 def roman_converter(num):
     num2 = str(num) #used to store the number as a string, so it can be indexed
     length = len(num2)
-    
+    #1 digit 
     if(length == 1):
         num2 = int(num2)
         print(roman_ones_dict[int(num)])
+    #2 digits
     elif (length == 2):
         if(num2[1] == '0'):
             print(roman_tens_dict[int(num2[0])])
         else:
             print(roman_tens_dict[int(num2[0])] + roman_ones_dict[int(num2[1])])
+    #3 digits
     elif (length == 3):
-        num3 = num2[1] + num2[2]
-        num3 = int(num3)
-        #if num3 <= 19:
-        #    print(ones_dict[num3])
         if(num2[1] == '0' and num2[2] == '0'):
             print(roman_hundreds_dict[int(num2[0])])
         elif(num2[1] == '0'):
@@ -151,7 +147,7 @@ def roman_converter(num):
         elif(num2[2] == '0'):
             print(roman_hundreds_dict[int(num2[0])] + roman_tens_dict[int(num2[1])])
         else: 
-            print(roman_hundreds_dict[int(num2[0])] + roman_tens_dict[int(num2[1])] + ''+ roman_ones_dict[int(num2[2])])
+            print(roman_hundreds_dict[int(num2[0])] + roman_tens_dict[int(num2[1])] + roman_ones_dict[int(num2[2])])
 
 
 
@@ -160,9 +156,11 @@ def number_converter(num):
     num2 = str(num) #used to store the number as a string, so it can be indexed
     length = len(num2)
     to_return = ''   
+    #1 digit
     if(length == 1):
         num2 = int(num2)
         to_return = (ones_dict[num])
+    #2 digits
     elif (length == 2):
         if num <= 19:
             to_return = (ones_dict[num])
@@ -170,9 +168,10 @@ def number_converter(num):
             if(num2[1] == '0'):
                 to_return = (tens_dict[int(num2[0])])
             else:
-                to_return = (tens_dict[int(num2[0])] + ones_dict[int(num2[1])])
+                to_return = (tens_dict[int(num2[0])] + ' ' + ones_dict[int(num2[1])])
+    #3 digits
     elif (length == 3):
-        to_return += (ones_dict[int(num2[0])] + ' hundred ')# end = '')
+        to_return += (ones_dict[int(num2[0])] + ' hundred ')
         num3 = num2[1] + num2[2]
         num3 = int(num3)
         if num3 <= 19:
@@ -181,39 +180,8 @@ def number_converter(num):
             if(num2[2] == '0'):
                 to_return += (tens_dict[int(num2[1])])
             else:
-                to_return += (tens_dict[int(num2[1])] + ''+ ones_dict[int(num2[2])])
+                to_return += (tens_dict[int(num2[1])] + ' '+ ones_dict[int(num2[2])])
     return to_return
-    #print(num2[0] + num2[1])
-
-#ALTERNATE FUNCTION VERSION
-# thisversion of the function only prints and does not return the result
-# #This function converts an integer from 0-999 to its english representation
-# def number_converter(num):
-#     num2 = str(num) #used to store the number as a string, so it can be indexed
-#     length = len(num2)
-    
-#     if(length == 1):
-#         num2 = int(num2)
-#         print(ones_dict[num])
-#     elif (length == 2):
-#         if num <= 19:
-#             print(ones_dict[num])
-#         else:
-#             if(num2[1] == '0'):
-#                 print(tens_dict[int(num2[0])])
-#             else:
-#                 print(tens_dict[int(num2[0])] + ones_dict[int(num2[1])])
-#     elif (length == 3):
-#         print(ones_dict[int(num2[0])] + ' hundred ', end = '')
-#         num3 = num2[1] + num2[2]
-#         num3 = int(num3)
-#         if num3 <= 19:
-#             print(ones_dict[num3])
-#         else:
-#             if(num2[2] == '0'):
-#                 print(tens_dict[int(num2[1])])
-#             else:
-#                 print(tens_dict[int(num2[1])] + ''+ ones_dict[int(num2[2])])
 
 
 dispatch = {
