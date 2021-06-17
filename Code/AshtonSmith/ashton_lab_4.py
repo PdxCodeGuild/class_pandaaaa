@@ -80,6 +80,5 @@ def advice_giver(points):
 
 
 
-main()
 
        

@@ -45,5 +45,3 @@ def list_averager(list_1):
     return sum / len(list_1)
     
 
-
-main()
