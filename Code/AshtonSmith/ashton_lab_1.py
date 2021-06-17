@@ -15,18 +15,20 @@ conversion_dictionary = {
 
 #program main
 def main():
-    print("Unit Converter")
-    num = user_prompt_num()
-    print('\nEnter the input unit:')
-    unit_1 = user_prompt_unit()
-    print('\nEnter the output unit:')
-    unit_2 = user_prompt_unit()
-    
-    print("")#padding space
-    print(str(num) + " " + str(unit_1) + " = ")
-    num = convert_to_meters(num, unit_1)
-    print(str(convert_from_meters(num, unit_2)) + " " + str(unit_2))
-
+    again = '1'
+    print("Unit Converter\n")
+    while(again == '1'):
+        num = user_prompt_num()
+        print('\nEnter the input unit:')
+        unit_1 = user_prompt_unit()
+        print('\nEnter the output unit:')
+        unit_2 = user_prompt_unit()
+        
+        print("")#padding space
+        print(str(num) + " " + str(unit_1) + " = ")
+        num = convert_to_meters(num, unit_1)
+        print(str(convert_from_meters(num, unit_2)) + " " + str(unit_2))
+        again = input("\nWould you like to convert another number? Enter 1 for yes or not 1 for no")
     return(0)
 
 
