@@ -24,6 +24,7 @@ teen_dict ={
   "8": "eighteen",
   "9": "nineteen"
 }
+
 doubles_dict ={
   "2": "twenty",
   "3": "thirty",
@@ -35,8 +36,11 @@ doubles_dict ={
   "9": "ninety"
 }
 
+error_response = "Only numerical characters, numbers must not start with 0! type 'done' to exit: \n"
+error_response_2 = "Max number length is 9! \n"
+
 def number_converter():
-  num = input("Give me a numerical number and I'll convert it to english \n")
+  num = input("Give me a number and I'll convert it to english: \n")
   num_array = [n for n in num]
   alpha_number = ""
   if num == "0": #check if user entered "0"
@@ -45,7 +49,7 @@ def number_converter():
   while len(num_array) > 0:
     if num.isnumeric(): 
       if num[0] == "0": # check if user started number with a 0
-        num = input("Only numerical characters, numbers must not start with 0! or type 'done' to exit \n")
+        num = input(error_response)
         num_array = [n for n in num]
       elif len(num_array) == 1:
         number = num_array.pop(0)
@@ -54,7 +58,8 @@ def number_converter():
       elif len(num_array) == 2:
         if num_array[0] == "1": # if the first number of a 2 digit number is a 1
           number = num_array.pop(0)
-          alpha_number += teen_dict[number]
+          number_2 = num_array.pop(0)
+          alpha_number += teen_dict[number_2]
         elif num_array[1] == "0": # if the second number of a 2 digit number is 0
           number = num_array.pop(0)
           alpha_number += doubles_dict[number] + " "
@@ -65,7 +70,7 @@ def number_converter():
       elif len(num_array) == 3:
         number = num_array.pop(0)
         if number != "0": 
-          alpha_number += singles_dict[number] + " hundred "
+          alpha_number += singles_dict[number] + " hundred and "
       elif len(num_array) == 4:
         number = num_array.pop(0)
         if number != "0":
@@ -94,11 +99,13 @@ def number_converter():
       elif len(num_array) == 9:
         number = num_array.pop(0)
         alpha_number += singles_dict[number] + " hundred"
-
+      elif len(num_array) > 9:
+        num = input(error_response_2)
+        num_array = [n for n in num]
     elif num == "done":
       num_array = []
     else:
-      num = input("Only numerical characters, numbers must not start with 0! or type 'done' to exit \n")
+      num = input(error_response)
       num_array = [n for n in num]
   print(alpha_number)
 
