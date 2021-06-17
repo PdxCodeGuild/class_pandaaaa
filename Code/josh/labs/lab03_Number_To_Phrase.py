@@ -44,7 +44,7 @@ def number_converter():
     alpha_number = singles_dict["0"]
   while len(num_array) > 0:
     if num.isnumeric(): 
-      if num[0] == "0":
+      if num[0] == "0": # check if user started number with a 0
         num = input("Only numerical characters, numbers must not start with 0! or type 'done' to exit \n")
         num_array = [n for n in num]
       elif len(num_array) == 1:
@@ -65,7 +65,7 @@ def number_converter():
       elif len(num_array) == 3:
         number = num_array.pop(0)
         if number != "0": 
-          alpha_number += singles_dict[number] + " " + "hundred "
+          alpha_number += singles_dict[number] + " hundred "
       elif len(num_array) == 4:
         number = num_array.pop(0)
         if number != "0":
@@ -80,6 +80,21 @@ def number_converter():
       elif len(num_array) == 6:
         number = num_array.pop(0)
         alpha_number += singles_dict[number] + " hundred"
+      elif len(num_array) == 7:
+        number = num_array.pop(0)
+        if number != "0": 
+          alpha_number += singles_dict[number] + " million "
+      elif len(num_array) == 8:
+        number = num_array.pop(0)
+        if number == "1":
+          number_2 = num_array.pop(0)
+          alpha_number += teen_dict[number_2] + " million "
+        else:
+          alpha_number += " " + doubles_dict[number] + " " 
+      elif len(num_array) == 9:
+        number = num_array.pop(0)
+        alpha_number += singles_dict[number] + " hundred"
+
     elif num == "done":
       num_array = []
     else:
