@@ -12,7 +12,7 @@ def main():
     average = list_averager(num_list)
 
     print("The average is " + str(average))
-    exit(0)
+    return(0)
 
 
 
