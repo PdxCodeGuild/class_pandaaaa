@@ -18,7 +18,9 @@ card_dict = {
 }
 
 def main():
-    first_three_Blkjk()
+    user_hand = first_three_Blkjk()
+    score_ = scoring(user_hand)
+    user_feedback(score_)
     exit(0)
 '''
 #Version A; this version cannot catch cards that are not in the choices
@@ -79,41 +81,63 @@ def first_three_Blkjk():
 
 #----------------------------------------------------------------------------------#
 
-#Version 2; this version is to be used with the dictionary, the main function, and the user_feedback function
-#this version thus far cannot catch users trying to enter 'done' and exit and results also in asking the user to 
-#enter his or her handle three times
+#Version 2; this version is to be used with the dictionary, the main function, the scoring function and the user_feedback function
+
 def first_three_Blkjk():
     print("Input your hand or 'done' to exit")
     user_hand = []
     user_card = ""
-    real_cards = 0
-    while real_cards < 3 and user_card != 'done':
+    for i in range(3):
+        print(f'for loop {i}')
+        if user_card == 'done':
+            break
         valid = 0
         while not valid:
-            user_card = input('Enter your card:  ')
+            user_card = input('Enter your card. Choices are: 2,3,4,5,6,7,8,9,10,J,Q,K,A.  ')
             if user_card == 'done':
                 break
             try: 
-                current_card = card_dict[user_card]
+                current_card = user_card
                 user_hand.append(current_card)
-                print(user_hand)
-                real_cards += 1
                 valid = 1
             except: 
                 KeyError
                 print('Enter a valid card!')
-    user_total = sum(user_hand)
-    return user_total
+    return user_hand
+
+def scoring(user_hand):
+    aces_removed = []
+    ace_count = 0
+    score = 0
+    for card in user_hand:
+        if card == 'A':
+            user_hand.remove(card)
+            ace_count += 1
+        aces_removed = user_hand
+    for card in aces_removed:
+        score += card_dict[card]
+    if ace_count == 3:
+        score = 13
+    elif ace_count == 2 and score == 10:
+        score = 12
+    elif ace_count == 2 and score < 9:
+        score += 12
+    if ace_count == 1 and score >= 11:
+        score += 1
+    if ace_count == 1 and score <= 10:
+        score += 11
+    return score
     
-def user_feedback():
-    if first_three_Blkjk() < 17:
-        print('Hit!')
-    elif 17 <= first_three_Blkjk() < 21:
-        print("Stay")
-    elif first_three_Blkjk == 21:
-        print('Blackjack!')
-    elif first_three_Blkjk > 21:
-        print("Already busted")
+
+def user_feedback(tot):
+    if  tot < 17:
+        print(f'{tot} Hit!')
+    elif 17 <= tot < 21:
+        print(f'{tot} Stay')
+    elif tot == 21:
+        print(f'{tot} Blackjack!')
+    elif tot > 21:
+        print(f'{tot} Already busted')
 
 
 
