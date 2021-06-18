@@ -14,7 +14,8 @@ def count_hand():
     'K' : 10
     }
     points = 0
-    card_1 = input('First card: ')
+    # consider using a try/except to prevent errors if user inputs something other than accepted value
+    card_1 = input('First card: ').lower()
     card_2 = input('Second card: ')
     card_3 = input('Third card: ')
     card_hand = [card_1, card_2, card_3]

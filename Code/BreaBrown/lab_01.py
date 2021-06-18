@@ -7,9 +7,13 @@ conversions = {
 'inches': 0.0254
 }
 
-
+# consider using a try/except to prevent errors if user inputs incorrect values
 ft_in_m = 0.3048
-distance = int(input('What\'s the distance? '))
+distance = input('What\'s the distance? ')
+try: 
+    int(distance)
+except ValueError:
+    distance = input('What\'s the distance? Make sure to type a number:) ')
 start_unit = input('Enter the type of unit: ')
 end_unit = input('Enter the unit you\'d like to convert to: ')
 output = distance * conversions[start_unit]  / conversions[end_unit]
