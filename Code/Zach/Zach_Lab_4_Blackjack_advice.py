@@ -1,6 +1,8 @@
 #Zach Watts
 #Lab 4:  Blackjack Advice
 
+# not currently calling user_feedback
+
 card_dict = {
     'A' : 1,
     '2' : 2,
