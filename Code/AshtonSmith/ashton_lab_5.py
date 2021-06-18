@@ -72,8 +72,6 @@ def ticket_checker(ticket_1, ticket_2):
     if(match_count == 6):
         print('WIN')
     return match_count
-<<<<<<< HEAD
-=======
 
 
 #The ROI (return on investment) is defined as (earnings - expenses)/expenses. Calculate your ROI, print it out along with your earnings and expenses.
@@ -81,4 +79,3 @@ def ticket_checker(ticket_1, ticket_2):
 # Order matters, if the winning numbers are [5, 10] and your ticket numbers are [10, 5] you have 0 matches. 
 # If the winning numbers are [5, 10, 2] and your ticket numbers are [10, 5, 2], you have 1 match. 
 # Calculate your net winnings (the sum of all expenses and earnings).
->>>>>>> master
