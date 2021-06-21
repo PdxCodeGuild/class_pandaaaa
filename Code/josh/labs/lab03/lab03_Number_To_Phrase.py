@@ -157,7 +157,7 @@ def n_c_2():
         #use sub mod function
         digit_location = len(num_array)
         number = num_array.pop(0)
-        if len(num_array) in [5,8,11,14] and num_array[0] == "1":
+        if len(num_array) in [4,7,10,13] and num_array[0] == "1":
           number_2 = num_array.pop(0)
           alpha_number += mod.p(number, digit_location, number_2)
         else:
@@ -179,5 +179,5 @@ def n_c_2():
 #----------------------Run Function------------------------------
 
 
-number_converter()
-# n_c_2()
+# number_converter()
+n_c_2()
