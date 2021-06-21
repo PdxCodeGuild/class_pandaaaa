@@ -36,15 +36,6 @@ print(date.strftime('%d-%b-%Y'))  # 25-Mar-2016
 
 Now that you've successfully extracted the data, let's do some statistics.
 
-Calculate the mean of the data:
-
-![mean](https://wikimedia.org/api/rest_v1/media/math/render/svg/c7740a0aa91314dbf006e8583ce6f61585e3aab6)
-
-
-Use the mean to calculate the variance:
-
-![variance](https://wikimedia.org/api/rest_v1/media/math/render/svg/0c5c6e7bbd52e69c29e2d5cfe21989313aba55d4)
-
 Find the day which had the most rain.
 
 Find the year which had the most rain on average.
