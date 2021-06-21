@@ -179,5 +179,5 @@ def n_c_2():
 #----------------------Run Function------------------------------
 
 
-# number_converter()
-n_c_2()
+number_converter()
+# n_c_2()
