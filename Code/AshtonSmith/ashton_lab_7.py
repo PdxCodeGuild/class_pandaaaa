@@ -19,6 +19,9 @@ def main():
         print('The string converted back is : ' + convert_from_rot(my_str))
         again = input('Would you like to encrypt another string? 1 for yes')
     return 0
+
+
+
 #converts the argument to rot+13
 def convert_to_rot(to_convert):
     result = ''
@@ -30,6 +33,8 @@ def convert_to_rot(to_convert):
         else:
             result += chr(temp-13)
     return result
+
+
 
 #converts the argument from
 #  rot+13
@@ -43,3 +48,5 @@ def convert_from_rot(to_convert):
         else:
             result += chr(temp+13)
     return result
+
+main()
