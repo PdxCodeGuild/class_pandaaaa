@@ -1,3 +1,4 @@
+# consider using a try/except to prevent errors if user inputs something that cannot be converted to int
 user_input = int(input('Enter a number between 0 and 999: '))
 
 hundreds = user_input//100
