@@ -46,7 +46,7 @@ def main():
 def rotations():
     valid = 0
     while not valid:
-        rot = int(input("Enter the numer of rotations:  "))
+        rot = int(input("Enter the number of rotations:  "))
         try:
             valid = 1
         except:
@@ -91,11 +91,26 @@ def encrypt(rot_, msg_):
                 except:
                     IndexError
                     enc_msg += alpha[idx - 26 + rot_]
-            if char == " ":
-                enc_msg += " "
+        if char == " ":
+            enc_msg += " "
     print(enc_msg)
     return enc_msg
 
+def decrypt(rot_, msg_):
+    dec_msg = ""
+    for char in msg_:
+        for idx, letter in enumerate(alpha):
+            if char == letter:
+                try: dec_msg += alpha[idx - rot_]
+                except:
+                    IndexError
+                    dec_msg += alpha[idx + 26 - rot_]
+        if char == " ":
+            dec_msg += " "
+    print(dec_msg)
+    return dec_msg
+
+'''
 def decrypt(rot_, msg_):
     dec_msg = ""
     dec_lst = [] 
@@ -106,7 +121,7 @@ def decrypt(rot_, msg_):
         for idx, letter in enumerate(alpha):
             dec_msg += 
     pass
-
+'''
 
 
 '''
