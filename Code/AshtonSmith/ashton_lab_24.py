@@ -52,14 +52,19 @@
 # # total yearly rainfall, year by year
 import re
 import datetime
+
+import matplotlib.pyplot as plt
+
 from urllib.request import urlopen, Request
 rain_dict = {
-
 }
 total_dict ={
-
 }
+
+
+
 def main():
+  
     url = 'https://or.water.usgs.gov/non-usgs/bes/hayden_island.rain'
     request = Request(url)
     response = urlopen(request)
@@ -67,29 +72,36 @@ def main():
     html = html_bytes.decode('utf-8')
     response.close()
     my_str_list = html.split()
+    rain_dict_filler(my_str_list)
+    total_calculator()
+    print_total_dict()
+    data_chart()
     
+
+    
+#this function fills the data in the rain dictionary with the string argument
+def rain_dict_filler(my_str_list):   
     have_date = False
     key = ''
-    del my_str_list[0:80]
+    del my_str_list[0:80]#data starts after 80
     
     for i in my_str_list:
         if(len(i) > 3) and i[2] == '-':
-            #print(i)
             key = i
             have_date = True
         elif have_date:
-    #        print('Rain Fall total:' + i)
             have_date = False
             if i == '-':
                 rain_dict[key] = 0
             else:
                 rain_dict[key] = int(i)
 
-    #date and amounts sucesfully load into dict
-    #need to now search the dict and print the largest day
 
+
+#this function calculates rain fall totals by year and stores in in total_dict
+def total_calculator():
     max_key = max(rain_dict, key = rain_dict.get) 
-    print("The most rain fall occured on: " + str(max_key) + '\nIt rained ' + str(rain_dict[max_key]) + ' inches.')
+    print("The most rain fall occured on: " + str(max_key) + '. It rained ' + str(rain_dict[max_key]) + ' inches.')
     curr_key = ''
     for key in rain_dict:
         curr_key = key[-4]+key[-3]+key[-2] +key[-1]
@@ -98,25 +110,25 @@ def main():
         else:
             total_dict[curr_key] = int(rain_dict[key])
 
-    print(total_dict)
-    #print(my_str_list[j])
-    #each set has 26 items
-    #first item [0] = date
-    #second item[1] = total
-    #[2]-[25] = hourly totals
 
-# x = 0
-# length = len(html)
-# replacement = ''
-# for i in range(length):
-#     if html[i]== '-':
-#         while x < length-1  and html[x] == '-':
-#             x +=1
-#         while x < length -1:
-#             replacement += html[x]
-#             x +=1 
-#         break
-#     x += 1
 
+#this function prints the rain fall totals by year
+def print_total_dict():
+    highest_year_amt = 0
+    highest_year = ''
+    for key in total_dict:
+        if(total_dict[key] > highest_year_amt):
+            highest_year = key
+    print('The most rain fall occured in ' + str(highest_year) + ', it rained a total of ' + str(total_dict[highest_year]) + ' inches.')
+
+
+
+#this function plots the rain data
+def data_chart():
+    plt.plot( list(total_dict.keys()), list(total_dict.values()) )
+    plt.xlabel('Year')
+    plt.ylabel('Rainfall (in)')
+    plt.grid(True)
+    plt.show()
 
 main()
