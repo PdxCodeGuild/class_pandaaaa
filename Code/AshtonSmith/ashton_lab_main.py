@@ -3,6 +3,10 @@ import ashton_lab_2 as lab2
 import ashton_lab_3 as lab3
 import ashton_lab_4 as lab4
 import ashton_lab_5 as lab5
+import ashton_lab_6 as lab6
+import ashton_lab_7 as lab7
+import ashton_lab_8 as lab8
+import ashton_lab_9 as lab9
 import ashton_lab_55 as lab55
 
 def main():
@@ -15,6 +19,9 @@ def main():
         '\n3. number to phrase converter'+
         '\n4. black jack advice'+
         '\n5. pick6' +
+        '\n6. credit card number checker' +
+        '\n7. ROT+13 converter' +
+        '\n8. Peaks and valleys' +
         '\n55. emoticon generator'+
         '\n')
         try:
@@ -38,6 +45,10 @@ dispatch = {
     3:lab3,
     4:lab4,
     5:lab5,
+    6:lab6,
+    7:lab7,
+    8:lab8,
+    9:lab9,
     55:lab55,
 }
 
