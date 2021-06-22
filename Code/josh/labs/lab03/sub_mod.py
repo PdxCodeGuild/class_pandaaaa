@@ -17,4 +17,4 @@ def p(number, digit_location, number_2="none"):
       #Python version of a ternary opperator to remove a space if number is a 0
       return (" " + doubles_dict[number] + " ") if number != "0" else (doubles_dict[number] + " ")
   elif digit_location in [6,9,12,15]:
-    return singles_dict[number] + " hundred &"
+    return (singles_dict[number] + " hundred &") if number == 'none' else (singles_dict[number] + " hundred & ")

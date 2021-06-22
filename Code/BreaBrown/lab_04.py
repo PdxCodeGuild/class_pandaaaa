@@ -14,9 +14,10 @@ def count_hand():
     'K' : 10
     }
     points = 0
-    card_1 = input('First card: ')
-    card_2 = input('Second card: ')
-    card_3 = input('Third card: ')
+    card_1 = input('First card: ').upper()
+    card_2 = input('Second card: ').upper()
+    card_3 = input('Third card: ').upper()
+
     card_hand = [card_1, card_2, card_3]
     for card in card_hand:
         points += card_value[card]
