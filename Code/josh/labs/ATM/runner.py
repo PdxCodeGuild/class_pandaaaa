@@ -1,6 +1,6 @@
-from atm import atm #create an instance of our class
-
+from atm import ATM #create an instance of our class
 print('Welcome to the ATM')
+atm = ATM()
 while True:
     command = input('Enter a command: ')
     if command == 'balance':
