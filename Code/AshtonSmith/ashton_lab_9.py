@@ -99,4 +99,3 @@ class ari_calculator:
         return counter
 
 
-main()

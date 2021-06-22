@@ -86,5 +86,3 @@ def data_chart():
     plt.show()
 
 
-
-main()
