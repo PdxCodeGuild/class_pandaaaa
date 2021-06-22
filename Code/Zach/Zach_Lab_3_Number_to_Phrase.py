@@ -46,12 +46,15 @@ def number():
             break
     return num
 
+
 def zero_to_99(num):
     tens_dig = num//10
     ones_dig = num % 10
     if tens_dig == 0 and ones_dig == 0:
         return ""
-    elif num < 20:
+    elif num < 10:
+        return word_dict[num][0]
+    elif 9 < num < 20:
         return word_dict[num]
     elif num >= 20:
         #print(tens_dig)
