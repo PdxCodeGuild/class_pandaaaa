@@ -56,6 +56,9 @@ from urllib.request import urlopen, Request
 rain_dict = {
 
 }
+total_dict ={
+
+}
 def main():
     url = 'https://or.water.usgs.gov/non-usgs/bes/hayden_island.rain'
     request = Request(url)
@@ -71,20 +74,31 @@ def main():
     
     for i in my_str_list:
         if(len(i) > 3) and i[2] == '-':
-            print(i)
+            #print(i)
             key = i
             have_date = True
         elif have_date:
     #        print('Rain Fall total:' + i)
             have_date = False
-            rain_dict[key] = i
+            if i == '-':
+                rain_dict[key] = 0
+            else:
+                rain_dict[key] = int(i)
 
     #date and amounts sucesfully load into dict
     #need to now search the dict and print the largest day
 
     max_key = max(rain_dict, key = rain_dict.get) 
-    print("The most rain fall occured on: " + max_key + '\nIt rained ' + rain_dict[max_key]+ ' inches.')
-   
+    print("The most rain fall occured on: " + str(max_key) + '\nIt rained ' + str(rain_dict[max_key]) + ' inches.')
+    curr_key = ''
+    for key in rain_dict:
+        curr_key = key[-4]+key[-3]+key[-2] +key[-1]
+        if curr_key in total_dict:
+            total_dict[curr_key] = total_dict[curr_key] + int(rain_dict[key])
+        else:
+            total_dict[curr_key] = int(rain_dict[key])
+
+    print(total_dict)
     #print(my_str_list[j])
     #each set has 26 items
     #first item [0] = date
