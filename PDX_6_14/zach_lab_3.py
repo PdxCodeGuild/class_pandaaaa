@@ -1,6 +1,8 @@
 #Zach Watts
 #Lab 3
 
+# ones digits returns a whole list
+
 word_dict = {
     0 : ["zero"],
     1 : ["one", "", "one-hundred"],
