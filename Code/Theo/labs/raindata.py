@@ -8,7 +8,8 @@ def main():
     rain_total = parse_total(rain_data)
     #print(type(rain_total[0]))
     highest_index = highest_rain(rain_total)
-    print(f'The highest recorded rainfall was on {dates[highest_index].strftime("%d-%b-%Y")} for {rain_total[highest_index]}" total.')
+    print(f'The highest recorded rainfall was {rain_total[highest_index]}" on {dates[highest_index].strftime("%d-%b-%Y")}.')
+    annual_average(dates,rain_total)
 
     exit()
 
@@ -51,7 +52,27 @@ def highest_rain(rain_total):
     return index
 
 def annual_average(dates,rain_total):
-    pass
+    this_year = datetime.datetime.today().year
+    offset = 1999
+    average_rainfall = {
+        'years':[*range(offset,this_year+1)],
+        'count':[*range(0,this_year+1-offset)],
+        'total':[*range(0,this_year+1-offset)],
+        'average':[*range(0,this_year+1-offset)]
+    }
+    for i in range(len(dates)):
+        average_rainfall['count'][dates[i].year-offset] += 1
+        average_rainfall['total'][dates[i].year-offset] += rain_total[i]
+    
+    print("Annual averages:")
+    for i in range(len(average_rainfall['years'])):
+        try:
+            average_rainfall['average'][i] = average_rainfall['count'][i]/average_rainfall['total'][i]
+        except ZeroDivisionError:
+            average_rainfall['average'][i] = 0
+        print(f"{average_rainfall['years'][i]}: {round(average_rainfall['average'][i],4)}\" per day")
+    return None
+
 
 
 
