@@ -1,7 +1,7 @@
 import json
 
 class ContactList():
-    def __init__(self,input_file='contacts.json',output_file='contacts_copy.json'):
+    def __init__(self,input_file='contacts.json',output_file='contacts.json'):
         self.contacts = []
         self.input_file = input_file
         self.output_file = output_file
@@ -18,8 +18,9 @@ class ContactList():
         
     def write_file(self):
         with open(self.output_file, "w") as f:
-            # This doesn't work right :(
-            json.dump(self.contacts, f)
+            new_data = {'contacts':[]}
+            new_data['contacts'] = self.contacts
+            json.dump(new_data, f, indent=4)
     
     def count(self):
         return len(self.contacts)
