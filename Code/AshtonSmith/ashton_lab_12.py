@@ -22,17 +22,26 @@ class Window(Tk):
    
    
     def create_text_box(self):
-        self.box = tk.Entry().grid(row = 10 , column = 10)
+        self.box = Text(width= 5, height= 5)
+        self.box.grid(row = 10 , column = 10)
         
         self.textbutton = tk.Button(text='OK', command= self.text_event).grid(row=10, column=12, sticky=tk.W, pady=4)
         
     def text_event(self):
-        
-        name = StringVar(self, value='not available')
-        name = Entry(self, textvariable=name)
-        self.name_Tf = self.box
-        name = self.name_Tf.get()
-        return messagebox.showinfo('message',f'Hi! {name}, Welcome to python guides.')
+        name = StringVar(self)
+        name = self.box.get('1.0', 'end-1c')
+        radSelected = self.radValues.get()
+        if(radSelected == 1):#show balance
+            temp = self.atm.balance()
+            self.label4.configure(text = 'Balance :' + str(temp) + '$.')
+        elif(radSelected == 2):#withdraw
+            self.atm.withdraw(float(name))
+            self.label4.configure(text = 'Withdrawed :' + str(name) + '$.')
+        elif(radSelected == 3):#deposit
+            self.atm.deposit(float(name))
+            self.label4.configure(text = 'Deposited:' + str(name) + '$.')
+        elif(radSelected == 4):#interest
+            self.label4.configure(text = 'Interest:' + str(name))
 # ws = Tk()
 # ws.title('get text demo')
 # ws.geometry('200x200')
@@ -47,7 +56,7 @@ class Window(Tk):
 
 # Button(ws, text="Click Here", command=welcomeMessage).pack()
 
-        self.label4.configure(text = name)
+        # self.label4.configure(text = name)
         #my_str = self.box
 
     def create_radio(self):
@@ -82,16 +91,16 @@ class Window(Tk):
             temp = str(self.atm.check_balance())
             self.label4.configure(text = 'Current blance = ' + temp)
         elif radSelected == 2:
-            #temp = str(self.atm.withdraw())
+            #temp = str(self.atm.withdraw())v
             self.label4.configure(text = temp + '$ withdrawn')
         elif radSelected == 3:
             #self.atm.deposit()
-            self.label4.configure(text = temp + '$ withdrawn')
+            self.label4.configure(text = temp + '$ deposited')
         elif radSelected == 4:
             #temp = self.atm.calc_interest()
             #self.atm.deposit(temp)
             temp = str(temp)
-            self.label4.configure(text = temp + '$ intrest earned')
+            self.label4.configure(text = temp + '$ interest earned')
 
         #self.label.grid(column = 50, row = 20)
 
@@ -177,6 +186,6 @@ def use_atm():
             break
         else:
             print('Command not recognized')
-# window = Window()
-# window.mainloop()
-use_atm()
+window = Window()
+window.mainloop()
+#use_atm()
