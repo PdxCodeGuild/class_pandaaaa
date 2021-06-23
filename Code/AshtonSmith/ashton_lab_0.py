@@ -1,6 +1,23 @@
 #This file serves as a graveyard for my larger pieces of deleted code
 
 
+      #f.write('\n')
+                #print(row)
+            #     for j in self.contacts:#j = dict
+            #         for z in range(len(j)):#z 
+            #             f.write(z)
+            #         f.write('\n')
+            # # contacts = []
+            # header = lines[0].split(',')
+            # if header != self.header:
+                # if len(self.contacts) > 0:
+                    # return 'CSV not compatible'
+            # for i in range(1, len(self.contacts)):
+            #     row = lines[i].split(',')
+            #     contact = dict(zip(header, row))
+            #     contacts.append(contact)
+            # self.contacts += contacts
+            # self.header = header
 
 #lab8
 #this function doesnt work - the method attempted to fill valleys with water doesnt work for a list

@@ -5,7 +5,7 @@
 # Implement the initializer, as well as the following functions:
 from tkinter import *
 import tkinter as tk
-
+from tkinter import messagebox
 
 
 #################################################################
@@ -23,10 +23,33 @@ class Window(Tk):
    
     def create_text_box(self):
         self.box = tk.Entry().grid(row = 10 , column = 10)
-        tk.Button(text='OK').grid(row=10, column=12, sticky=tk.W, pady=4)
+        
+        self.textbutton = tk.Button(text='OK', command= self.text_event).grid(row=10, column=12, sticky=tk.W, pady=4)
+        
+    def text_event(self):
+        
+        name = StringVar(self, value='not available')
+        name = Entry(self, textvariable=name)
+        self.name_Tf = self.box
+        name = self.name_Tf.get()
+        return messagebox.showinfo('message',f'Hi! {name}, Welcome to python guides.')
+# ws = Tk()
+# ws.title('get text demo')
+# ws.geometry('200x200')
+
+# def welcomeMessage():
+#     name = name_Tf.get()
+#     return messagebox.showinfo('message',f'Hi! {name}, Welcome to python guides.')
     
-    
-    
+
+# Label(ws, text="Enter Name").pack()
+# name_Tf.pack()
+
+# Button(ws, text="Click Here", command=welcomeMessage).pack()
+
+        self.label4.configure(text = name)
+        #my_str = self.box
+
     def create_radio(self):
         self.radValues = IntVar()
         self.rad1 = tk.Radiobutton(self, value = 1, variable = self.radValues , command = self.rad_event)
@@ -154,6 +177,6 @@ def use_atm():
             break
         else:
             print('Command not recognized')
-window = Window()
-window.mainloop()
-#use_atm()
+# window = Window()
+# window.mainloop()
+use_atm()
