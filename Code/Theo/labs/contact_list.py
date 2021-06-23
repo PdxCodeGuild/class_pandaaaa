@@ -1,20 +1,26 @@
 import json
 
 class ContactList():
-    def __init__(self,filename='contacts.json'):
+    def __init__(self,input_file='contacts.json',output_file='contacts_copy.json'):
         self.contacts = []
-        self.filename = filename
+        self.input_file = input_file
+        self.output_file = output_file
     def __str__(self) -> str:
         return str(self.contacts)
     def __repr__(self) -> str:
-        return f'ContactList({self},{self.filename})'
+        return f'ContactList({self},{self.input_file},{self.output_file})'
     
-    def file_io(self):
-        with open (self.filename) as f:
+    def read_file(self):
+        with open (self.input_file) as f:
             text = f.read()
         data =  json.loads(text)
         self.contacts = data['contacts']
         
+    def write_file(self):
+        with open(self.output_file, "w") as f:
+            # This doesn't work right :(
+            json.dump(self.contacts, f)
+    
     def count(self):
         return len(self.contacts)
         
@@ -63,7 +69,7 @@ class ContactList():
             
 def main():
     list = ContactList()
-    list.file_io()
+    list.read_file()
     while True:
         command = input("Enter a command: ")
         if command == 'print':
@@ -89,7 +95,7 @@ def main():
             break
         else:
             pass
-        
+    list.write_file()   
     exit()
     
 main()
