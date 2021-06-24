@@ -7,6 +7,8 @@ import ashton_lab_6 as lab6
 import ashton_lab_7 as lab7
 import ashton_lab_8 as lab8
 import ashton_lab_9 as lab9
+import ashton_lab_10 as lab10
+import ashton_lab_12 as lab12
 import ashton_lab_24 as lab24
 import ashton_lab_55 as lab55
 
@@ -23,6 +25,8 @@ def main():
         '\n7. ROT+13 converter' +
         '\n8. Peaks and valleys' +
         '\n9. ARI calculator' +
+        '\n10. Contact list' +
+        '\n12. ATM lab'+ 
         '\n24. Rain Data' +
         '\n55. emoticon generator'+
         '\n')
@@ -50,6 +54,8 @@ dispatch = {
     7:lab7,
     8:lab8,
     9:lab9,
+    10:lab10,
+    12:lab12,
     24:lab24,
     55:lab55,
 }
