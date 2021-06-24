@@ -3,6 +3,9 @@
 #ATM lab
 from tkinter import *
 import tkinter as tk
+
+
+
 def main():
     window = Window()
     window.mainloop()
@@ -202,6 +205,3 @@ def use_atm():
             print('Command not recognized')
 
 
-
-main()
-#use_atm()
