@@ -1,4 +1,57 @@
 #This file serves as a graveyard for my larger pieces of deleted code
+        #Lab12
+        # if radSelected == 1:
+        #     temp = str(self.atm.check_balance())
+        #     self.label4.configure(text = 'Current blance = ' + temp)
+        # elif radSelected == 2:
+        #     #temp = str(self.atm.withdraw())v
+        #     self.label4.configure(text = temp + '$ withdrawn')
+        # elif radSelected == 3:
+        #     #self.atm.deposit()
+        #     self.label4.configure(text = temp + '$ deposited')
+        # elif radSelected == 4:
+            #temp = self.atm.calc_interest()
+            #self.atm.deposit(temp)
+            # temp = str(temp)
+            # self.label4.configure(text = temp + '$ interest earned')
+
+        #self.label.grid(column = 50, row = 20)
+
+
+    # main.destroy()
+    # main=Frame(root)
+    # Or in a button:
+
+    # def clear():
+    #     global main, root
+    #     main.destroy()
+    #     main=Frame(root)
+    #     main.pack()
+    # clearbtn=Button(main, text='clear', command=clear)
+    # clearbtn.pack()
+    # To clear the screen. You can also just create a new window the same way as you created root(not recommended) or create a toplevel instance, which is better for creating multiple but essentially the same. You can also use grid_forget():
+
+    # w=Label(root, text='whatever')
+    # w.grid(options)
+
+
+
+    # ws = Tk()
+    # ws.title('get text demo')
+    # ws.geometry('200x200')
+
+    # def welcomeMessage():
+    #     name = name_Tf.get()
+    #     return messagebox.showinfo('message',f'Hi! {name}, Welcome to python guides.')
+        
+
+    # Label(ws, text="Enter Name").pack()
+    # name_Tf.pack()
+
+    # Button(ws, text="Click Here", command=welcomeMessage).pack()
+
+            # self.label4.configure(text = name)
+            #my_str = self.box
 
 
       #f.write('\n')

@@ -142,5 +142,3 @@ class contact_list:
         if not found:
             print('User doesnt exist')
         
-
-main()
