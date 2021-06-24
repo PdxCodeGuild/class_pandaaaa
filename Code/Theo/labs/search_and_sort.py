@@ -2,7 +2,8 @@ def main():
     # nums = [1, 2, 3, 4, 5, 6, 7, 8]
     unsorted = [6,3,7,2,5]
     # index = linear_search(nums, 3)
-    nums = bubble_sort(unsorted)
+    # nums = bubble_sort(unsorted)
+    nums = insertion_sort(unsorted)
     for i in range(len(nums)):
         print(nums[i])
     # index = binary_search(nums,3)
@@ -52,5 +53,21 @@ def bubble_sort(to_sort):
             break
     print(f'Swaps: {count}')
     return to_sort
+
+def insertion_sort(to_sort):
+    i = 1
+    n = len(to_sort)
+    while i < n:
+        j = i
+        while j > 0 and to_sort[j-1] > to_sort[j]:
+                temp = to_sort[j]
+                to_sort[j] = to_sort[j-1]
+                to_sort[j-1] = temp
+                # print(temp)
+                j -= 1
+        # print(i)
+        i += 1
+    return to_sort          
+
 
 main()
