@@ -146,5 +146,3 @@ class Window(Tk):
         self.label1.configure(text ='ARI score : ' + str(calc.ari))
         self.label2.configure(text = 'Words: ' + str(calc.word_count))
         self.label3.configure(text = 'Sentences: ' + str(calc.sentence_count))
-
-main()
