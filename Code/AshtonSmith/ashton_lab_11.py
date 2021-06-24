@@ -46,6 +46,8 @@ def main():
         else:
             print('Number found at index ' + str(index))
 
+
+
 #this function checks the first arg, nums(list) for the arg2, value(int)
 #it returns the index or if not found, None
 # Implement linear search, which simply loops through the given list 
@@ -150,4 +152,3 @@ def quick_sort_partition(num, low, high):
         num[i] = num[j]
         num[j] = temp
 
-main()
