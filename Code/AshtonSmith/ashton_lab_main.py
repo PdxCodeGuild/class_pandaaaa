@@ -24,9 +24,9 @@ def main():
         '\n6. credit card number checker' +
         '\n7. ROT+13 converter' +
         '\n8. Peaks and valleys' +
-        '\n9. ARI calculator' +
+        '\n9. ARI calculator (tkinter window)' +
         '\n10. Contact list' +
-        '\n12. ATM lab'+ 
+        '\n12. ATM lab (tkinter window)'+ 
         '\n24. Rain Data' +
         '\n55. emoticon generator'+
         '\n')
