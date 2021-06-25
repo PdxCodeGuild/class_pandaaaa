@@ -1,6 +1,10 @@
 # https://github.com/PdxCodeGuild/class_pandaaaa/blob/master/1%20Python/labs/13%20Tic%20Tac%20Toe.md
 # Theo and Brea
 # Lab 13: Tic Tac Toe
+class Player:
+    def __init__(self):
+        self.player_name = input('Enter player name: ')
+        self.token = input('Choose "x" or "o": ')
 
 class Game:
     def __init__(self,board={'x':[],'y':[]},x=3,y=3) -> None:
@@ -43,7 +47,3 @@ class Game:
 
 board = Game()
 print(board)
-class Player:
-    def __init__(self):
-        self.player_name = input('Enter player name: ')
-        self.token = input('Choose "x" or "o": ')
