@@ -1,9 +1,8 @@
+# Ashton Smith
+# Zach Watts
 # Lab 13: Tic-Tac-Toe
 # Tic Tac Toe is a game. Players take turns placing tokens (a 'O' or 'X') into a 3x3 grid. 
 # Whoever gets three in a row first wins.
-
-
-
 tokens_dict = {
     #Symbol : in use?(T/F)
     'X':False,
@@ -15,7 +14,6 @@ tokens_dict = {
 #main
 def main():
     my_game = game()
-
     player_1_name = player_input_name()
     player_1_token = player_input_token()
     player_1 = player(player_1_name,player_1_token) 
@@ -24,31 +22,84 @@ def main():
     player_2_token = player_input_token()
     player_2 = player(player_2_name,player_2_token) 
  
-    #player_2 = player()
-    my_game.move(0,1,player_1)
-    my_game.move(0,2,player_2)
+    curr_player = 1
+    position_x = ''
+    position_y = ''
+    result = ''
+    is_full = False 
+    while not(is_full):
+        valid_position = False
+        my_game.print_board()
+        result = str(my_game.calc_winner())
+        if result == 'x':
+            print('X Wins')
+            break
+        elif result == '0':
+            print('0 Wins')
+            break
+        elif curr_player == 1: 
+            while not valid_position:
+                print('Player 1\nSymbol :' + player_1.token)
+                position_y = int(prompt_column())
+                position_x = int(prompt_row())        
+                valid_position = my_game.move(position_x,position_y,player_1)
+            curr_player = 2
+        elif curr_player == 2: 
+            while not valid_position:
+                print('Player 2\nSymbol :' + player_2.token)
+                position_y = int(prompt_column())
+                position_x = int(prompt_row())
+                valid_position = my_game.move(position_x,position_y,player_2)
+            curr_player = 1
+        is_full = my_game.is_full()
     my_game.print_board()
     return 0
 
 
 
+#this function prompts the user for the row and returns it as a string
+def prompt_row():
+    return str(input('Enter the row: 0-2'))
+
+
+
+#this function prompts the user for the column and returns it as a string
+def prompt_column():
+    return str(input('Enter the column: 0-2'))
+
+
+
+#this function returns true if the number is between 0 and 2 else false
+def is_valid_num(num):
+    try:
+        num = int(num)
+        if 0 <= num <= 2:
+            return True
+    except ValueError:
+        pass
+    return False
+
+
+
+#input player name
 def player_input_name():
     return input('Enter your name: ')
 
 
 
+#input player token
 def player_input_token():
+    global tokens_dict
     again = True
     token = '' 
     while(again):
         token = str(input('What token do you want to use? X or 0'))
-        if(token in tokens_dict):
+        if(token == 'X' or token == '0'):
             if(tokens_dict[token] == False):
                 again = False
-                tokens_dict = True 
+                tokens_dict[token] = True 
             else:
                 tokens_dict[token] = False
-
     return token
 
 
@@ -74,9 +125,8 @@ class player():
 
 class game():
     def __init__(self):
-       self.board = [[' ',' ',' '],[' ',' ',' '],[' ',' ',' ']]
-   
-       #[x, y]
+        self.board = [[' ',' ',' '],[' ',' ',' '],[' ',' ',' ']] #empty
+        self.moves = 0 
 
 
 
@@ -99,44 +149,82 @@ class game():
         # given coordinate (top-left is 0, 0), x is horizontal position, 
         # y is vertical position.
     def move(self, x, y, player):
-        if player.get_token() == 'X':
-            self.board[x][y] = 'X'
-        elif player.get_token() == '0':
-            self.board[x][y] = '0'
-    
+        if self.board[x][y] == ' ':
+            if player.get_token() == 'X':
+                self.board[x][y] = 'X'
+            elif player.get_token() == '0':
+                self.board[x][y] = '0'
+            self.moves += 1
+            return True
+        else:
+            return False
+        
     
     
     # calc_winner() What token character string has won or None if no one has.
-    # X| | 
-    # O|X|O
-    #  | |X
-    # >>> board.calc_winner()
-    # X
+    #return None = no winner
+    #return x = player 1
+    #return 0 = player 2
     def calc_winner(self):
-        return 0
+        #if there are 5 on the board
+        if (self.moves < 5):
+            return None 
+        
+        #if diagnol - first check mid
+        diag_counter_0 = 0
+        diag_counter_x = 0
+        #check middle
+        if (self.board[0][0] == self.board[1][1] == self.board[2][2]):
+            if(self.board[0][0] == 'X'):
+                return 'x'
+            elif(self.board[0][0] == '0'):
+                return '0'
+        if (self.board[2][0] == self.board[1][1] == self.board[0][2]):
+            if(self.board[2][0] == 'X'):
+                return 'x'
+            elif(self.board[2][0] == '0'):
+                return '0'
+        if(diag_counter_0 == 3):
+            return '0'
+        if(diag_counter_x == 3):
+            return 'x'
+
+        #if horizontal - all in one list are the same
+        for i in self.board: #each row
+            counter_x = 0
+            counter_0 = 0
+            for j in i:
+                if(j == 'X'): 
+                    counter_x += 1
+                if(j == '0'):
+                    counter_0 += 1
+                if counter_x == 3:
+                    return 'x'
+                elif counter_0 == 3:
+                    return '0'
+
+        #if vertical
+        for i in range(3):
+            counter_x = 0
+            counter_0 = 0
+            for j in range(3):
+                if(self.board[j][i] == 'X'):
+                    counter_x += 1
+                elif(self.board[j][i] == '0'):
+                    counter_0 += 1
+                if counter_x == 3:
+                    return 'x'
+                elif counter_0 == 3:
+                    return '0'
 
 
 
-    # is_full() Returns true if the game board is full.
-    # X|O|X
-    # X|X|O
-    # O|O|X
-    # >>> board.is_full()
-    # True
-    def is_full():
-        return True
+        
+    #if there is room for another move
+    def is_full(self):
+        if(self.moves == 9):
+            return True
 
 
-
-    # move(x, y, player) Place a player's token character string at a 
-    # given coordinate (top-left is 0, 0), x is horizontal position, 
-    # y is vertical position.
-    # X|O|
-    #  | |X
-    #  | |
-    # >>> board.is_game_over()
-    # False
-    def is_game_over():
-        return 0
 
 main()
