@@ -1,7 +1,8 @@
 #from typing_extensions import TypeVarTuple
 import pygame
 import random
-
+#following: at 1:34
+#https://www.youtube.com/watch?v=FfWpgLFMI7w&ab_channel=freeCodeCamp.org
 #initalize pygame
 pygame.init()
 #create the screen
