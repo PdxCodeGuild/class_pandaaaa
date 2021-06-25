@@ -1,4 +1,4 @@
-from datetime import date as dt
+from datetime import datetime
 
 with open("crime_data.csv", "r") as f:
     data = f.read().split('\n')
@@ -24,7 +24,6 @@ def c_s_v(parameter):
 
 
 x = c_s_v(data)
-
 
 
 def crime_counter(data):
@@ -105,12 +104,15 @@ def crime_counter(data):
     return crime_count
 y = crime_counter(x)
 
-for i in x:
-    year = i['Report Date']
-    print(year.year())
+# for i in x:
+#     year = i['Report Date']
+#     print(year.year())
 
-# def year_scraper(data):
-#     for yr in data:
-#         x = data['Report Date']
-#         datetime.strptime(Report_Date, "%Y-%M-%D")
-#         print(data['Report Date'].year)
+def year_scraper(data):
+    for item in data:
+        x = item['Report Date']
+        
+        datetime.strptime(x, "%Y")
+        print(x.year)
+year_scraper(x)
+# print(x)
