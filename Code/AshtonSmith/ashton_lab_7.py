@@ -48,5 +48,3 @@ def convert_from_rot(to_convert):
         else:
             result += chr(temp+13)
     return result
-
-main()
