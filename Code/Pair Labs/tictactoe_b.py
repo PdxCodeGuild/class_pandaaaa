@@ -25,6 +25,21 @@ class Game:
 
     def __repr__(self) -> str:
         return f'Game({self},{self.board},{self.x},{self.y})'
+    
+    def move(self,x,y,player):
+        self.board['x'][x] = player.token
+        self.board['y'][y] = player.token
+        return self.board
+    
+    def calc_winner(self):
+        self.is_full()
+
+    def is_full(self):
+        for y in self.board['y']:
+            for x in self.board['x']:
+                if x == ' ':
+                    return False
+        return True
 
 board = Game()
 print(board)
