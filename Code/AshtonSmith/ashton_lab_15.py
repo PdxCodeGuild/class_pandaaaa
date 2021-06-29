@@ -12,25 +12,52 @@ import json
 
 #prog main
 def main():
-    request_quote()
+    # request_quote()
+
+    request_quote_search()
     return 0
 
 
 
 #this function quests a quote
 def request_quote():
-    url = 'https://favqs.com/qpi/qotd'
+    url = 'https://favqs.com/api/qotd'
     response = requests.get(url, headers = {'Accept' : 'application/json'})#send a get request
     # data = response.json()
     data = json.loads(response.text)
     print(data)
 
-    return 0
+
+def request_quote_search():
+    page = '1'
+    term = 'what'
+    # url = f'https://favqs.com/api/quotes?page=<{page}>&filter=<{term}>'
+    # url = 'https://favqs.com/api/quotes?page=1&filter=what'
+    # url = 'https://favqs.com/api/quotes'#/?filter=funny'
+    url = 'https://favqs.com/api/quotes/?filter=funny'
+    headers = {'Authorization': 'Token token="5b8c456532d65b17d851bba193977bf9"'}
+    # print (url)
+    response = requests.get(url, headers)# = {'Accept' : 'application/json'})#, params= {'term':'thou'})#send a get request
+    # data = response.json()
+    # 9
+    # data = json.loads(response.text)
+	# 5b8c456532d65b17d851bba193977bf9
+    # print(data)
+    print(response)
 
 
+# An app token is required to access our API (except for the Quote of the Day).
 
+# For authorized API calls, pass your access token in via the header:
 
+# Authorization: Token token="YOUR_APP_TOKEN"
+# For example,
 
+# $ curl -H 'Authorization: Token token="YOUR_APP_TOKEN"'
+# Note:  This format will not work:
+
+# Authorization: "YOUR_APP_TOKEN"
+main()
 
 
 
@@ -42,7 +69,10 @@ def request_quote():
 
 
 # Version 2: List Quotes by Keyword
-# The Favqs Quote API also supports getting a list of quotes associated with a given keyword https://favqs.com/api/quotes?page=<page>&filter=<keyword>. Prompt the user for a keyword, list the quotes you get in response, and prompt the user to either show the next page or enter a new keyword. You can use string concatenation to build the URL.
+# The Favqs Quote API also supports getting a list of quotes associated with a given keyword 
+# https://favqs.com/api/quotes?page=<page>&filter=<keyword>. 
+# Prompt the user for a keyword, list the quotes you get in response, 
+# and prompt the user to either show the next page or enter a new keyword. You can use string concatenation to build the URL.
 
 # > enter a keyword to search for quotes: nature
 # 25 quotes associated with nature - page 1
