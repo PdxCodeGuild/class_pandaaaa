@@ -49,7 +49,7 @@ Capstone proposal due: TBA
 
 ## Python Labs Assigned:
 
-<!-- 01 Unit Converter  
+ 01 Unit Converter  
 02 Average Numbers  
 03 Number To Phrase  
 04 Blackjack Advice  
@@ -61,7 +61,8 @@ Capstone proposal due: TBA
 10 Contact List  
 11 Searching And Sorting  
 12 ATM  
-13 Tic-Tac-Toe
+Rain Data OR Crime Data
+<!--13 Tic-Tac-Toe
 14 Dad Joke API  
 15 Quotes API  
 16 Mini-Capstone -->
