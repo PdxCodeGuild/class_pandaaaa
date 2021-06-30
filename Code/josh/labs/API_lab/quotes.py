@@ -14,17 +14,17 @@ headers = {'Content-Type': 'application/json',
             'Authorization': F'Token token={KEY}'}
 
 
-# V1
+#---------------------------------------------------------- V1 -----------------------------------------------------------------------------------------
 def get_quote():
   try:
     response = requests.get(url_qotd, headers=headers)
     json = response.json()
     quote = json['quote']
-    print(F"\"{quote['body']}\" \n {quote['author']} \n ")
+    print(F"\"{quote['body']}\" \n {quote['author']} \n \n ")
   except requests.exceptions.RequestException as e:  
       raise SystemExit(e)
 
-# V2 
+#---------------------------------------------------------- V2 -----------------------------------------------------------------------------------------
 
 # This function searches the API using the keyword passed into it then filters and prints the results
 # also returns False if there are no more quotes for the given keyword
@@ -35,7 +35,7 @@ def get_quotes(keyword, page=1):
     return_str = ""
     for q in json['quotes']:
       author= q['author'] if 'author' in q else ''
-      return_str += F"\"{q['body']}\" \n {author} \n"
+      return_str += F"\"{q['body']}\" \n {author} \n \n"
     print(return_str)
     # if return_str == 'No quotes found': # Why doesn't this return True?
     if json['quotes'][0]['body'] == 'No quotes found':
@@ -53,12 +53,13 @@ def question_looper():
   keyword = ''
   last_page = False
   while breaker:
-    if last_page:
-      print(F"There are no more quotes for {keyword}.")
+    # this catches if the counter goes past 25 because there are no quotes returned after 25 but the last_page property doesn't return True on page 25
+    if last_page or counter > 25:
+      print(F" There are no more quotes for {keyword}.")
       counter = 1
       last_page = False
     elif counter == 1:
-      keyword = input(F"give me a keyword to search for quotes with. \n enter R for a random quote or E to Exit \n").lower()
+      keyword = input(F" give me a keyword to search for quotes with. \n enter R for a random quote or E to Exit \n").lower()
       if keyword == "e":
         breaker = False
       elif keyword == "r":
@@ -67,7 +68,7 @@ def question_looper():
         last_page = get_quotes(keyword)
         counter += 1
     elif counter <= 25:
-      q2 = input(F"Would you like to see more quotes for {keyword}? \n Y = Yes, N = No, E = Exit \n last_page {last_page} counter {counter} \n").lower()  
+      q2 = input(F" Would you like to see more quotes for {keyword}? \nY = Yes, N = No, E = Exit \n").lower()  
       if q2 == "e":
         breaker = False
       elif q2 == "y":
@@ -77,10 +78,6 @@ def question_looper():
         counter = 1
       else:
         print("sorry that response isn't recognized\n")
-    # this catches if the counter goes past 25 because there are no quotes returned after 25 but the last_page property doesn't return True on page 25
-    else:
-      print(F"There are no more quotes for {keyword}.")
-      counter = 1
   exit(0)
 
 question_looper()
