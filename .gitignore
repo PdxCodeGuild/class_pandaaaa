@@ -1,4 +1,6 @@
 .DS_Store
 __pycache__
+.env
 Code/Theo/practice/class_practice.py
 Code/Theo/labs/contacts_copy.json
+Code/Theo/quote_login.py
