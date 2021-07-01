@@ -1,4 +1,34 @@
 #This file serves as a graveyard for my larger pieces of deleted code
+        
+        
+        # if self.board[1][1] != ' ':
+        #     if self.board[1][1] == 'X':
+        #         if               
+
+        #     if self.board[1][1] == '0':
+        #         diag_counter_0 += 1
+        #     # -check corners top left
+        #     if self.board[0][0] == 'X':
+        #         diag_counter_x += 1
+        #     if self.board[0][0] == '0':
+        #         diag_counter_0 += 1
+        #     #top right
+        #     if self.board[0][2] == 'X':
+        #         diag_counter_x += 1
+        #     if self.board[0][2] == '0':
+        #         diag_counter_0 += 1
+        #     #bottom left
+        #     if self.board[2][0] == 'X':
+        #         diag_counter_x += 1
+        #     if self.board[2][0] == '0':
+        #         diag_counter_0 += 1
+        #     #bottom right
+        #     if self.board[2][2] == 'X':
+        #         diag_counter_x += 1
+        #     if self.board[2][2] == '0':
+        #         diag_counter_0 += 1
+        # #check winner
+        
         #Lab12
         # if radSelected == 1:
         #     temp = str(self.atm.check_balance())

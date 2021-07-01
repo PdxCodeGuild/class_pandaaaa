@@ -4,3 +4,5 @@ __pycache__
 Code/Theo/practice/class_practice.py
 Code/Theo/labs/contacts_copy.json
 Code/Theo/quote_login.py
+.env
+Code/josh/labs/API_lab/.env
