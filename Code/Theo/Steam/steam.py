@@ -1,10 +1,11 @@
 import requests
-from pprint import pprint
-from bs4 import BeautifulSoup as bs
+# from pprint import pprint
+# from bs4 import BeautifulSoup as bs
 from dotenv import load_dotenv
 import json
 import os
-# from epicstore_api import EpicGamesStoreAPI as Epic
+from roman_num import parse_roman
+import string
 
 class Wishlist:
     def __init__(self,w_list) :
@@ -29,25 +30,42 @@ class Wishlist:
 class Game:
     def __init__(self,title='',steam_price=''):
         self.title = title
-        self.itad_title = title.lower().replace(' ','').replace(':','').replace('1','i').replace('2','ii').replace('3','iii').replace('4','IV')
+        self.itad_title = self.itad_parse()
         self.steam_price = steam_price
         self.epic_price = None
         self.gog_price = None
+        
     def __str__(self) -> str:
         output = ''
         output += self.title
         output += '\n'
         output += f'Steam: {self.steam_price} Epic: {self.epic_price} GOG: {self.gog_price}'
         return output
+
     def __repr__(self) -> str:
         return f'{self.title} {self.steam_price}'
+
+    def itad_parse(self):
+        # self.itad_table must remove all non-ascii characters and convert all nums to roman numerals
+        itad_title = ''
+        for i in list(self.title):
+            if i.isdigit():
+                itad_title += str(parse_roman(int(i)))
+            elif i not in string.ascii_letters:
+                continue
+            else:
+                itad_title += i
+        itad_title = itad_title.lower().replace('the','')
+        return itad_title
     
     def epic(self,e_price):
         self.epic_price = e_price
+    
     def gog(self,gog_price):
         self.gog_price = gog_price
 
 def main():
+    welcome()
     warning()
     username = input("Enter username to retrieve wishlist: ")
     steamID = get_steamid(username)
@@ -95,11 +113,20 @@ def itad(wishlist):
                 shop_id = game['data'][wishlist.games[i].itad_title]['list'][j]['shop']['id']
                 price = game['data'][wishlist.games[i].itad_title]['list'][j]['price_new']
                 if shop_id == 'epic':
-                    wishlist.games[i].epic(price)
+                    if price == 0:
+                        wishlist.games[i].epic('Free')
+                    else:
+                        wishlist.games[i].epic(price)
                 if shop_id == 'gog':
                     wishlist.games[i].gog(price)
     return wishlist
-        
+
+def welcome():
+    print("Welcome! This is an application that uses your steam wishlist to find prices for games on your wishlist on competing platforms.")
+    print("Uses IsThereAnyDeal.com. Consider purchasing through their affiliate links to support.\n")
+
 def warning():
-    print('Custom URL must be set under edit profile to work.')
-main()
+    print('Custom URL must be set under edit profile to work. \nGo to https://www.steamcommunity.com/id/USERNAMEGOESHERE/edit/info and change custom URL to use.')
+
+if __name__=='__main__':
+    main()
