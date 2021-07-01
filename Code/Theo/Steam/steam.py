@@ -1,6 +1,4 @@
 import requests
-# from pprint import pprint
-# from bs4 import BeautifulSoup as bs
 from dotenv import load_dotenv
 import json
 import os
@@ -33,23 +31,27 @@ class Game:
         self.itad_title = self.itad_parse()
         self.steam_price = steam_price
         self.epic_price = None
+        self.epic_url = None
         self.gog_price = None
+        self.gog_url = None
         
     def __str__(self) -> str:
         output = ''
         output += self.title
         output += '\n'
-        output += f'Steam: {self.steam_price} Epic: {self.epic_price} GOG: {self.gog_price}'
+        output += f'Steam: {self.steam_price} '
+        output += f'Epic: {self.epic_price} '
+        output += f'GOG: {self.gog_price}'
         return output
 
     def __repr__(self) -> str:
         return f'{self.title} {self.steam_price}'
 
     def itad_parse(self):
-        # self.itad_table must remove all non-ascii characters and convert all nums to roman numerals
+        # self.itad_title must remove all non-ascii characters and convert all nums to roman numerals, as well as remove 'the'
         itad_title = ''
         for i in list(self.title):
-            if i.isdigit():
+            if i.isdigit() and i != '0':
                 itad_title += str(parse_roman(int(i)))
             elif i not in string.ascii_letters:
                 continue
@@ -113,11 +115,13 @@ def itad(wishlist):
                 shop_id = game['data'][wishlist.games[i].itad_title]['list'][j]['shop']['id']
                 price = game['data'][wishlist.games[i].itad_title]['list'][j]['price_new']
                 if shop_id == 'epic':
+                    wishlist.games[i].epic_url = game['data'][wishlist.games[i].itad_title]['list'][j]['url']
                     if price == 0:
                         wishlist.games[i].epic('Free')
                     else:
                         wishlist.games[i].epic(price)
                 if shop_id == 'gog':
+                    wishlist.games[i].gog_url = game['data'][wishlist.games[i].itad_title]['list'][j]['url']
                     wishlist.games[i].gog(price)
     return wishlist
 
