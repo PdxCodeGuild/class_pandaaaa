@@ -20,7 +20,7 @@ class Cities:
             text = f.read()
         data =  json.loads(text)
         self.total_cities = len(data)
-        print(self.total_cities)
+        # print(self.total_cities)
         for i in range(self.total_cities):
             new_city = City(data[i])
             self.city_list.append(new_city)
@@ -33,17 +33,18 @@ class City:
         self.state = city_data['state']
         
     def __str__(self):
-        return f'{self.name}'    
+        return f'{self.name}, {self.state}'
+    
 def main():
     cities = Cities()
     cities.read_file()
     print(cities)
     exit()
 
-def load():
-    return Cities()
-
-    
-    
+def load_cities():
+    cities = Cities()
+    cities.read_file()
+    return cities.city_list
+ 
 if __name__ == "__main__":
     main()
