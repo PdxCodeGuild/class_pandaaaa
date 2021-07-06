@@ -34,6 +34,10 @@ class Game:
         self.epic_url = None
         self.gog_price = None
         self.gog_url = None
+        self.origin_price = None
+        self.origin_url = None
+        self.humble_price = None
+        self.humble_url = None
         
     def __str__(self) -> str:
         output = ''
@@ -100,12 +104,11 @@ def itad(wishlist):
     load_dotenv()
     ITAD_KEY = os.getenv('ITAD_KEY')
     for i in range(wishlist.length):
-        # print(wishlist.games[i].itad_title)
         payload = {
             'key' : ITAD_KEY,
             'plains' : str(wishlist.games[i].itad_title),
             'country' : 'USA',
-            'shops' : 'epic,gog'
+            # 'shops' : 'epic,gog'
         }
         r = requests.get(url,params=payload)
         game =json.loads(r.text)
@@ -123,6 +126,14 @@ def itad(wishlist):
                 if shop_id == 'gog':
                     wishlist.games[i].gog_url = game['data'][wishlist.games[i].itad_title]['list'][j]['url']
                     wishlist.games[i].gog(price)
+                if shop_id == 'origin':
+                    wishlist.games[i].origin_url = game['data'][wishlist.games[i].itad_title]['list'][j]['url']
+                    wishlist.games[i].origin_price = price
+                    pass
+                if shop_id == 'humblestore':
+                    wishlist.games[i].humble_url = game['data'][wishlist.games[i].itad_title]['list'][j]['url']
+                    wishlist.games[i].humble_price = price
+
     return wishlist
 
 def welcome():
