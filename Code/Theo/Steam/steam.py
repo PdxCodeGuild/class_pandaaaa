@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 import json
 import os
 from roman_num import parse_roman
-import string
+from string import ascii_letters
 
 class Wishlist:
     def __init__(self,w_list) :
@@ -57,7 +57,7 @@ class Game:
         for i in list(self.title):
             if i.isdigit() and i != '0':
                 itad_title += str(parse_roman(int(i)))
-            elif i not in string.ascii_letters:
+            elif i not in ascii_letters:
                 continue
             else:
                 itad_title += i
@@ -103,6 +103,7 @@ def itad(wishlist):
     url = 'https://api.isthereanydeal.com/v01/game/prices/'
     load_dotenv()
     ITAD_KEY = os.getenv('ITAD_KEY')
+    # i iterates through every title
     for i in range(wishlist.length):
         payload = {
             'key' : ITAD_KEY,
@@ -114,6 +115,7 @@ def itad(wishlist):
         game =json.loads(r.text)
         length = len(game['data'][wishlist.games[i].itad_title]['list'])
         if length != 0:
+            # j iterates through every store that is found for the title
             for j in range(length):
                 shop_id = game['data'][wishlist.games[i].itad_title]['list'][j]['shop']['id']
                 price = game['data'][wishlist.games[i].itad_title]['list'][j]['price_new']
