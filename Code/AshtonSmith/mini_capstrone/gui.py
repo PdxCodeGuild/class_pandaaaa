@@ -211,7 +211,6 @@ class Window(Tk):
     def next_button(self):
         self.screen_clear()
         self.data_wrapper()
-        return 0
 
   
 
@@ -251,12 +250,15 @@ class Window(Tk):
         self.label_title.configure(font=font_tuple)
         self.pack_img(self.curr_image)
         
+        font_tuple = ("Comic Sans MS", 8)
         self.label_ingredients = tk.Label(self, text = self.ingredients)
+        self.label_ingredients.configure(font= font_tuple,justify='left')
         self.label_ingredients.grid(pady= (10,10),padx=(10,10))
 
         self.label_steps = tk.Label(self, text = self.my_steps)
         self.label_steps.grid(pady= (10,10), padx=(10,10))
-
+        self.label_steps.configure(font= font_tuple)
+        
         self.state += 1
 
 
