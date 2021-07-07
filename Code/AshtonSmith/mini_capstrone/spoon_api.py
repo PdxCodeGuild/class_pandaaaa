@@ -1,39 +1,10 @@
-#external
+#Ashton Smith
+#Mini-capstone project
+#spoon_api.py
+#this file is used to make requests to the spoonacular api.
 import requests
 import os
 from dotenv import load_dotenv
-# import gui
-
-#this function is used to prompt the user for the category to search for. 
-# It is returned as a string (cooresponding cat_dict key)
-def prompt_category():
-    cat_dict = {
-    1:'recipes',
-    2:'ingredients',
-    3:'menuItems',
-    4:'products'
-    }
-    print('\nWhat category would you like to search?')
-    option = 0
-    again = True
-    while again:
-        print(
-        '''
-        1. Recipes\n
-        2. Ingredients\n
-        3. Menu items\n
-        4. Products
-        ''')
-        try:
-            option = input()
-            option = int(option)
-            again = False
-        except ValueError:
-            pass
-        if option != 1 and option != 2 and option != 3 and option != 4:
-            print('invalid option')
-    return cat_dict[option] 
-
 
 
 #this function is takes an argument (1-4) and returns the key value (category)
@@ -59,7 +30,7 @@ class spoon:
     def __init__(self,category,query) -> None:
         self.category = category
         self.query = query
-        # self.data = self.get_data()
+
 
 
     #this function is used to make a request to spoon
@@ -80,20 +51,19 @@ class spoon:
         return data
 
 
+
     #this function seperates the data into steps and ingredients
     def data_printer(self,my_data):
-        if 'code' in my_data and my_data['code'] == 401: #401 unauthorized
-            print('error 401')
-            return 0
+        if 'code' in my_data and my_data['code']: #401 unauthorized
+            print('error ' + my_data['code'])
+            return my_data['code']
 
         print('Matches found: ' + str(my_data['totalResults']))
         
         #loop through results (list of recipes)    
         for i in my_data['results']:
-            curr_image = i['image']
-            # gui.window.pack_img(curr_image)
-            # image = Image.open(requests.get(curr_image, stream= True).raw)#open image associated with result
-            # image.show()
+            # curr_image = i['image']
+           
             curr_id = i['id'] #recipe id
 
             #request full recipe using id
@@ -120,11 +90,11 @@ class spoon:
 
 
 
-#this function is used to test the spoon_api class
-def test_func():
+# #this function is used to test the spoon_api class
+# def test_func():
 
-    cat = category(1)
-    query = prompt_query()
-    my_spoon = spoon(cat, query)
-    my_data = my_spoon.get_data()
-    my_spoon.data_printer(my_data)
+#     cat = category(1)
+#     query = prompt_query()
+#     my_spoon = spoon(cat, query)
+#     my_data = my_spoon.get_data()
+#     my_spoon.data_printer(my_data)
