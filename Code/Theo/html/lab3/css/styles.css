@@ -1,0 +1,9 @@
+body {
+    background-image: url('../images/soap.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#soap-list > li {
+    margin:1em;
+}
