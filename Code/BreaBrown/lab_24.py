@@ -1,4 +1,4 @@
-from datetime import datetime
+import datetime as dt
 
 with open("crime_data.csv", "r") as f:
     data = f.read().split('\n')
@@ -109,10 +109,16 @@ y = crime_counter(x)
 #     print(year.year())
 
 def year_scraper(data):
+    count = 0
     for item in data:
         x = item['Report Date']
-        
-        datetime.strptime(x, "%Y")
-        print(x.year)
+        x =x[1:-1]
+        print(count)
+        count += 1 
+        try:
+            x = dt.datetime.strptime(x, '%m/%d/%Y')
+            print(x)
+        except:
+            x = dt.datetime.now()
+        # print(x.year)
 year_scraper(x)
-# print(x)
