@@ -1,12 +1,8 @@
 #Zach Watts
 #Mini Capstone: How close am I to where the Zodiac Killer Struck?
 
-import requests
-import json
-import urllib
 import googlemaps
 import math
-from datetime import datetime
 import os 
 from dotenv import load_dotenv
 
@@ -100,7 +96,6 @@ def get_coordinates(address):
     return lat, long
 
 def get_address():
-    caps = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
     street = input("Enter your street and building number:  ")
     city = input("Enter your city:  ")
     state = input("Enter your state in two capital letter format:  ")
@@ -108,6 +103,7 @@ def get_address():
     return address
 
 def calc_dist(lat_user, long_user, lat_strike, long_strike):
+    # Haversine Formala from kite.com
     R = 6373.0
     lat1 = math.radians(lat_user)
     lon1 = math.radians(long_user)

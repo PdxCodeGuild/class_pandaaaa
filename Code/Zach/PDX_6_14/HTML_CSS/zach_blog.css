@@ -1,0 +1,74 @@
+html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+@media screen and (min-width: 768px) {
+.aside{
+    width: 25vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;}
+}
+
+aside, aside a {
+    color: rgb(248, 245, 245);
+    text-align: center;
+    display: block;
+    background-color:rgb(5, 0, 0);
+
+}
+
+.footer {
+  display: block;
+  text-align: center;
+}
+
+body {
+    font-family: "arial", Arial, Helvetica, sans-serif;
+    color: black;
+    display: white;
+    vertical-align: middle;
+    text-align: left;
+    background-color: rgb(160, 167, 168);
+    background-size: contain;
+    font-size: 0.8em;
+}
+
+.flex-container{
+  display: flex;
+  flex-flow: column;
+  padding: 0;
+  margin: 0;  
+}
+.flex-item {
+  display: flex;
+  padding: 5px;
+  height: 10px;
+  margin-top: 10px;
+  line-height: 15px;
+  color: white;
+  text-align: left;
+}
+
+a:link {
+  color: red;
+}
+a:visited {
+  color: green;
+}
+a:hover {
+  color: hotpink;
+}
+ul.b {
+  list-style-type: circle;
+}
+a:active {
+  color: blue;
+}
+
