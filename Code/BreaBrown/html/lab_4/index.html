@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Burrito Order Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Brea's Bomb Burritos</h1>
+    </header>
+    <main>
+        <div class="flex-gallery">
+        <span class=pic>
+        <img src="pic/burrito.jpg" alt="burrito">
+        </span>
+    <span class = "order-form">
+    <form action="https://webhook.site/69cf6704-41b0-4ef1-9e0a-6a42303645fa" method="post">
+        <div class="tortillas">
+            <label for="tortilla"><h3>Tortilla type:</h3></label>
+            <input type="radio" name="tortilla" id="white-flour" value="white-flour" checked>
+            <label for="white-flour">White flour</label><br>
+            <input type="radio" name="tortilla" id="wheat-flour" value="wheat-flour">
+            <label for="wheat-flour">Wheat flour</label><br>
+            <input type="radio" name="tortilla" id="spinach" value="spinach">
+            <label for="spinach">Spinach</label><br>
+            <input type="radio" name="tortilla" id="corn" value="corn">
+            <label for="corn">Corn</label><br>
+        </div>
+
+        <div class = "rice">
+            <label for="rice"><h3>Rice type:</h3></label>
+            <input type="radio" id="white-rice" name="rice" value="white-rice">
+            <label for="white-rice">White-Rice </label>
+            <input type="radio" id="brown-rice" name="rice" value="brown-rice">
+            <label for="brown-rice">Brown-Rice </label>
+        </div>
+
+        <div class="proteins">
+            <label for="protein"><h3>Protein:</h3></label>
+            <input type="checkbox" id="carnitas" name="carnitas"/>
+            <label for="carnitas">Carnitas</label>
+            <input type="checkbox" id="chicken" name="chicken"/>
+            <label for="chicken">Chicken</label>
+            <input type="checkbox" id="sofritas" name="sofritas"/>
+            <label for="sofritas">Sofritas</label>
+        </div>
+        <div class="vegetables">
+            <span>
+                <div>
+                <label for="vegetables"><h3>Vegetables:</h3></label>
+                </div>
+                <input type="checkbox" id="refried-beans" name="refried-beans"/>
+                <label for="refried-beans">Refried Beans</label>
+            </span>
+            <span>
+            <input type="checkbox" id="black-beans" name="black-beans"/>
+            <label for="black-beans">Black Beans</label>
+            </span>
+            <span>
+            <input type="checkbox" id="lettuce" name="lettuce"/>
+            <label for="lettuce">Lettuce</label>
+            </span>
+            <span>
+            <input type="checkbox" id="tomatoes" name="tomatoes"/>
+            <label for="tomatoes">Tomatoes</label>
+            </span>
+            <span>
+            <input type="checkbox" id="jalapenos" name="jalapenos"/>
+            <label for="jalapenos">Jalapenos</label>
+            </span>
+            <span>
+            <input type="checkbox" id="onions" name="onions"/>
+            <label for="onions">Onions</label>
+            </span>
+            <span>
+            <input type="checkbox" id="guacamole" name="guacamole"/>
+            <label for="guacamole">Guacamole</label>
+            </span>
+            <span>
+                <input type="checkbox" id="cheese" name="cheese"/>
+                <label for="cheese">Cheese</label>
+            </span>
+            <span>
+                <input type="checkbox" id="sour-cream" name="sour-cream"/>
+                <label for="sour-cream">Sour Cream</label>
+            </span>
+            <span>
+                <input type="checkbox" id="pico" name="pico"/>
+                <label for="pico">Pico</label>
+            </span>
+            <span>
+                <input type="checkbox" id="salsa" name="salsa"/>
+                <label for="salsa">Salsa</label>
+            </span>
+        </div>
+        <textarea type="text" name="additional-instructions" placeholder="Additional instructions"></textarea><br>
+        <button type="submit">Gimme</button>
+    </span>
+    </form>
+    </span>
+    </div>
+    </main>
+    <footer>
+        &copy; Brea's Bomb Burritos LLC. 2021 
+    </footer>
+</body>
+</html>

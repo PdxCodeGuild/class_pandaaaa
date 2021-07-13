@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+
+* {
+    font-family: 'Libre Baskerville', serif;
+    margin: 0;
+    padding: 0;
+} 
+
+body {
+    width: 100vw;
+    position: absolute;
+    min-width: fit-content;
+    background-color: #ecebeb;
+}
+
+header {
+    display: flex;
+    background-color: #2bcc00;
+    width: 100vw;
+    /*  height: 15vw; */
+    flex-direction: row;
+    list-style-type: none;
+    /* flex: 0 0 100%; */
+    /* flex-direction: row; */
+    flex-wrap: wrap;
+}
+
+.flex-nav {
+    display: flex;
+    justify-content: flex-end;
+    justify-content: space-evenly;
+    flex-direction: row;
+    background-color: #2bcc00;
+    max-width: 100%;
+    padding: 5%;
+}
+
+li {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    padding: 1%
+}
+
+a {
+    display: flex;
+    justify-content: space-evenly;
+    text-decoration: none;
+}
+
+.img {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wrapper {
+    display: flex;
+    flex: 0 0 100%;
+}
+
+h1 {
+    padding: auto;
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+}
+
+h3 {
+    display: flex; 
+    justify-content: center;
+    padding-top: 10%;
+}
+
+p {
+    display: flex;
+    justify: center;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding-bottom: 2%;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    padding-top: 10%;
+}
+
+span {
+    background-color: #a8e4b0;
+
+}
