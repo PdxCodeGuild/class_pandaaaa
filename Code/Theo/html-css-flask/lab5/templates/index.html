@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Unit Converter</h1>
+    <form action="convert" method='POST'>
+        <p>Distance:</p>
+        <input type="text" class="text" name='distance'>
+        <p>Input Units:</p>
+        {% for unit in units %}
+        <input type="radio" class="text" name='input_units' id = '{{unit}}' value = '{{unit}}'>
+        <label for="{{unit}}">{{unit}}</label>
+        {% endfor %}
+        
+        <p>Output Units:</p>
+        {% for unit in units %}
+        <input type="radio" class="text" name='output_units' id= '{{unit}}' value = '{{unit}}'>
+        <label for="{{unit}}">{{unit}}</label>
+        {% endfor %}
+        <hr><br>
+        <button type="submit">Submit</button>
+        
+    </form>
+    
+</body>
+</html>
