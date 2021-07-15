@@ -10,12 +10,12 @@
     <form method="POST">
       
         <div class="form__fieldset">
-            <label for="amount" class="form__label">Initial Value:</labellue="Jane"/>
+            <label for="amount" class="form__label">Initial Value:</labellue="amount"/>
             <input type="number" name="amount" id="amount" class="form__input" />
         </div>
 
         <div class="form__fieldset">
-            <label for="init_unit" class="form__label">Initial Unit:</labellue="Jane"/>
+            <label for="init_unit" class="form__label">Initial Unit:</labellue="unit1"/>
             <select name="init_unit" id="init_unit" class="form__input form__select">
             <option value="m">Meters</option>
             <option value="km">Kilometers</option>
@@ -27,7 +27,7 @@
         </div>
         
         <div class="form__fieldset">
-            <label for="final_unit" class="form__label">Final Unit:</labellue="Jane"/>
+            <label for="final_unit" class="form__label">Final Unit:</labellue="unit2"/>
             <select name="final_unit" id="final_unit" class="form__input form__select">
             <option value="m">Meters</option>
             <option value="km">Kilometers</option>
@@ -46,5 +46,7 @@
         />
       </div>
     </form>
+
+    <p>{{result}}</p>
   </body>
 </html>

@@ -63,7 +63,7 @@ def user_prompt_unit():
 
 #this function converts the first argument (already in meters) to the unit specified in the second argument
 def convert_from_meters(to_convert, unit_2):
-    result = 0
+    result = 0 
     if(unit_2 == 'm'):
         return to_convert
     elif(unit_2 == 'km'):
@@ -97,5 +97,4 @@ def convert_to_meters(distance, unit_1):
         result = distance * conversion_dictionary["inches_to_meters"]
  
     return result
-
 
