@@ -67,7 +67,7 @@ def save_joke(joke1, joke2):
 
 
 
-#this route is used to display a given search result - the function is used to get a list of jokes from joke_getter
+#this route is the same as save_joke but it takes only one line jokes
 @app.route('/savejoke/<string:joke1>' , methods=['GET', 'POST'] )
 def save_joke_1(joke1):
     search_term = request.form.get("search")
