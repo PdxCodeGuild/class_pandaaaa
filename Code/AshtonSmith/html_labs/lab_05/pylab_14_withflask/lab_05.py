@@ -16,8 +16,9 @@ def index():
     if(search_term):
         jokes = joke_getter.joke_search(search_term)
     else:
-        jokes = joke_getter.joke_request_random()
-        print(jokes)
+        jokes = joke_getter.joke_search_random()
+        if jokes == None:
+            jokes = []
     return render_template('index.html', jokes=jokes)
 
 

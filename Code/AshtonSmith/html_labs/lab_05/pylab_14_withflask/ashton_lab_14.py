@@ -12,15 +12,18 @@
 # Add the ability to "search" for jokes using another endpoint.
 # Create a REPL that allows one to enter a search term and go through jokes one at a time. 
 # You can also add support for multiple pages.
+import random_word
 import requests
 import json
 import string
 import time
 import string
 
+
 # prog main
 def main():
-    joke_search('the')
+    # joke_search('the')
+    # print(joke_search_random())
     return 0
 
 
@@ -41,6 +44,15 @@ def joke_request_search(to_search):
     url = 'https://icanhazdadjoke.com/search'
     payload = {'term': to_search}
     response = requests.get(url, headers = {'accept' : 'application/json'}, params = payload)#send a get request
+    data = json.loads(response.text)
+    return data
+
+
+
+#this function requests a random joke
+def joke_request_random(): 
+    url = 'https://icanhazdadjoke.com'
+    response = requests.get(url, headers = {'accept' : 'application/json'})#send a get request
     data = json.loads(response.text)
     return data
 
@@ -81,6 +93,36 @@ def joke_search(search_for):
                 temp_list.append(j)
             joke_list.append(temp_list)
         return joke_list
+
+
+
+#this function is used to search for jokes containing a word
+#this function asks for user input between each joke`
+def joke_search_random():
+        joke_list = []
+        temp_list = []
+        for z in range(10):
+            jokes = joke_request_random()
+            temp_list.append(jokes['joke'])
+        for i in temp_list:
+            temp_list = []
+            temp = joke_split(i)
+
+        #     print('-----------temp')
+        #     print(temp)
+            if temp:
+                for j in temp:
+                    j = j.replace('.','*0')
+                    j = j.replace(',','*1')
+                    j = j.replace('!','*2')
+                    j = j.replace('?','*3')
+                    j = j.replace("'",'*4')
+                    temp_list.append(j)
+            else:
+                return None
+            joke_list.append(temp_list)
+        return joke_list
+
 
 # main()
 
