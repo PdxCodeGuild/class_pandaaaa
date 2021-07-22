@@ -1,2 +1,0 @@
-djangogirls/requirements.txt
-Django~=2.2.4
