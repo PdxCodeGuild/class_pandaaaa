@@ -9,8 +9,9 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-import os
+
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-gpbba1=xzi+en6bp#g33snzc^yi8wzs^yng=6pr)%p7kp(nv^='
+SECRET_KEY = 'django-insecure-l3lu($4%^i*fgw01wl^sa$lr=nd2&^5l2421*$bzzh=58)xy(j'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,10 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'polls',
-    'blog',
-    'users',
-    'crispy_forms',
-
+    'blog'
 ]
 
 MIDDLEWARE = [
@@ -59,7 +57,6 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        # 'DIRS': [os.path.join(BASE_DIR,'templates')],
         'DIRS': [os.path.join(BASE_DIR, 'templates'),],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -111,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'US/Pacific'
+TIME_ZONE = 'utc'
 
 USE_I18N = True
 
@@ -122,20 +119,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-# BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-# STATIC_URL = '/static_files/'
 
 STATIC_URL = '/static/'
+
 STATICFILES_DIRS = [(os.path.join(BASE_DIR,'static'))]
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR,'/static/'),
-# ]
-# STATIC_ROOT = os.path.join(BASE_DIR,'static_files')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
-LOGIN_REDIRECT_URL = 'post_list'
-LOGIN_URL = 'login'

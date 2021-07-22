@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block header%}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+{% endblock %}
+
+{% block content %}
+<form method="POST" class="post-form">
+    {% csrf_token %}
+    <fieldset>
+    <textarea name='my_num' id= 'my_num'></textarea>
+    <br>
+    convert from: <br>
+    <select name='unit_1' id = "unit_1">
+        <option value= 'm'>meters</option>
+        <option value= 'km'>kilometers</option>
+        <option value= 'ft'>feet</option>
+        <option value= 'mi'>miles</option>
+        <option value= 'yd'>yards</option>
+        <option value= 'in'>inches</option>
+    </select>
+    <br>
+    convert to: <br>
+    <select name='unit_2' id = "unit_2">
+        <option value= 'm'>meters</option>
+        <option value= 'km'>kilometers</option>
+        <option value= 'ft'>feet</option>
+        <option value= 'mi'>miles</option>
+        <option value= 'yd'>yards</option>
+        <option value= 'in'>inches</option>
+    </select>
+    <br>
+</fieldset>
+    <button type="submit" class="save btn btn-default">submit</button>
+</form>
+{% endblock %}

@@ -1,9 +1,26 @@
 .page-header {
-    background-color: #C25100;
+    background-color: #5a1d1d;
     margin-top: 0;
     margin-bottom: 40px;
     padding: 20px 20px 20px 40px;
 }
+.header1234{
+    /* background-color: #5a1d1d; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: space-between;
+    align-items: center;
+    border: white;
+    border-style: groove;
+}
+
+
+.usr_img{
+    height: 25vh;
+    width: 25vh;
+}
+
 
 .page-header h1,
 .page-header h1 a,
@@ -12,6 +29,35 @@
     color: #ffffff;
     font-size: 36pt;
     text-decoration: none;
+}
+
+h3 a{
+    justify-content: space-evenly;
+    float: right;
+    padding: 5px;
+    border-width: 2px;
+    border-style: groove;
+    border-radius: 20px;
+    border-color: #581421;
+    margin-right: 20px;
+    background-color: white;
+}
+.top_bar{
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+    justify-content: space-between;
+    align-items: center;
+}
+.link_btn{
+    padding-inline-start: 20px;
+    display: flex;
+    flex-direction: row;
+    align-content: space-around;
+    justify-content: flex-end;
+}
+.title_head{
+    float: right
 }
 
 h1,
@@ -37,10 +83,18 @@ h4 {
 .top-menu,
 .top-menu:hover,
 .top-menu:visited {
-    color: #ffffff;
+    padding: 5px;
+    border-width: 2px;
+    border-style: groove;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    border-color: #ff4a00;
+    color: #ff3100;
     float: right;
     font-size: 26pt;
+    font-family: 'Lobster';
     margin-right: 20px;
+    background-color: white;
 }
 
 .post {
@@ -67,4 +121,10 @@ h4 {
 .btn-default:hover {
     color: #FFFFFF;
     background-color: #C25100;
+}
+
+.col{
+    padding: 55px;
+    border-style: solid;
+    border-width: thin;
 }

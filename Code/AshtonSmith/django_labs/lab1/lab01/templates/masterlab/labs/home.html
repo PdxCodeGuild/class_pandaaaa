@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block header%}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class = 'home_options'>
+        <a class = 'opt_link' href= 'ari/'>ari</a>
+        <a class = 'opt_link' href= 'rps/'>rock paper scissors</a>
+        <a class = 'opt_link' href= 'rot/'>rot</a>
+        <a class = 'opt_link' href= 'nump/'>nump</a>
+        <a class = 'opt_link' href= 'unit/'>unit</a>
+    </div>
+{% endblock %}

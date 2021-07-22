@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block header%}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+{% endblock %}
+
+{% block content %}
+<form method="POST" class="post-form">
+    {% csrf_token %}
+    <fieldset>
+        <textarea type= 'number' name='num_text' id= 'num_text'></textarea>
+        <input type='radio' name= "radio_choice" value= 2>Roman Numeral</radio>
+        <input type='radio' name= "radio_choice" value= 1>Text</radio>
+    </fieldset>
+    <button type="submit" class="save btn btn-default">submit</button>
+</form>
+{% endblock %}

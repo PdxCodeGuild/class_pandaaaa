@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block header%}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+{% endblock %}
+
+{% block content %}
+        {{ my_num }} 
+        {{ unit_1 }} <br>
+        EQUALS <br>
+        {{ result }} 
+        {{ unit_2 }} <br>
+{% endblock %}
