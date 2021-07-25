@@ -36,3 +36,18 @@ def update_view(request, id):
     context["form"] = form
  
     return render(request, "blog/update_post.html", context)
+
+def delete_view(request, id):
+    obj = get_object_or_404(Post, id = id)
+    context = {'data':obj}
+ 
+ 
+    if request.method =="POST":
+        # delete object
+        obj.delete()
+        # after deleting redirect to
+        # home page
+        return HttpResponseRedirect("/")
+ 
+    return render(request, "blog/delete_post.html", context)
+
