@@ -6,4 +6,5 @@
   {{ data.text }}<br/>
   Published: {{ data.published_date }}<br/>
   Created: {{ data.created }}<br/>
+  <h3><a href="{% url 'post_update' data.id  %}">Update</a></h3>
 {% endblock %}
