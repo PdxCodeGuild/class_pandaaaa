@@ -79,3 +79,8 @@ h4 {
   color: #FFFFFF;
   background-color: #C25100;
 }
+
+.form-btns-container{
+  display: flex;
+  justify-content: space-evenly;
+}
