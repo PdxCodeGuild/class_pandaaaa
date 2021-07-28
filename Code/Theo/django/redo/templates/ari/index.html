@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}
+ARI
+{% endblock %}
+{% block content %}
+<!-- <h1>Hello World</h1> -->
+<div class="card">
+    <div class="card-title">Select a file to generate ARI (.txt)</div>
+    <form method="post" enctype="multipart/form-data">
+        <div class="card-content">
+            {% csrf_token %}
+            {{ form }}
+        </div>
+        <div class="card-action">
+            <button class="btn" type='submit'>Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
