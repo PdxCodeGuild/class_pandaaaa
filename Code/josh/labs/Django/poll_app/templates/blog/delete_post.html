@@ -6,9 +6,9 @@
   <form method="POST">
       <!-- Security token by Django -->
       {% csrf_token %}
-      Are you want to delete {{ data.title }} ?
+      Are you sure you want to delete {{ data.title }} ?
       <input type="submit" value="Yes" />
-      <a href="/">Cancel </a>
+      <a href="{% url 'post_details' data.id  %}">Cancel </a>
   </form>
 </div>
 {% endblock %}
