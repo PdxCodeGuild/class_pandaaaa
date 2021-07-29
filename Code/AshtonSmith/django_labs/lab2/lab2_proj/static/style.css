@@ -1,0 +1,37 @@
+.todo_item{
+    background-color: #1d2120;
+    border-radius: 10px;
+}
+
+.todo_li{
+    color: rgb(0, 234, 255);
+    padding: 10px;
+    list-style: NONE;
+}
+.todo_li_title{
+    color: rgb(255, 0, 0);
+    padding: 10px;
+    list-style: NONE;
+}
+.todo_li_text{
+    color: yellow;
+    padding: 10px;
+    list-style: NONE;
+}
+html{
+    background-color: #1d1f1f;
+    padding:175px;
+}
+
+.block{
+    background-color: white;
+    padding: 55px;
+    border-radius: 20px;
+}
+.home_buttons{
+    text-decoration-color: white;
+    color: white;
+    font-size: 55px;
+    text-decoration: none;
+    margin-left: 45px;
+}
