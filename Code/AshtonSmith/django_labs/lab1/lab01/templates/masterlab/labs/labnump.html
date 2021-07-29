@@ -10,8 +10,9 @@
 <form method="POST" class="post-form">
     {% csrf_token %}
     <fieldset>
-        <textarea type= 'number' name='num_text' id= 'num_text'></textarea>
-        <input type='radio' name= "radio_choice" value= 2>Roman Numeral</radio>
+        Enter an integer.<br>
+        <textarea type= 'number' name='num_text' id= 'num_text'></textarea><br>
+        <input type='radio' name= "radio_choice" value= 2>Roman Numeral</radio><br>
         <input type='radio' name= "radio_choice" value= 1>Text</radio>
     </fieldset>
     <button type="submit" class="save btn btn-default">submit</button>

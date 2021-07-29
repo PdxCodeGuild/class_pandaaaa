@@ -1,20 +1,50 @@
-body {
-    background: white url("images/background.gif") no-repeat;
-}
 .opt_link{
     color: rgb(56, 82, 139);
+    border-radius: 10px;
+    border-color: #a27969;
+    border-style: ridge;
+}
+
+.opt_link:hover {
+    color: rgb(69, 137, 194);
+    text-decoration: none;
+    font-size:25pt;
+  }
+textarea{
+    margin: 10px;
+    width: 204px;
+    height: 96px;
 }
 .block{
     color: rgb(51, 67, 78);
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     padding: 55px;
     align-items: center;
+    background-color: white;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    justify-content: center;
+    align-content: flex-start;
+    flex-wrap: nowrap;
 }
+
+
+.results p{
+    background-color: burlywood;
+    padding: 20px;
+    border-radius: 20px;
+    border-color: #a27969;
+    border-style: ridge;
+}
+
 
 form{
     background-color: burlywood;
     padding: 20px;
+    border-radius: 20px;
+    border-color: #a27969;
+    border-style: ridge;
 }
 
 button{
@@ -33,8 +63,11 @@ button{
     font-size: 55px;
     font-style: none;
     text-decoration: none;
-    border-style: groove;
+    border-style: solid;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
+
 .home_options a{
     display: flex;
     align-content: flex-end;
@@ -45,7 +78,17 @@ button{
     background: burlywood;
 }
 html{
-    background-color: #795548;
+    background-color: #1e4c5a;
+}
+
+head{
+    border-radius:50px;
+}
+
+
+
+content{
+    border-radius:50px;
 }
 
 

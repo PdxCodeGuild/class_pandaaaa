@@ -9,7 +9,8 @@
 {% block content %}
 <form method="POST" class="post-form">
     {% csrf_token %}
-    <textarea name='rot_text' id= 'rot_text'></textarea>
+    Enter a string to encrypt with ROT 13.<br>
+    <textarea name='rot_text' id= 'rot_text'></textarea><br>
     <button type="submit" class="save btn btn-default">Submit</button>
 </form>
 {% endblock %}
