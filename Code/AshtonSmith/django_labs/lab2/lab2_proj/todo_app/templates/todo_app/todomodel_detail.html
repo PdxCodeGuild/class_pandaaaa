@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header%}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+{% endblock %}
+
+{% block content %}
+<br><br>
+<div class = 'block'>
+   
+ <ul class = 'todo_item'>
+    <li class = 'todo_li'>Title: <p class= 'todo_li_text'>{{ todo.title }}</p><li>
+    <li class = 'todo_li'>Details: <p class= 'todo_li_text'>{{ todo.details }}</p> </li>
+    <li class = 'todo_li'>Start Date: <p class= 'todo_li_text'>{{ todo.startdate}}</p> </li>
+    <li class = 'todo_li'>Start Time: <p class= 'todo_li_text'>{{ todo.startdate}}</p> </li>
+    <li class = 'todo_li'>Due Date: <p class= 'todo_li_text'>{{ todo.duetime}}</p> </li>
+    <li class = 'todo_li'>Due Time: <p class= 'todo_li_text'>{{ todo.duetime}}</p> </li>
+    <li class = 'todo_li'>Priority: <p class= 'todo_li_text'>{{ todo.priority}} </p></li>
+    <li class = 'todo_li'>Completed: <p class= 'todo_li_text'>{{ todo.completed}} </p></li>
+    </ul>
+</div>
+
+{% endblock %}
+
+
+
+

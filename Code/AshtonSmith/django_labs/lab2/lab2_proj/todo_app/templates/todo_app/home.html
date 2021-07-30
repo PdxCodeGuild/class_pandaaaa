@@ -9,17 +9,23 @@
 <br><br>
 <div class = 'block'>
     {% for todo in todos %}
-        {% if todo.completed == False %}
             <ul class = 'todo_item'>
             <li class = 'todo_li'>Title: <p class= 'todo_li_text'>{{ todo.title }}</p><li>
-            <li class = 'todo_li'>Details: <p class= 'todo_li_text'>{{ todo.details }}</p> </li>
-            <li class = 'todo_li'>Start Date: <p class= 'todo_li_text'>{{ todo.startdate}}</p> </li>
             <li class = 'todo_li'>Due Date: <p class= 'todo_li_text'>{{ todo.duedate}}</p> </li>
+            <li class = 'todo_li'>Due Time: <p class= 'todo_li_text'>{{ todo.duetime}}</p> </li>
             <li class = 'todo_li'>Priority: <p class= 'todo_li_text'>{{ todo.priority}} </p></li>
-            <li class = 'todo_li'>Completed: <p class= 'todo_li_text'>{{ todo.completed}} </p></li>
-            <li class = 'todo_li'><a href='#'><button>detail</button></a><a href='#'><button>edit</button></a> <a href='#'><button>mark as done</button></a> <a href='delete/{{todo.pk}}'> <button>delete</button></a></li>
+            <li class = 'todo_buttons'>
+                <a href='detailed/{{todo.pk}}'><button class = 'todo_button'>detail</button></a>
+                <a href='edit/{{todo.pk}}'><button class = 'todo_button'>edit</button></a>
+                <form method = 'POST'>
+                    {% csrf_token %}
+                    <button class = 'todo_button' name ='done_btn' value='{{todo.pk}}' href ='/'>
+                        mark as done 
+                    </button>
+                </form>
+                <a href='delete/{{todo.pk}}'> <button class = 'todo_button'>delete</button></a>
+            </li>
         </ul>
-        {% endif %}
     {% endfor %}
 </div>
 

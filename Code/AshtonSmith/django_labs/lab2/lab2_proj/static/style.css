@@ -1,10 +1,29 @@
 .todo_item{
-    background-color: #1d2120;
+    color: #5C71DB;
+    background-color: #2E3E8F;
     border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
 }
-
+.todo_buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    padding: 10px;
+}
+.todo_button{
+    color: #A2ACE1;
+    background-color: #42465C;
+    border-radius: 5px;
+    font-weight: bold;
+    padding: 5px;
+    width: 10vh;
+}
 .todo_li{
-    color: rgb(0, 234, 255);
+    color: #2E3E8F(0, 234, 255);
     padding: 10px;
     list-style: NONE;
 }
@@ -14,23 +33,23 @@
     list-style: NONE;
 }
 .todo_li_text{
-    color: yellow;
+    color: #A2ACE1;
     padding: 10px;
     list-style: NONE;
 }
 html{
-    background-color: #1d1f1f;
+    background-color: #272F5C;
     padding:175px;
 }
 
 .block{
-    background-color: white;
+    background-color: #5C71DB;
     padding: 55px;
     border-radius: 20px;
 }
 .home_buttons{
-    text-decoration-color: white;
-    color: white;
+    text-decoration-color: #A2ACE1;
+    color: #A2ACE1;
     font-size: 55px;
     text-decoration: none;
     margin-left: 45px;

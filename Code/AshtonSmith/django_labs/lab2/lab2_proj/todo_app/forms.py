@@ -2,16 +2,38 @@ from django import forms
 from django.forms import widgets
 from .models import TodoModel
 
+
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+class TimeInput(forms.TimeInput):
+    input_type = 'time'
+# date = fields.DateField(widget=forms.widgets.DateInput(attrs={'type': 'date'}))
+
 class TodoForm(forms.ModelForm):
 
     class Meta:
         model = TodoModel
-        fields = ['title', 'details','startdate','duedate','priority']
+        fields = ['title', 'details','startdate','starttime','duedate','duetime','priority',]
+
         widgets = {
-            'startdate':widgets.DateTimeInput(),
-            'duedate':widgets.DateInput(),
+            'startdate': DateInput(),
+            'duedate': DateInput(),
+            'starttime': TimeInput(),
+            'duetime': TimeInput(),
         }
-        # fields = '__all__'
+                
+        
+        
+        
+        
+        # widgets = {
+        #     'startdate':forms.DateField(widget=widgets.SelectDateWidget(empty_label="Nothing")),
+        #     'duedate':forms.DateField(widget=widgets.SelectDateWidget(empty_label="Nothing")),
+        # }
+        # field1 = forms.DateField(
+        # # fields = '__all__'
 
 
 

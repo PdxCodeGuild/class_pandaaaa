@@ -1,22 +1,36 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <div class='home_bar'>  <a class = 'home_buttons' href= '/'>HOME</a>
-                            <a class = 'home_buttons' href= '/add'>ADD</a></div>
-    {% block header %}
-    {% endblock %}
-</head>
-<body>
-    
-    <div class ='block'>    
-    {% block content %}
-    {% endblock %}
-    </div>
 
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <div class='home_bar'>
+            <a class='home_buttons' href='/'>HOME</a>
+
+            <a class='home_buttons' href='/high'>HIGH</a>
+            <a class='home_buttons' href='/medium'>MEDIUM</a>
+            <a class='home_buttons' href='/low'>LOW</a>
+
+            <a class='home_buttons' href='/add'>ADD</a>
+            <a class='home_buttons' href='/completed'>COMPLETED</a>
+        </div>
+
+        {% block header %}
+        {% endblock %}
+    </head>
+
+
+
+    <body>
+        <div class='block'>
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+
 </html>
+
