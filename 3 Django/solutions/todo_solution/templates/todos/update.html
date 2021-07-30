@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="container"> 
 <form action="{% url 'update' todo.id %}" method="POST">
     {% csrf_token %}
     title: <br> <input type="text" name="title" value="{{ todo.title }}"><br>
@@ -12,4 +13,5 @@
       <br>
     <input type="submit" value="update">
 </form>
+</div>
 {% endblock %}

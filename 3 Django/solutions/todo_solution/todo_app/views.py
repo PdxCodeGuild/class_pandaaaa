@@ -12,15 +12,12 @@ def todo_list(request):
     context = {
         'todos': todos
     }
-
     return render(request, 'todos/list.html', context) # context is sent to 'todos/list.html'
 
 
 # view to get retrieve a specific todo from the database and send it to the 'todos/detail.html' view
 def details(request, id):
     todo = Todo.objects.get(id = id)
-    todo = Todo.objects.get(name='dust')
-    print(todo.user.name)
     return render(request, 'todos/detail.html', {"todo": todo})
 
 
