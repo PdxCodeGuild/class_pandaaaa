@@ -8,9 +8,12 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-    <nav class='navbar'>
-        <a href="{% url 'index' %}">Home</a>
-        <a href="{% url 'new_task' %}">Create New</a>
+    <nav class='navbar navbar-light bg-light'>
+            <span class="navbar-brand">To Do List</span>
+            <ul class="nav nav-pills justify-content-center">
+                <li class="nav-item"><a class='nav-link active' href="{% url 'index' %}">Home</a></li>
+                <li class="nav-item"><a class='nav-link' href="{% url 'new_task' %}">Create New</a></li>
+            </ul>
     </nav>
     <div class="container">
         {% block content %}{% endblock %}

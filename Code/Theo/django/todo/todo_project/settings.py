@@ -40,9 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Third Party
-    # 'materialize',
     'crispy_forms',
-    # 'crispy_forms_materialize'
+    'crispy_bootstrap5',    
     # My Apps
     'todo_app',
 ]
@@ -132,5 +131,7 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Default layout to use with "crispy_forms"
-CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"

@@ -13,12 +13,15 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 from . import views
+from .views import TaskList,TaskCreate,TaskUpdate
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('new_task.html', views.new_task, name='new_task'),
-    path('delete_task/<int:pk>', views.delete_task, name='delete_task'),
+    path('', TaskList.as_view(),name='index'),
+    path('add/',TaskCreate.as_view(),name='new_task'),
+    path('<slug:slug>/',TaskUpdate.as_view(),name='update'),
+    # path('edit.html', views.new_task, name='new_task'),
+    # path('delete_task/<int:pk>', views.delete_task, name='delete_task'),
+    # path('todoitem_confirm_delete.html',DeleteTask.as_view(),name='delete_task'),
 ]
