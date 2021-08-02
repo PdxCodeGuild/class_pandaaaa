@@ -8,11 +8,11 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-    <nav class='navbar navbar-light bg-light'>
+    <nav class='navbar navbar-light bg-light justify-content-start'>
             <span class="navbar-brand">To Do List</span>
-            <ul class="nav nav-pills justify-content-center">
-                <li class="nav-item"><a class='nav-link active' href="{% url 'index' %}">Home</a></li>
-                <li class="nav-item"><a class='nav-link' href="{% url 'new_task' %}">Create New</a></li>
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a class='nav-link {% block nav_item_index %}{% endblock nav_item_index %}' href="{% url 'index' %}">Home</a></li>
+                <li class="nav-item"><a class='nav-link {% block nav_item_new %}{% endblock nav_item_new %}' href="{% url 'new_task' %}">Create New</a></li>
             </ul>
     </nav>
     <div class="container">

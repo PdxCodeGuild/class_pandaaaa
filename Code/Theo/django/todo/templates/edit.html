@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+
+{% block nav_item_new %}
+active
+{% endblock nav_item_new %}
+
 {% load crispy_forms_tags %}
 {% block title %}
 New Task
@@ -6,7 +11,16 @@ New Task
 {% block content %}
 <div class="card">
     <div class="card-body">
-    <h5 class='card-title'>Create a new Task</h5>
+    <h5 class='card-title'>
+        {% if object.id %}
+        EDIT
+        {% else %}
+        CREATE
+        {% endif %}
+        
+
+    </h5>
+
         <form method='POST'>
             {% csrf_token %}
             {{form|crispy}}

@@ -20,7 +20,7 @@ from .views import TaskList,TaskCreate,TaskUpdate
 urlpatterns = [
     path('', TaskList.as_view(),name='index'),
     path('add/',TaskCreate.as_view(),name='new_task'),
-    path('<slug:slug>/',TaskUpdate.as_view(),name='update'),
+    path('update/<slug:pk>/',TaskUpdate.as_view(),name='update'),
     # path('edit.html', views.new_task, name='new_task'),
     # path('delete_task/<int:pk>', views.delete_task, name='delete_task'),
     # path('todoitem_confirm_delete.html',DeleteTask.as_view(),name='delete_task'),
