@@ -1,6 +1,106 @@
 #This file serves as a graveyard for my larger pieces of deleted code
+        
+        
+        # if self.board[1][1] != ' ':
+        #     if self.board[1][1] == 'X':
+        #         if               
+
+        #     if self.board[1][1] == '0':
+        #         diag_counter_0 += 1
+        #     # -check corners top left
+        #     if self.board[0][0] == 'X':
+        #         diag_counter_x += 1
+        #     if self.board[0][0] == '0':
+        #         diag_counter_0 += 1
+        #     #top right
+        #     if self.board[0][2] == 'X':
+        #         diag_counter_x += 1
+        #     if self.board[0][2] == '0':
+        #         diag_counter_0 += 1
+        #     #bottom left
+        #     if self.board[2][0] == 'X':
+        #         diag_counter_x += 1
+        #     if self.board[2][0] == '0':
+        #         diag_counter_0 += 1
+        #     #bottom right
+        #     if self.board[2][2] == 'X':
+        #         diag_counter_x += 1
+        #     if self.board[2][2] == '0':
+        #         diag_counter_0 += 1
+        # #check winner
+        
+        #Lab12
+        # if radSelected == 1:
+        #     temp = str(self.atm.check_balance())
+        #     self.label4.configure(text = 'Current blance = ' + temp)
+        # elif radSelected == 2:
+        #     #temp = str(self.atm.withdraw())v
+        #     self.label4.configure(text = temp + '$ withdrawn')
+        # elif radSelected == 3:
+        #     #self.atm.deposit()
+        #     self.label4.configure(text = temp + '$ deposited')
+        # elif radSelected == 4:
+            #temp = self.atm.calc_interest()
+            #self.atm.deposit(temp)
+            # temp = str(temp)
+            # self.label4.configure(text = temp + '$ interest earned')
+
+        #self.label.grid(column = 50, row = 20)
 
 
+    # main.destroy()
+    # main=Frame(root)
+    # Or in a button:
+
+    # def clear():
+    #     global main, root
+    #     main.destroy()
+    #     main=Frame(root)
+    #     main.pack()
+    # clearbtn=Button(main, text='clear', command=clear)
+    # clearbtn.pack()
+    # To clear the screen. You can also just create a new window the same way as you created root(not recommended) or create a toplevel instance, which is better for creating multiple but essentially the same. You can also use grid_forget():
+
+    # w=Label(root, text='whatever')
+    # w.grid(options)
+
+
+
+    # ws = Tk()
+    # ws.title('get text demo')
+    # ws.geometry('200x200')
+
+    # def welcomeMessage():
+    #     name = name_Tf.get()
+    #     return messagebox.showinfo('message',f'Hi! {name}, Welcome to python guides.')
+        
+
+    # Label(ws, text="Enter Name").pack()
+    # name_Tf.pack()
+
+    # Button(ws, text="Click Here", command=welcomeMessage).pack()
+
+            # self.label4.configure(text = name)
+            #my_str = self.box
+
+
+      #f.write('\n')
+                #print(row)
+            #     for j in self.contacts:#j = dict
+            #         for z in range(len(j)):#z 
+            #             f.write(z)
+            #         f.write('\n')
+            # # contacts = []
+            # header = lines[0].split(',')
+            # if header != self.header:
+                # if len(self.contacts) > 0:
+                    # return 'CSV not compatible'
+            # for i in range(1, len(self.contacts)):
+            #     row = lines[i].split(',')
+            #     contact = dict(zip(header, row))
+            #     contacts.append(contact)
+            # self.contacts += contacts
+            # self.header = header
 
 #lab8
 #this function doesnt work - the method attempted to fill valleys with water doesnt work for a list

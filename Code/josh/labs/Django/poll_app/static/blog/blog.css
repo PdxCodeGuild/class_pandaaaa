@@ -1,0 +1,86 @@
+body {
+  background: cyan;
+}
+
+h1 a, h2 a {
+  color: #C25100;
+  font-family: 'Lobster';
+}
+.nav-bar{
+  display: flex;
+  justify-content:space-between;
+  align-content: center;
+  margin-bottom: 40px;
+  margin-top: 0;
+  padding: 20px 20px 20px 40px;
+  background-color: #2dc200;
+}
+.nav-bar div{
+  display: flex;
+  justify-content: space-evenly;
+}
+.nav-bar h3 {
+  padding-right: 1em;
+}
+
+
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Lobster', cursive;
+}
+
+.date {
+  color: #828282;
+}
+
+.save {
+  float: right;
+}
+
+.post-form textarea,
+.post-form input {
+  width: 100%;
+}
+
+.top-menu,
+.top-menu:hover,
+.top-menu:visited {
+  color: #ffffff;
+  float: right;
+  font-size: 26pt;
+  margin-right: 20px;
+}
+
+.post {
+  margin-bottom: 70px;
+}
+
+.post h2 a,
+.post h2 a:visited {
+  color: #000000;
+}
+
+.post > .date,
+.post > .actions {
+  float: right;
+}
+
+.btn-default,
+.btn-default:visited {
+  color: #C25100;
+  background: none;
+  border-color: #C25100;
+}
+
+.btn-default:hover {
+  color: #FFFFFF;
+  background-color: #C25100;
+}
+
+.form-btns-container{
+  display: flex;
+  justify-content: space-evenly;
+}

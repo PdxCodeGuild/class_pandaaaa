@@ -1,0 +1,18 @@
+{% block head %}
+
+<title>:-)</title>
+{% endblock %}
+
+{% block body %}
+
+<div class="form-div">
+    {{ emoticon }}
+    <a href="/emoticon">Get New Emoticon</a>
+</div>
+<div> 
+    <form action="" method="post">
+        <input type="text" name="input_text" placeholder="enter some text"/>
+        <button type="submit">submit</button>
+      </form>
+</div>
+{% endblock %}
