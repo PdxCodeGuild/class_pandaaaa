@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card">
+    <span class="card-title">{{ question.question_text }}</span>
+    <div class="card-content">
+        <form action="{% url 'polls:vote' question.id %}" method='post'>
+            {% csrf_token %}
+            {% for choice in question.choice_set.all %}
+            <label>
+                <input type="radio" checked name='choice' id='choice{{ forloop.counter }}' value='{{choice.id}}'
+                />
+                <span>{{ choice.choice_text }}</span>
+            </label>
+            <br>
+            <!-- If it's not using materialize, this is how we would label radio btns -->
+            <!-- <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label> -->
+            {% endfor %}
+            <div class="card-action">
+                <input type="submit" value='Vote' class='btn'/>
+                <a href="{% url 'polls:index' %}" class='btn'>Back</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
