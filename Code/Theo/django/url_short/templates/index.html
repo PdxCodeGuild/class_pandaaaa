@@ -7,17 +7,16 @@ Index
 {% block content %}
 <form method="POST" action="{% url 'save' %}">
     {% csrf_token %}
-    <input type="text" name='url' value='url'>
+    <input type="text" name='url' value='url' required
+    pattern="https?://.+" oninvalid="this.setCustomValidity('url must begin with http or https')"
+    oninput="this.setCustomValidity('')">
     <button type="submit">Submit</button>
 </form>
-
 {% if shortened_urls %}
     <table>
-        <tr><th>Hash</th> <th>URL</th></tr> 
+        <tr><th>Link</th> <th>URL</th><th>hash</th><th>counter</th></tr> 
     {% for url in shortened_urls %}
-        <tr><td>{{ url.code }}</td><td>{{url.url}}</td></tr> 
-
-
+        <tr><td><a href="{% url 'code' url.code %}" >click to redirect</a></td><td>{{url.url}}</td> <td>{{url.code}}</td><td>{{url.counter}}</td></tr> 
     {% endfor %}
     </table> 
 {% else %}
