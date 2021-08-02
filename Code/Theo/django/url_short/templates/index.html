@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Index
+{% endblock %}
+
+{% block content %}
+<form method="POST" action="{% url 'save' %}">
+    {% csrf_token %}
+    <input type="text" name='url' value='url'>
+    <button type="submit">Submit</button>
+</form>
+
+{% if shortened_urls %}
+    <table>
+        <tr><th>Hash</th> <th>URL</th></tr> 
+    {% for url in shortened_urls %}
+        <tr><td>{{ url.code }}</td><td>{{url.url}}</td></tr> 
+
+
+    {% endfor %}
+    </table> 
+{% else %}
+    there are no shorted urls 
+{% endif %}
+{% endblock %}
