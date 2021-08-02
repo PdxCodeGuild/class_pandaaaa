@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
 # import the Todo model from the models file
 from .models import Todo
@@ -22,6 +23,7 @@ def details(request, id):
 
 
 # view add a todo to the database. this view handles both GET and POST HTTP requests
+@login_required
 def add_todo(request):
     if request.method == 'GET': # if its a GET request, just display the todos/add.html template
         return render(request, 'todos/add.html')
@@ -42,6 +44,7 @@ def add_todo(request):
 def remove_todo(request, id):
     todo = Todo.objects.get(id = id)
     todo.delete()
+    
     return redirect('list')
 
 # helper function for updating a todo. gets the todo info specified by the id and redirects to its detail page
@@ -63,7 +66,6 @@ def update(request, id):
             todo.status = True
         todo.save()
         return redirect('details', todo.id)
-
 
 # mark a todo as done
 def mark_done(request, id):

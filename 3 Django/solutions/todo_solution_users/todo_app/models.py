@@ -2,6 +2,7 @@ from django.db import models
 
 class Priority(models.Model):
     PRIORITY = (
+        #left side displayed to user, right side backend info
             ('high', 'HIGH'),
             ('low', 'LOW'), 
             ('medium', 'MEDIUM'),
@@ -25,7 +26,6 @@ class Todo(models.Model):
         ('f', 'family'),
         ('m', 'misc'),
     )
-
     todo_type = models.CharField(max_length = 1, choices = TODO_TYPE, blank = True, default = 'm')
     
     def __str__(self):
