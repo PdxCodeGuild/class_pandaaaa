@@ -1,6 +1,6 @@
 .todo_item{
-    color: #5C71DB;
-    background-color: #2E3E8F;
+    color: #99271A;
+    background-color: #ABA2A1;
     border-radius: 10px;
     display: flex;
     flex-direction: row;
@@ -15,42 +15,59 @@
     padding: 10px;
 }
 .todo_button{
-    color: #A2ACE1;
-    background-color: #42465C;
+    color: #663A35;
+    background-color: #5D6B67;
     border-radius: 5px;
     font-weight: bold;
     padding: 5px;
     width: 10vh;
 }
+
+.todo_button:hover{
+    color:#ffffff;
+}
+
 .todo_li{
-    color: #2E3E8F(0, 234, 255);
+    color: #5D6B64(0, 234, 255);
     padding: 10px;
     list-style: NONE;
 }
 .todo_li_title{
-    color: rgb(255, 0, 0);
+    color: #99271A(255, 0, 0);
     padding: 10px;
     list-style: NONE;
 }
 .todo_li_text{
-    color: #A2ACE1;
+    color: #663A35;
     padding: 10px;
     list-style: NONE;
 }
 html{
-    background-color: #272F5C;
+    background-color:#ABA2A1;
     padding:175px;
 }
-
+.add{
+    padding: 20px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+}
 .block{
-    background-color: #5C71DB;
+    background-color:#664035 ;
+    padding: 55px;
+    border-radius: 20px;
+}
+.update .block{
+    background-color:#ffffff ;
     padding: 55px;
     border-radius: 20px;
 }
 .home_buttons{
-    text-decoration-color: #A2ACE1;
-    color: #A2ACE1;
+    color: #99271A;
     font-size: 55px;
     text-decoration: none;
     margin-left: 45px;
+}
+
+.home_buttons:hover{
+    color: #ffffff;
 }
