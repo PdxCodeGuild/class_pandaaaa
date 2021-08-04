@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block nav_item_profile %}active{% endblock nav_item_profile %}
+{% block content %}
+<div class="card">
+    <ul class='list-group'>
+        <li class="list-group-item">Username: {{object}}</li>
+        <li class="list-group-item">Email: {{object.email}}</li>
+    </ul>
+    <div class="card">
+        <ul class="list-group">
+            {% for post in object.posts.all %}
+            <li class="list-group-item list-group-item-primary">{{post.title}}</li>
+            <li class="list-group-item list-group-item-secondary">Created: {{post.date_created}}</li>
+            <li class="list-group-item list-group-item-secondary">Edited: {{post.date_edited}}</li>
+            <li class="list-group-item list-group-item-light">{{post.body}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>
+{% endblock %}
