@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+{% endblock %}
+
+{% block content %}
+    {% for post in object_list %}
+
+        <article class="list-group">
+                <img class="img-thumbnail rounded-circle" src="{{ post.user.userprofile.avatar.url }}">         
+                <a href= "{% url 'user_app:profile' pk=post.user.id %}" class = 'author text-muted'>By: {{ post.user}} </a>
+                <h2 class= "list-group-item list-group-item-action flex-column align-items-start"><a class= 'active' href="{% url 'blog_app:detail' pk=post.pk %}">{{ post.title }}</a>
+                <small class ='date_posted text-muted'>posted: {{ post.date_created}} </small>
+                </h2>
+        </article>
+    {% endfor %}
+            
+            <div class="pagination">
+                <span class="pagination">
+                    {% if page_obj.has_previous %}
+                        <a class = 'page-link' href="?page=1">&laquo; first</a>
+                        <a class = 'page-link' href="?page={{ page_obj.previous_page_number }}">previous</a>
+
+                    {% endif %}
+            
+                    <span class="page-link">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </span>
+            
+                    {% if page_obj.has_next %}
+                        <a class='page-link' href="?page={{ page_obj.next_page_number }}">next</a>
+                        <a class='page-link' href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+
+
+        
+    
+{% endblock %}
+
