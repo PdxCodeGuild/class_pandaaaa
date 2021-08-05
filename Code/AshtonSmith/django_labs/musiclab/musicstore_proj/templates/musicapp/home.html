@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+{% for album in albums%}
+<a href = "{% url 'album' pk=album.pk %}">{{album.name}} </a><br>
+<a href = "{% url 'artist' pk=album.artist.pk %}">{{album.artist}} </a><br>
+{% endfor %}
+{% endblock %}
