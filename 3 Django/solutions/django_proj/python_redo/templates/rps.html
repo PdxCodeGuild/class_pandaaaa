@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1> Play RPS!</h1>
+{% if played %}
+
+<h2>You {{ winner }}</h2>
+<h4>Your Choice: {{ user_choice }}</h4>
+<h4>Computer Choice: {{ computer_choice }}</h4>
+{% endif %}
+
+<form action="{% url 'rps' %}" method="POST">
+    {% csrf_token %}
+      <select class="form-select" aria-label="Default select example" name="choice">
+        <option selected>Open this select menu</option>
+        <option value="rock">ROCK</option>
+        <option value="paper">PAPER</option>
+        <option value="scissors">SCISSORS</option>
+      </select>
+      <button type="submit" class="btn btn-primary">GO</button>
+    </form>
+{% endblock %}
