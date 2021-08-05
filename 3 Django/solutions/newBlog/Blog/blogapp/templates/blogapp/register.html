@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %} register {% endblock %}
+
+{% block content %} 
+    <div class="container m-3">
+
+<form method='POST' action="{% url 'blogapp:register' %}">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="exampleInputusername1" class="form-label">Email address</label>
+      <input name='email' type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Username</label>
+        <input name='username' type="username" class="form-control" id="exampleInputusername1" aria-describedby="usernameHelp">
+      </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+      <div id="usernameHelp" class="form-text">At least 8 chars</div>
+
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+    </div>
+
+
+
+{% endblock %}
