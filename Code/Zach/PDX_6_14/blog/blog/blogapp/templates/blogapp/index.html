@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>These are all your Blog Posts</h1>
+{% for post in myinstances %}
+<div>
+    <h2><a href="{% url 'blogapp:profile' post.id %}">{{ post.title }}</a></h2>
+</div>
+{% endfor %}
+
+{% endblock %}
