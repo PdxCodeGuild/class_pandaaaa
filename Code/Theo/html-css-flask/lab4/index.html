@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Burrito Form</title>
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <div class="container">
+            <div class="card-panel grey lighten-3">
+                <form action='https://webhook.site/fab21ee4-8a8e-4dd2-a93e-85e7e3c54bae' method='post'>
+                    <div class="section">
+
+                        <div class="row">
+                            <!--Name-->
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">person</i>
+                                <input type='text' name='f_name' id ='f_name' required>
+                                <label for='f_name'>First Name</label>
+                            </div>
+                            
+                            <!--Last Name-->
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">person</i>
+                                <input type='text' name='l_name' id='l_name' required>
+                                <label for='l_name'>Last Name</label>
+                            </div>
+                            
+                            <!--Phone number-->
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">phone</i>
+                                <input type='tel' name='phone' id='phone' class='validate' required>
+                                <label for='phone'>Phone number</label>
+                            </div>
+
+                            <!--Email-->
+                            <div class="input-field col s6">
+                                <i class='material-icons prefix'>email</i>
+                                <input type='email' name='email' id='email' class='validate' required>
+                                <label for='email'>Email</label>
+                            </div>
+
+                            <!--Account-->
+                            <div class="col s3">
+                                <label for='account'>Do you have an account?</label><br/>
+                                <label>
+                                    <input type='radio' name='account' value='yes'>
+                                    <span>Yes</span>
+                                </label><br/>
+                                <label>
+                                    <input type='radio' name='account' value='No'>
+                                    <span>No</span>
+
+                                </label>
+                            </div>
+
+                            <!--Password-->
+                            <div class="input-field col s9">
+                                <i class='material-icons prefix'>password</i>
+                                <input type='password' name='password' id='password' class='validate'>
+                                <label for='password'>Password</label>
+                            </div>
+                            
+                            <!--Tortilla radio btns-->
+                            <div class="col s3">
+                                <label for='tortilla'>Tortilla</label><br/>
+                                <label>
+                                    <input type='radio' name='tortilla' value='white-flour-tortilla' required>
+                                    <span>White flour</span>
+                                </label><br/>
+                                <label>
+                                    <input type='radio' name='tortilla' value='wheat-flour-tortilla' id= 'wheat'>
+                                    <span>Wheat flour</span>
+                                </label><br/>
+                                <label>
+                                    <input type='radio' name='tortilla' value='spinach-tortilla' id= 'spinach'>
+                                    <span>Spinach</span>
+                                </label><br/>
+                                <label>
+                                    <input type='radio' name='tortilla' value='corn-tortilla' id= 'corn'>
+                                    <span>Corn</span>
+                                </label><br/>
+                            </div>
+                            
+                            <!--Rice radio btns-->
+                            <div class="col s3">
+                                <label for='rice'>Rice</label><br/>
+                                <label>
+                                    <input type='radio' name='rice' value='white-rice' id='white-rice' required>
+                                    <span>White rice</span>
+                                </label><br/>
+                                <label>
+                                    <input type='radio' name='rice' value='brown-rice' id='brown-rice'>
+                                    <span>Brown rice</span>
+                                </label><br/>
+                                <label>
+                                    <input type='radio' name='rice' value='no-rice' id='no-rice'>
+                                    <span>No rice</span>
+                                </label><br/>
+                            </div>
+                            
+                            <!--Beans radio btns-->
+                            <div class="col s3">
+                                <label for='beans'>Beans</label><br/>
+                                <label>
+                                    <input type='radio' name='beans' value='black-beans' id='black beans' required>    
+                                    <span>Black beans</span>
+                                </label><br/>
+                                <label>
+                                    <input type='radio' name='beans' value='pinto-beans' id='pinto beans'>
+                                    <span>Pinto beans</span>
+                                </label><br/>
+                                <label>
+                                    <input type='radio' name='beans' value='no-beans' id='no beans'>
+                                    <span>No beans</span>
+                                </label><br/>
+                            </div>
+                            
+                            <!--Protein radio btns-->
+                            <div class="col s3">
+                                <label for='protein'>Protein</label><br/>
+                                <label>
+                                    <input type='radio' name='protein' value='carnitas' id='carnitas' required>
+                                    <span>Carnitas</span>
+                                </label><br/>
+                                <label>
+                                    <input type='radio' name='protein' value='chicken' id='chicken'>
+                                    <span>Chicken</span>
+                                </label><br/>
+                                <label>
+                                    <input type='radio' name='protein' value='sofritas' id='sofritas'>
+                                    <span>Sofritas</span>
+                                </label><br/>
+                                <label>
+                                    <input type='radio' name='protein' value='asada' id='asada'>
+                                    <span>Asada</span>
+                                </label><br/>
+                                <label>
+                                    <input type='radio' name='protein' value='no protein' id='no protein'>
+                                    <span>None</span>
+                                </label><br/>
+                            </div>
+                            
+                            <!--Additional ingredients-->
+                            <div class="col s8">
+                                <label for='additional'>Additional ingredients</label><br/>
+                                <label>
+                                    <input type='checkbox' name='additional' id='cheese'>
+                                    <span>Cheese</span>
+                                </label><br/>
+                                <label>
+                                    <input type='checkbox' name='additional' id='crema'>
+                                    <span>Crema</span>
+                                </label><br/>
+                            </div>
+                        </div>
+                        
+                        <!--Delivery Instructions-->
+                        <label for='delivery-instructions'>Delivery Instructions</label>
+                        <input type="text" name='delivery-instructions'>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="section">
+                        <button type='submit'>submit</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+        <!--JavaScript at end of body for optimized loading-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    </body>
+</html>

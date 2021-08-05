@@ -6,17 +6,24 @@ import json
 import os
 from dotenv import load_dotenv
 from pprint import pprint
-# from geopy import geocoders
 from geopy.geocoders import Nominatim
 
 def main():
-    load_dotenv()
-    address = input("Input the address that you would like to find the weather for: ")
-    location = geocode(address)
-    lat = location.latitude
-    longt = location.latitude
-    data = weather(lat,longt)
-    pprint(data['current'], indent=2)
+    while True:
+        address = input("Input the address that you would like to find the weather for: ")
+        if address == '':
+            continue
+        location = geocode(address)
+        # If the address is not valid, geocode will return a NoneType w/ value None
+        if location!= None:
+            lat = location.latitude
+            longt = location.latitude
+            data = weather(lat,longt)
+            print(location)
+            pprint(data['current'], indent=2)
+            break
+        else:
+            print("Invalid location, try again")
     exit()
 
 def geocode(address):
@@ -25,6 +32,7 @@ def geocode(address):
     return location
 
 def weather(lat=45.66138,longt=-122.58383):
+    load_dotenv()
     WEATHER_TOKEN = os.getenv('WEATHER_TOKEN')
     url = 'https://api.openweathermap.org/data/2.5/onecall'
 
@@ -37,10 +45,7 @@ def weather(lat=45.66138,longt=-122.58383):
     }
 
     r = requests.get(url, params=payload)
-    print(r.url)
-    print(r)
     data = json.loads(r.text)
-    pprint(data['current'],indent=2)
     return data
 
 if __name__=='__main__':

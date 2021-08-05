@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="main">
+    <!-- Create a Form -->
+    <form method="POST">
+        <!-- Security token by Django -->
+        {% csrf_token %}
+        <!-- form as paragraph -->
+        {{ form.as_p }}
+
+        <div class="form-btns-container">
+        <input type="submit" value="Update">
+        <h3><a href="{% url 'post_details' form.instance.id  %}">Cancel</a></h3>
+        </div>
+    </form>
+  </div>
+{% endblock %}
