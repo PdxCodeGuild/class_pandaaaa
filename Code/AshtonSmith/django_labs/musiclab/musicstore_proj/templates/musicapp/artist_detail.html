@@ -3,5 +3,28 @@
 
 
 {% block content %}
- {{artist.name}}
+ {{artist.name}}<br>
+ <div class= 'd-flex flex-row flex-wrap'>
+
+ {% for album in artist.album.all %}
+         <div class="card flex-fill m-4" style='align-items:center; width:fit-content' >
+            {% if album.cover_art %}     
+               <img class = 'card-img-top' src = {{ album.cover_art.url }} style= 'width:400px!important; height: 400px!important; background-clip: padding-box; object-fit: cover; padding-top:10px;'>       
+            {% endif %}
+            <div class='card-body'>
+               album name: {{album.name}}<br>
+               artist name: <a href = "{% url 'artist' pk=album.artist.pk %}">{{album.artist}} </a><br>
+            <ul>
+               {% for song in album.songs.all %}  
+                  <i class="bi bi-vinyl"></i>
+                  <li>song name: <a href = "{% url 'song' pk=song.pk %}">{{song.name}} </a></li>
+               {% endfor %}
+            </ul>
+   </div>
+</div>
+
+
+    {% comment %} <a href = "{% url 'album' pk=album.pk %}">{{album.name}} </a><br> {% endcomment %}
+{% endfor %}
+</div>
 {% endblock %}

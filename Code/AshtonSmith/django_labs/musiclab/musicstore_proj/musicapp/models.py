@@ -6,7 +6,7 @@ from django.db.models.deletion import CASCADE
 
 class Song(models.Model):
     name = CharField(max_length=200)
-    # album = ForeignKey(Album, on_delete=CASCADE, related_name='song')
+    # album = ForeignKey('Album', on_delete=CASCADE, related_name='song')
     def __str__(self):
        return self.name
 
@@ -21,6 +21,7 @@ class Album(models.Model):
     genre = CharField(max_length=200,choices=genre_list,default='rock')
     songs = ManyToManyField(Song, related_name='album')
     artist = ForeignKey(Artist, on_delete=CASCADE,related_name='album')
+    cover_art = models.ImageField(default=None, null=True)
     def __str__(self):
         return self.name
 
