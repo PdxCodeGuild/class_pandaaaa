@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+
+    <h1> All Posts! Hello {{request.user.username}}</h1>
+    <a href="{%url 'add' %}" class=" btn btn-info">create new post</a>
+    {% if search %}
+    <h2> You searched for: {{search}}</h2>
+    {% endif %}
+    {% for post in blogs %}
+    <div class="container m-3">
+    <div class="card" >
+        <div class="card-body">
+          <h5 class="card-title">{{post.title}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">By {{post.user}}</h6>
+          <p class="card-text text-truncate">{{ post.body}}</p>
+          <a href="{%url 'details' post.id %}" class=" btn btn-primary">See Post</a>
+
+          <a href="{%url 'update' post.id %}" class=" btn btn-info">Update post</a>
+          <a href="{%url 'remove' post.id %}" class=" btn btn-info">Delete post</a>
+          
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    
+    </div>
+{% endblock %}
