@@ -1,12 +1,7 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 
-{% if object.id %}
-{% block nav_item_login %}active{% endblock nav_item_login %}
-{% else %}
 {% block nav_item_register %}active{% endblock nav_item_register %}
-{% endif %}
-
 
 {% if user.is_authenticated %}
 {% else %}

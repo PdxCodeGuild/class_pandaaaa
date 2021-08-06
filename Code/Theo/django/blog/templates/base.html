@@ -15,6 +15,7 @@
             {% if user.is_authenticated %}
             <li class="nav-item"><a class='nav-link {% block nav_item_profile %}{% endblock nav_item_profile %}' href="{% url 'profile' pk=user.pk %}">Profile</a></li>
             <li class="nav-item"><a class='nav-link {% block nav_item_logout %}{% endblock nav_item_logout %}' href="{% url 'logout' %}">Logout</a></li>
+            <li class="nav-item"><a class='nav-link {% block nav_item_create %}{% endblock nav_item_create %}' href="{% url 'create' %}">New Post</a></li>
             {% else %}
             <li class="nav-item"><a class='nav-link {% block nav_item_register %}{% endblock nav_item_register %}' href="{% url 'register' %}">Register</a></li>
             <li class="nav-item"><a class='nav-link {% block nav_item_login %}{% endblock nav_item_login %}' href="{% url 'login' %}">Login</a></li>
