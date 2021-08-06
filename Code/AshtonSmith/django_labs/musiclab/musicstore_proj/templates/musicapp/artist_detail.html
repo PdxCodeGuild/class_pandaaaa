@@ -4,8 +4,9 @@
 
 {% block content %}
  {{artist.name}}<br>
- <div class= 'd-flex flex-row flex-wrap'>
 
+
+ <div class= 'd-flex flex-row flex-wrap'>
  {% for album in artist.album.all %}
          <div class="card flex-fill m-4" style='align-items:center; width:fit-content' >
             {% if album.cover_art %}     
@@ -22,8 +23,6 @@
             </ul>
    </div>
 </div>
-
-
     {% comment %} <a href = "{% url 'album' pk=album.pk %}">{{album.name}} </a><br> {% endcomment %}
 {% endfor %}
 </div>

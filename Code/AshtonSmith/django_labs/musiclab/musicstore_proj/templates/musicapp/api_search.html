@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class= 'd-flex flex-row flex-wrap'>
+{% for result in data %}
+    <ul>
+   <div class="card flex-fill m-4" style='align-items:center; width:min-content; background:white;' >
+        <img class = 'card-img-top' src = {{result.album.cover}} style= 'width:400px!important; height: 400px!important; background-clip: padding-box; object-fit: cover; padding-top:10px;'><br>
+        {{result.title}}<br>
+        <li>
+        ARTIST :<a href= "{% url 'api_artist' result.artist.id %}">{{result.artist.name}}</a><br></li>
+        <audio controls="controls" src="{{result.preview}}" ></audio><br>
+    </div>
+    </ul>
+{% endfor %}
+</div>
+<br><br><br>
+{% endblock %}

@@ -3,15 +3,20 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
 from . import views
-from .views import HomeView, AlbumView, ArtistView, SongView
+from .views import HomeView, AlbumView, ArtistView, SongView, chartview, api_artist,api_search, api_radio
 from django.conf.urls.static import static
 from django.conf import settings 
-
+# app_name = 'musicapp'
 urlpatterns = [
     path('home/',HomeView.as_view() ,name= 'home' ),
     path('album/<slug:pk>',AlbumView.as_view() ,name= 'album' ),
     path('song/<slug:pk>',SongView.as_view() ,name= 'song' ),
     path('artist/<slug:pk>',ArtistView.as_view() ,name= 'artist' ),
+    path('api/', chartview, name= 'api'),
+    path('api/<slug:slug>', api_artist ,name= 'api_artist'),
+    path('api_search', api_search ,name= 'api_search'),
+    path('api_radio', api_radio ,name= 'api_radio'),
+
 ]
 
 # urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
