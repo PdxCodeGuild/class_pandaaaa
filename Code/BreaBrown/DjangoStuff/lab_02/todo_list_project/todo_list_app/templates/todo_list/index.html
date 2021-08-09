@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+</head>
+<body>
+    <header>
+        <h2>"To Do List"<h2>
+    </header>
+    <main>
+    <form action="{% url 'todo_list_app:new' %}" method="post">
+    {% csrf_token %}
+    <label for='task_title'>Title:</label>
+    <input type="text" name="task_title" id="task_title" required/>
+    <label for='task_detail'>Description:</label>
+    <input type="text" name="task_detail" id="task_detail" required/>
+    <input type="submit" value="Add item"/> 
+    </form>
+
+    <h3>Incomplete: </h3>
+    <ul>
+    {% for task in incomplete_tasks %}
+        <li>
+        <p>{{ task.task_title }}</p>
+        <p>{{ task.task_detail }}</p>
+        <p>{{ task.date_created }}</p>
+        <p>Completed: {{ task.complete }} </p>
+        <form action="{% url 'todo_list_app:complete' task.id %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Complete"/>
+        </form>
+        <form action="{% url 'todo_list_app:delete' task.id %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Delete"/>
+        </form>
+        </li>
+    {% endfor %}
+    </ul>
+    <h3>Completed tasks: </h3>
+    <ul>
+    {% for task in completed_tasks %}
+        <li>
+        <p>{{ task.task_title }}</p>
+        <p>{{ task.task_detail }}</p>
+        <p>{{ task.date_created }}</p>
+        <p>{{ task.date_completed }}</p>
+        <form action="{% url 'todo_list_app:complete' task.id %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Undo"/>
+        </form>
+        <form action="{% url 'todo_list_app:delete' task.id %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Delete"/>
+        </form>
+        </li>
+    {% endfor %}
+    </ul>
+    </main>
+
+</body>
+</html>
