@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class= 'd-flex flex-row flex-wrap'>
+{% for song in data %}
+       <div class="card flex-fill m-4" style='align-items:center; width:min-content' >
+              <div class='card-body'>
+                     <ul>
+                            SONG TITLE: {{song.title}}<br>
+                            SONG RANK: {{song.rank}}<br>
+                            artist name: <a href = "{% url 'api_artist' song.artist.id %}">{{song.artist.name}} </a><br>
+                            <img class = 'card-img-top' src = {{song.album.cover}} style= 'width:400px!important; height: 400px!important; background-clip: padding-box; object-fit: cover; padding-top:10px;'><br>
+                            <audio controls="controls" src="{{song.preview}}" ></audio><br>
+                            <a href = "{% url 'like_song' song.id %}" class="btn btn-danger">like</a> 
+                     </ul>
+              </div>
+       </div>
+{% endfor %}
+</div>
+</div>
+{% endblock %}
+
+

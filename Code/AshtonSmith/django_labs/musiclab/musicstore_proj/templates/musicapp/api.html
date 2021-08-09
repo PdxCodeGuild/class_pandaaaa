@@ -13,6 +13,7 @@
                 <li>SONG   :{{song.title }}<br></li>
                 <li>ALBUM  :{{song.album.title}}<br></li>
                 <li>ARTIST :<a href= "{% url 'api_artist' song.artist.id %}">{{song.artist.name}}</a><br></li>
+                <a href = "{% url 'like_song' song.id %}" class="btn btn-danger">like</a> 
             </ul>
             <audio controls="controls" src="{{song.preview}}" ></audio>
         </div>

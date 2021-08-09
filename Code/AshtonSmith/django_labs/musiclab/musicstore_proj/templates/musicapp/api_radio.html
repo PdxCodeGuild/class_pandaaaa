@@ -1,22 +1,36 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load musicapp_extras %}
 
 
 {% block content %}
-
 <div class= 'd-flex flex-row flex-wrap'>
-    {% for result in data%}
-   {{result.title}}<br><br>
-    {% for radio in result.radios%}
-    <div class="card flex-fill m-4" style='align-items:center; width:min-content; background:white;' >
-    STATION TITLE : {{radio.title}}<br>
-    <img class = 'card-img-top' src = {{ radio.picture }} style= 'width:400px!important; height: 400px!important; background-clip: padding-box; object-fit: cover; padding-top:10px;'>       
-   <br><br>
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >LISTEN</button>
-   </div>
-   {% endfor %}
-   {% endfor %}
-   </div>
+       {% for result in data %}
+              {{result.title}}<br><br>
+              {% for radio in result.radios %}
+                     <div class="card flex-fill m-4" style='align-items:center; width:min-content; background:white;' >
+                     STATION TITLE : {{radio.title}}<br>
+                     <img class = 'card-img-top' src = {{ radio.picture }} style= 'width:400px!important; height: 400px!important; background-clip: padding-box; object-fit: cover; padding-top:10px;'>       
+                     <br><br>
+                     {% get_slug radio.tracklist as slug %}
+                     <a href= "{% url 'api_radio_tracks' slug %}" class = 'btn my-2 my-sm-0'>CLICK</a>
+                     </div>
+              {% endfor %}
+       {% endfor %}
+</div>
 {% endblock %}
 
+
+                     {% comment %} <button class="btn btn-outline-success my-2 my-sm-0" type="submit"action = >LISTEN</button> {% endcomment %}
+                     {% comment %} <form method = 'GET' class="form-inline my-2 my-lg-0" style = 'display:flex;' action = "{% url 'api_radio_tracks' radio.tracklist.id %}">
+                            {% csrf_token %}
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="play" >Search</button>
+                     </form> {% endcomment %}
+
+                     {% comment %} {% set my_string = '' %}
+                     {% comment %} {% trans "" as my_string %} {% endcomment %}
+                     {% comment %} {% for i in radio.tracklist %}
+                            {% if i == '0' or i == '1' or i == '2' or i == '3' or i == '4' or i == '5' or i == '6' or i == '7' or i == '8' or i == '9' %}
+                                   {{i}}
+                                   {% comment %} {% set my_string = my_string + i %} {% endcomment %}
 

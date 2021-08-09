@@ -45,6 +45,20 @@ def request_radio():
     response = requests.get(url)
     my_data = json.loads(response.content.decode('utf-8'))
     return my_data['data']
+
+
+
+def request_radio_tracks(id):
+    url = f"https://api.deezer.com/radio/{id}/tracks"
+    response = requests.get(url)
+    my_data = json.loads(response.content.decode('utf-8'))
+    return my_data['data']
+
+def request_song(id):
+    url = f'https://api.deezer.com/track/{id}'
+    response = requests.get(url)
+    my_data = json.loads(response.content.decode('utf-8'))
+    return my_data
 # for item in my_data['data']:
 #         print('-------------------item')
 #         print(item['title'])
@@ -54,4 +68,3 @@ def request_radio():
 
 #         print('-------------------album')
 #         print(item['album'])
-request_radio()

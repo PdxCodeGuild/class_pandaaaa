@@ -12,6 +12,7 @@
         <li>
         ARTIST :<a href= "{% url 'api_artist' result.artist.id %}">{{result.artist.name}}</a><br></li>
         <audio controls="controls" src="{{result.preview}}" ></audio><br>
+        <a href = "{% url 'like_song' result.id %}" class="btn btn-danger">like</a> 
     </div>
     </ul>
 {% endfor %}
