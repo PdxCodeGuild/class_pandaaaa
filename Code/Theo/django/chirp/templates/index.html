@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock  %}
+{% block content %}
+{% for cheep in object_list %}
+    <div class="card">
+    <div class="card-body">
+        <div class="card-title">@{{cheep.user}}</div>
+        <div class="card-text">{{cheep.message}}</div>
+        <div class="card-subtitle mb-2 text-muted"><small>{{cheep.created}}</small></div>
+        <a href="#" class="card-link">Reply</a>
+    </div>
+    </div>
+{% empty%}
+    <li>Whoa it sure is empty</li>
+{% endfor %}
+{% endblock  %}
