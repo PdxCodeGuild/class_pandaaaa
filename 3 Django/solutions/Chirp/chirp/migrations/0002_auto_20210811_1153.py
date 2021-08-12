@@ -14,13 +14,13 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AlterField(
-            model_name='cheep',
+            model_name='Chirp',
             name='created',
             field=models.DateTimeField(auto_now_add=True),
         ),
         migrations.AlterField(
-            model_name='cheep',
+            model_name='Chirp',
             name='user',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='cheeps', to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='Chirps', to=settings.AUTH_USER_MODEL),
         ),
     ]

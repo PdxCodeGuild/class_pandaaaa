@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Cheep',
+            name='Chirp',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('created', models.DateTimeField(auto_created=True, auto_now_add=True)),

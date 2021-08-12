@@ -11,20 +11,20 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 class Register(CreateView):
     model = CustomUser
-    template_name = 'register.html'
+    template_name = 'registration/register.html'
     form_class = RegisterForm
     
     def get_success_url(self):
         return reverse('profile', kwargs={'pk': self.request.user.pk})
 
 class Login(LoginView):
-    template_name = 'login.html'
+    template_name = 'registration/login.html'
     
     def get_success_url(self):
         return reverse('profile', kwargs={'pk': self.request.user.pk})
 
 class Logout(LogoutView):
-    template_name = 'logout.html'
+    template_name = 'registration/logout.html'
 
 class Profile(LoginRequiredMixin, DetailView):
     model = CustomUser

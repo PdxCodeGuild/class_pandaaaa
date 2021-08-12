@@ -1,14 +1,14 @@
 from django.contrib import admin
 from .models import CustomUser
-from chirp.models import Cheep
+from chirp.models import Chirp
 
 # Register your models here.
 
-class CheepInline(admin.TabularInline):
-    model = Cheep
+class ChirpInline(admin.TabularInline):
+    model = Chirp
 
 class UserAdmin(admin.ModelAdmin):
-    inlines = [CheepInline]
+    inlines = [ChirpInline]
     class Meta:
         model = CustomUser
 

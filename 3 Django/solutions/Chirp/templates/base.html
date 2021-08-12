@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+
+   
     <title>{% block title %}{% endblock  %}</title>
 </head>
 <body>
@@ -13,12 +18,26 @@
         <ul class="nav nav-pills">
             <li class="nav-item"><a class='nav-link {% block nav_item_index %}{% endblock nav_item_index %}' href="{% url 'index' %}">Home</a></li>
             {% if user.is_authenticated %}
-            <li class="nav-item"><a class='nav-link {% block nav_item_profile %}{% endblock nav_item_profile %}' href="{% url 'profile' pk=user.pk %}">Profile</a></li>
-            <li class="nav-item"><a class='nav-link {% block nav_item_logout %}{% endblock nav_item_logout %}' href="{% url 'logout' %}">Logout</a></li>
-            <li class="nav-item"><a class='nav-link {% block nav_item_create %}{% endblock nav_item_create %}' href="#">New Cheep</a></li>
-            {% else %}
-            <li class="nav-item"><a class='nav-link {% block nav_item_register %}{% endblock nav_item_register %}' href="{% url 'register' %}">Register</a></li>
-            <li class="nav-item"><a class='nav-link {% block nav_item_login %}{% endblock nav_item_login %}' href="{% url 'login' %}">Login</a></li>
+
+            {% url 'profile' as url pk=userk.pk %}
+            <li class="nav-item {% if request.path == url %}active{% endif %}">
+              <a class="nav-link" href="{{ url }}">profile</a>
+            </li>
+            {% url 'logout' as url %}
+            <li class="nav-item {% if request.path == url %}active{% endif %}">
+              <a class="nav-link" href="{{ url }}">logout</a>
+            </li>
+
+                    {% else %}
+
+            {% url 'register' as url %}
+            <li class="nav-item {% if request.path == url %}active{% endif %}">
+              <a class="nav-link" href="{{ url }}">register</a>
+            </li>
+            {% url 'login' as url %}
+            <li class="nav-item {% if request.path == url %}active{% endif %}">
+              <a class="nav-link" href="{{ url }}">login</a>
+            </li>
             {% endif %}
         </ul>
     </nav>

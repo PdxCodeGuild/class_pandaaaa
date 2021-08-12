@@ -9,9 +9,9 @@
     </ul>
     <div class="card">
         <ul class="list-group">
-            {% for cheep in object.cheeps.all %}
-            <li class="list-group-item list-group-item-primary">{{cheep.created}}</li>
-            <li class="list-group-item list-group-item-secondary">Created: {{cheep.message}}</li>
+            {% for Chirp in object.Chirps.all %}
+            <li class="list-group-item list-group-item-primary">{{Chirp.created}}</li>
+            <li class="list-group-item list-group-item-secondary">Created: {{Chirp.message}}</li>
             {% endfor %}
         </ul>
     </div>

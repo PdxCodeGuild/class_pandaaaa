@@ -5,6 +5,6 @@ from .models import Chirp
 
 # Create your views here.
 
-class Home(ListView):
+class Index(ListView):
     model = Chirp
     template_name = 'index.html'
