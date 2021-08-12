@@ -13,7 +13,7 @@
         <ul class="nav nav-pills">
             <li class="nav-item"><a class='nav-link {% block nav_item_index %}{% endblock nav_item_index %}' href="{% url 'index' %}">Home</a></li>
             {% if user.is_authenticated %}
-            <li class="nav-item"><a class='nav-link {% block nav_item_profile %}{% endblock nav_item_profile %}' href="{% url 'profile' pk=user.pk %}">Profile</a></li>
+            <li class="nav-item"><a class='nav-link {% block nav_item_profile %}{% endblock nav_item_profile %}' href="{% url 'profile' slug=user.username %}">Profile</a></li>
             <li class="nav-item"><a class='nav-link {% block nav_item_logout %}{% endblock nav_item_logout %}' href="{% url 'logout' %}">Logout</a></li>
             <li class="nav-item"><a class='nav-link {% block nav_item_create %}{% endblock nav_item_create %}' href="#">New Cheep</a></li>
             {% else %}

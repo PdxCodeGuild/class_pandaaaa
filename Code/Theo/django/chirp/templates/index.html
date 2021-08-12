@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}Home{% endblock  %}
 {% block content %}
-{% for cheep in object_list %}
+{% for cheep in object_list reversed %}
     <div class="card">
     <div class="card-body">
         <div class="card-title">@{{cheep.user}}</div>

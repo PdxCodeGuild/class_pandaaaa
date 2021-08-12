@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
 {% block nav_item_profile %}active{% endblock nav_item_profile %}
 
 {% block content %}
@@ -6,6 +8,15 @@
     <ul class='list-group'>
         <li class="list-group-item">Username: {{object}}</li>
         <li class="list-group-item">Email: {{object.email}}</li>
+        {% if object == user %}
+        <li class="list-group-item">
+            <form method="POST">
+            {% csrf_token %}
+            {{form|crispy}}
+            <input type="submit" value="submit">
+            </form>
+        </li>
+        {% endif %}
     </ul>
     <div class="card">
         <ul class="list-group">
