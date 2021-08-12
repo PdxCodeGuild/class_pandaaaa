@@ -20,6 +20,7 @@
       <li class="nav-item active">
         <a class="nav-link" href="{% url 'home' %}">Home</a>
       </li>
+{% if user.is_authenticated %}
       <li>
         <a class="nav-link" href="{% url 'api' %}">Top 10</a>
       </li>
@@ -33,19 +34,25 @@
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >Search</button>
         </form>
       </li>
+      <li>
+        <a class="nav-link" href="{% url 'logout' %}">logout</a>
+      </li>
+{% endif %}
+
     </ul>
 </nav>
 
 
-
-
-
-
-
-    <div class = 'container'>
-        {% block content %}
-        {% endblock %}
-    </div>
+  <div class = 'container'>
+    {% block content %}
+    {% endblock %}
+  </div>
+{% if user.is_authenticated == False%}
+  <div class = 'container' style = 'background:white;'>
+  PLEASE LOGIN <a href = "{% url 'login'%}"> LOGIN</a>
+  OR REGISTER <a href = "{% url 'register'%}"> REGISTER</a>
+  </div>
+{% endif %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script> 
 </body>
 

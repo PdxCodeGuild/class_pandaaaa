@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.contrib.auth.views import LoginView
 from django.urls import path, include
 from . import views
-from .views import HomeView, AlbumView, ArtistView, LikeSong, RegisterView, SongView, chartview, api_artist,api_search, api_radio, api_radio_tracks
+from .views import HomeView, AlbumView, ArtistView, LikeSong, RegisterView, SongView,LogoutView, chartview, profile_view, api_artist,api_search, api_radio, api_radio_tracks, songdetail_view
 from django.conf.urls.static import static
 from django.conf import settings 
 # app_name = 'musicapp'
@@ -19,8 +19,11 @@ urlpatterns = [
     path('api_radio', api_radio ,name= 'api_radio'),
     path('api_radio_tracks/<slug:slug>', api_radio_tracks ,name= 'api_radio_tracks'),
     path('login', LoginView.as_view(), name = 'login'),
+    path('logout', LogoutView.as_view(), name = 'logout'),
     path('register', RegisterView.as_view(), name= 'register'),
-    path('like_song/<slug:slug>', LikeSong.as_view(), name='like_song')
+    path('like_song/<slug:slug>', LikeSong.as_view(), name='like_song'),
+    path('profile/<slug:slug>',profile_view, name='profile'),
+    path('song_detail/<slug:slug>',songdetail_view,name='song_detail')
 ]
 # http://127.0.0.1:8000/api_radio_tracks/37151
 

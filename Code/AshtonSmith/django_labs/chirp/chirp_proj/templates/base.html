@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    </head>
+    <body style = 'background:black;'>
+        <nav class = 'left-bar'>
+            logo
+            <a href='#'>Home </a>
+            <a href='#'>Explore </a>
+            <a href='#'>Notifications </a>
+            <a href='#'>Messages </a>
+            <a href='#'>Bookmarks </a>
+            <a href='#'>Lists </a>
+            <a href='#'>Profile </a>
+            <a href='#'>More </a>
+            <button type="button" class="btn btn-primary">Chirp</button>
+        </nav>
+
+        <nav class = 'right-bar'>
+            <form method = 'GET' class="form-inline my-2 my-lg-0" style = 'display:flex;' action = "#">
+                {% csrf_token %}
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name= 'Search'>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <p> Other stuff</p>
+        </nav>
+
+            {% block content %}
+            {% endblock %}
+    </body>
+</html>

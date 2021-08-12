@@ -37,6 +37,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=CASCADE)
     avatar = models.ImageField()
     liked_songs = models.ForeignKey(Playlist, on_delete=CASCADE, related_name='userprofile')
+    last_activity = models.DateTimeField()
 
 
 

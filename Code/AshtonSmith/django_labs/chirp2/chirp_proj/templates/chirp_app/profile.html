@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    {% if not object_list %}
+    THIS USER HAS NO POSTS!!!!!!!!!!!!
+    {% endif %}
+    {% for post in object_list %}
+    <div class = 'post-list post-box'>
+        <div class = 'inner-post-box'>
+            <img class = 'user-avatar' src = {{ post.author.avatar.url }}>
+            <div style = 'display:flex; flex-direction:column;'>
+            <a class = 'user-name' href="{% url 'profile' post.author.pk %}"> {{post.author}} </a>
+            <p class = 'post-text'> {{post.text}} </p>      
+            </div>
+        </div>
+        <p class = 'post-text'> {{post.comments}} </p> 
+    </div>
+    {% endfor %}
+{% endblock %}

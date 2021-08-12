@@ -2,7 +2,8 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.contrib.auth.views import LoginView, LogoutView
 from .models import Album, Playlist , Song , Artist, UserProfile
-from .api import request_artist, request_data, request_list, request_radio, request_radio_tracks, request_search
+from .api import request_artist, request_data, request_list, request_radio, request_radio_tracks, request_search, request_song
+from .yt_api import yt_search
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from .forms import RegisterForm
@@ -11,9 +12,15 @@ from django.views.generic.base import View
 
 
 class HomeView(ListView):
-    model = Album 
-    context_object_name = 'albums'
+    model = UserProfile
+    
+    context_object_name = 'users'
     template_name = 'musicapp/home.html'
+    def get_context_data(self, **kwargs):
+        context = {'data':UserProfile.objects.order_by('-last_activity')}
+        print(context)
+        # super().get_context_data(**kwargs)
+        return context
 
 class AlbumView(DetailView):
     model = Album
@@ -31,6 +38,7 @@ class ArtistView(DetailView):
     model = Artist 
     context_object_name= 'artist'
     template_name = 'musicapp/artist_detail.html' 
+
 
 def chartview(request):
     context = {'data':request_data()}
@@ -58,10 +66,21 @@ def api_radio_tracks(request, slug):
     context = {'data': my_dat}
     return render(request, 'musicapp/api_radio_tracks.html',context)
 
+def profile_view(request, slug):
+    my_song_list = Playlist.objects.get(userprofile=slug)
+    my_song_list = str(my_song_list).split(",")
+    temp = []
+    for i in my_song_list:
+        temp.append(request_song(i)) 
+
+    curr_user = UserProfile.objects.get(user_id=slug)
+    context = {'data':temp,'my_user': curr_user}
+    return render(request, 'musicapp/profile.html',context)
 
 class LoginView(LoginView):
-    template_name= 'musicapp/login.html'
-
+    template_name= 'registration/login.html'
+class LogoutView(LogoutView):
+    template_name= 'registration/logout.html'
 class RegisterView(CreateView):
     form_class = RegisterForm
     template_name = 'registration/register.html'
@@ -84,6 +103,16 @@ class LikeSong(View):
     def post(self):
         return None
 
+def songdetail_view(request,slug):
+    song = request_song(slug)
+    artist = song['artist']['name']
+    song_title = song['title']
+    data = yt_search(song_title + ' ' + artist)
+    # print(data['items'][0]['id'])
+    my_str = 'https://www.youtube.com/embed/' + data['items'][0]['id']['videoId']
+    context = {'data': my_str ,
+    'data2':song}
+    return render(request, 'musicapp/song_detail.html', context)
 
 
 
