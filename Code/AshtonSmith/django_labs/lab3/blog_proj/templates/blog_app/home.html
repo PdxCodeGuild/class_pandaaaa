@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header%}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+{% endblock %}
+
+{% block content %}
+<br><br>
+<div class = 'block'>
+    {% if user.is_authenticated %}
+        <p class= 'text-muted'>Currently logged in: {{ user.username }} <br></p>
+    {% endif %}
+    {% if user.is_authenticated %}
+        <img class="img-thumbnail" src="{{ user.userprofile.avatar.url }}">
+        <a href = 'profile/{{user.id}}'  class="btn btn-primary">Profile</a>
+        <a href = 'list/'  class="btn btn-primary">Post List</a>
+        <a href = 'create/'  class="btn btn-primary">New Post</a>
+        <a href = 'logout/'  class="btn btn-primary">Logout</a>
+    {% else %}
+        <a href = 'login/'  class="btn btn-primary"> Login </a> <br>
+        <a href = 'register/' class="btn btn-primary"> Register </a> <br>
+    {% endif %}
+</div>
+{% endblock %}
