@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block nav_item_register %}active{% endblock nav_item_register %}
+
+{% if user.is_authenticated %}
+{% else %}
+    {% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        {{form|crispy}}
+        <input type="submit" value="submit">
+    </form>
+    {% endblock %}
+{% endif %}
