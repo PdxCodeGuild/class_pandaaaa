@@ -19,7 +19,7 @@ from .views import Login, Logout, Profile, Register, PassChange
 urlpatterns = [
     path('login/',Login.as_view(),name='login'),
     path('logout/',Logout.as_view(),name='logout'),
-    path('profile/<str:slug>/',Profile.as_view(),name='profile'),
+    path('profile/<slug:pk>/',Profile.as_view(),name='profile'),
     path('profile/password/',PassChange.as_view(),name='password'),
     path('register/',Register.as_view(),name='register'),
 

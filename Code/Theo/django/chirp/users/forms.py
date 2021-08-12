@@ -1,21 +1,11 @@
-from django import forms
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from django.forms import widgets
+from django.forms import ModelForm, widgets
 from .models import CustomUser
 
-class RegisterForm(UserCreationForm):
+class ProfileForm(ModelForm):
     class Meta:
         model = CustomUser
-        fields = ['username','password1','password2','email']
-        widgets = {
-            'password': widgets.PasswordInput()
-        }
+        fields = ['avatar','about']
 
-class ProfileForm(UserChangeForm):
-    class Meta:
-        model = CustomUser
-        readonly_fields = ['username']
-        fields = ['password']
         widgets = {
-            'password': widgets.PasswordInput()
+            'avatar': widgets.ClearableFileInput()
         }

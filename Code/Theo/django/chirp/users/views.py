@@ -2,10 +2,11 @@ from django.shortcuts import render, get_object_or_404
 from django.urls.base import reverse, reverse_lazy
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 from django.views.generic.edit import CreateView, UpdateView
-# from django.views.generic.detail import DetailView
+from django.views.generic.detail import DetailView
 from .models import CustomUser
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth.forms import UserCreationForm
+from .forms import ProfileForm
 
 
 
@@ -27,13 +28,9 @@ class Login(LoginView):
 class Logout(LogoutView):
     template_name = 'logout.html'
 
-class Profile(LoginRequiredMixin, UpdateView):
+class Profile(DetailView):
     model = CustomUser
     template_name = 'profile.html'
-    form_class = UserChangeForm
-
-    def get_object(self):
-        return get_object_or_404(Profile, user__username=self.kwargs['username'])
 
 class PassChange(PasswordChangeView):
     model = CustomUser

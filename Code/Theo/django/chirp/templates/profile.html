@@ -4,28 +4,27 @@
 {% block nav_item_profile %}active{% endblock nav_item_profile %}
 
 {% block content %}
-<div class="card">
-    <ul class='list-group'>
-        <li class="list-group-item">Username: {{object}}</li>
-        <li class="list-group-item">Email: {{object.email}}</li>
-        {% if object == user %}
-        <li class="list-group-item">
-            <form method="POST">
-            {% csrf_token %}
-            {{form|crispy}}
-            <input type="submit" value="submit">
-            </form>
-        </li>
-        {% endif %}
-    </ul>
     <div class="card">
-        <ul class="list-group">
-            {% for cheep in object.cheeps.all %}
-            <li class="list-group-item list-group-item-primary">{{cheep.created}}</li>
-            <li class="list-group-item list-group-item-secondary">Created: {{cheep.message}}</li>
-            {% endfor %}
-        </ul>
+        <div class="card-body">
+            <img src="{{object.avatar_thumbnail.url}}" class="">
+            <h5 class='card-title'>@{{object}} {{object.country.unicode_flag}}</h5>
+            <h6 class='card-subtitle mb-2 text-muted'>Email: {{object.email}}</h6>
+            {% if object.about == None %}
+                <p class="card-text">There doesn't seem to be anything here...</p>
+            {% else %}
+                <p class="card-text">{{object.about}}</p>
+            {% endif %}
+            {% if object == user %}
+                <a href="#" class='card-link'>Edit profile</a>
+            {% endif %}
+        </div>
     </div>
-
+<div class="card">
+    <ul class="list-group">
+        {% for cheep in object.cheeps.all reversed %}
+        <li class="list-group-item list-group-item-primary">{{cheep.created}}</li>
+        <li class="list-group-item list-group-item-secondary">Created: {{cheep.message}}</li>
+        {% endfor %}
+    </ul>
 </div>
 {% endblock %}
