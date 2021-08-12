@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{% static 'main.css' %}">
 
    
-    <title>{% block title %}{% endblock  %}</title>
+    <title>{% block title %}	&#128038{% endblock  %}</title>
 </head>
 <body>
     <nav class='navbar navbar-light bg-light justify-content-start'>
@@ -19,7 +19,7 @@
             <li class="nav-item"><a class='nav-link {% block nav_item_index %}{% endblock nav_item_index %}' href="{% url 'index' %}">Home</a></li>
             {% if user.is_authenticated %}
 
-            {% url 'profile' as url pk=userk.pk %}
+            {% url 'profile' pk=userk.pk as url %}
             <li class="nav-item {% if request.path == url %}active{% endif %}">
               <a class="nav-link" href="{{ url }}">profile</a>
             </li>

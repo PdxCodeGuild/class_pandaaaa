@@ -4,7 +4,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.views.generic.edit import CreateView
 from django.views.generic.detail import DetailView
 from .models import CustomUser
-from .forms import RegisterForm
+# from .forms import RegisterForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
@@ -12,8 +12,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class Register(CreateView):
     model = CustomUser
     template_name = 'registration/register.html'
-    form_class = RegisterForm
-    
+    # 
     def get_success_url(self):
         return reverse('profile', kwargs={'pk': self.request.user.pk})
 

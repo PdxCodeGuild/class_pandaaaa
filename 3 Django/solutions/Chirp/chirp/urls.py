@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import Index
+from .views import Index, ChirpDelete, Profile
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
-    path('',Index.as_view(),name='index')
+    path('',Index.as_view(),name='index'),
+    path('<int:pk>/del/', ChirpDelete.as_view(), name='chirp-delete'), 
+    path('profile/<int:pk>', Profile.as_view(), name='user-posts')
 ]
