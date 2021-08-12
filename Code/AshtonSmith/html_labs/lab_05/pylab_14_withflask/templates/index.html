@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" href="/static/css/main.css" />
+  </head>
+  <body>
+        <div class = "nav_bar">
+        <h1>DAD JOKE FINDER</h1>
+        <a class = 'nav_options' href= '/'>home</a>
+        <a class = 'nav_options' href= '/favorites'>favorites</a>
+          <form method="POST">
+            <label for="search" class="form__label">Joke Search:</labellue="search"/>
+            
+            <input type="search" name="search" id="search" class="form__input" />
+        </div>
+        
+    </form>
+    <!-- The following code is used to replace punctuation (place holders). This fix was required because the href wasnt working with punctuation -->
+    <ul>
+      {% for joke in jokes%}
+        {% set joke_display = joke[0].replace('*0','.') %}
+        {% set joke_display = joke_display.replace('*1',',') %}
+        {% set joke_display = joke_display.replace('*2','!') %}
+        {% set joke_display = joke_display.replace('*3','?') %}
+        {% set joke_display = joke_display.replace('*4',"'") %}
+        <div><li class= 'j_list'>{{ joke_display }} <br>
+          {% if joke[1] %}
+            {% set joke_display = joke[1].replace('*0','.') %}
+            {% set joke_display = joke_display.replace('*1',',') %}
+            {% set joke_display = joke_display.replace('*2','!') %}
+            {% set joke_display = joke_display.replace('*3','?') %}
+            {% set joke_display = joke_display.replace('*4',"'") %}
+            {{ joke_display }}
+          {% endif %}
+        
+          {% if joke[1] %}
+            <a href = '/savejoke/{{ joke[0] }}/{{ joke[1] }}'>
+              <button class="GFG">
+              Save
+          </button></a>
+          {% else %}
+            <a href = '/savejoke/{{ joke[0] }}'>
+              <button class="GFG">
+              Save
+            </button></a>
+          {% endif %}
+        </div>
+        </li><br>
+      {% endfor %}
+    </ul>
+
+
+  </body>
+</html>

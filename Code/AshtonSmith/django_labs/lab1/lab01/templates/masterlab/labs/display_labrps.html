@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block header%}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+{% endblock %}
+
+{% block content %}
+YOUR CHOICE:   {{ user_choice }} <br>
+COMPUTER CHOICE: {{ cpu_choice }}<br>
+{% if user_choice == cpu_choice %}
+TIE
+{% elif user_choice == 'rock' and cpu_choice == 'scissors' %}
+YOU WIN
+{% elif user_choice == 'scissors' and cpu_choice == 'paper' %}
+YOU WIN
+{% elif user_choice == 'paper' and cpu_choice == 'rock' %}
+YOU WIN
+{% else %}
+YOU LOSE
+{% endif %}
+{% endblock %}
