@@ -1,13 +1,32 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% comment %} {% load imagekit %} {% endcomment %}
+
 {% block title %}Home{% endblock  %}
 {% block content %}
-{% for cheep in object_list reversed %}
+<style>
+    .textarea {resize: none}
+</style>
+
+{% if user.is_authenticated %}
+    <form method="POST">
+            {% csrf_token %}
+            {{form|crispy}}
+            <button type="submit" value="submit" class="btn btn-primary">Cheep</button>
+    </form>
+{% endif %}
+
+{% for cheep in cheeps reversed %}
     <div class="card">
     <div class="card-body">
-        <div class="card-title">@{{cheep.user}}</div>
-        <div class="card-text">{{cheep.message}}</div>
+        <div class="card-title"> <img src="{{cheep.user.avatar_thumbnail.url}}" class="rounded-circle"> @{{cheep.user}}</div>
         <div class="card-subtitle mb-2 text-muted"><small>{{cheep.created}}</small></div>
+        <div class="card-text">{{cheep.message}}</div>
         <a href="#" class="card-link">Reply</a>
+        {% if cheep.user == user %}
+        <a href="#" class="card-link">Delete Cheep</a>
+        {% endif %}
+
     </div>
     </div>
 {% empty%}

@@ -10,8 +10,8 @@ class CustomUser(AbstractUser):
     about = models.TextField(max_length=500, null=True, blank=True)
     avatar = models.ImageField(upload_to='avatars', null=True)
     avatar_thumbnail = ImageSpecField(source='avatar',
-                                      processors=[ResizeToFill(100, 50)],
+                                      processors=[ResizeToFill(50, 50)],
                                       format='JPEG',
-                                      options={'quality': 60})
+                                      options={'quality': 80})
     country = CountryField(null=True,blank=True)
 
