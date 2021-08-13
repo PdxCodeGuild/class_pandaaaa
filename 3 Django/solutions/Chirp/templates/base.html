@@ -13,15 +13,22 @@
     <title>{% block title %}	&#128038{% endblock  %}</title>
 </head>
 <body>
-    <nav class='navbar navbar-light bg-light justify-content-start'>
-        <span class="navbar-brand">Chirp</span>
-        <ul class="nav nav-pills">
+    <nav class='navbar justify-content-start'>
+
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+              <img src="https://cdn.pixabay.com/photo/2018/07/29/18/54/pigeon-3570784_960_720.png" alt="" width="40" height="40" class="d-inline-block align-text-top">
+              Chirp
+            </a>
+          </div>
+
+        <ul class="nav nav-tabs">
             <li class="nav-item"><a class='nav-link {% block nav_item_index %}{% endblock nav_item_index %}' href="{% url 'index' %}">Home</a></li>
             {% if user.is_authenticated %}
 
-            {% url 'profile' pk=userk.pk as url %}
+            {% url 'profile' as url %}
             <li class="nav-item {% if request.path == url %}active{% endif %}">
-              <a class="nav-link" href="{{ url }}">profile</a>
+              <a class="nav-link" href="{{ url  }}">profile</a>
             </li>
             {% url 'logout' as url %}
             <li class="nav-item {% if request.path == url %}active{% endif %}">
@@ -36,7 +43,7 @@
             </li>
             {% url 'login' as url %}
             <li class="nav-item {% if request.path == url %}active{% endif %}">
-              <a class="nav-link" href="{{ url }}">login</a>
+              <a class="nav-link" href="{{ url }}?next=registration/logout.html"">login</a>
             </li>
             {% endif %}
         </ul>
