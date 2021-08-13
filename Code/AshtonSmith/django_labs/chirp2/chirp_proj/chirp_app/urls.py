@@ -3,7 +3,6 @@ from django.contrib import admin
 from .views import LoginView, LogoutView, PostDetailView, RegisterView, HomeView,  ProfileView
 from django.urls import path, include
 from . import views
-from .views import homeview
 from django.conf.urls.static import static
 from django.conf import settings 
 # app_name = 'chirp_app'

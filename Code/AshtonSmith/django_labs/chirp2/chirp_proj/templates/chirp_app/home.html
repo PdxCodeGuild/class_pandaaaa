@@ -4,14 +4,14 @@
 
 {% block content %}
     {% if user.is_authenticated  == False%}
-                <a href="{% url 'login' %}"> login </a> <br>
-                <a href='#'> register </a> <br>
+        <a href="{% url 'login' %}"> login </a> <br>
+        <a href='#'> register </a> <br>
     {% else %}
         <a class="nav-link home-bar" href="{% url 'home' %}">Home</a>
     {% endif %}
     <div class = 'post-box'>
-    <img class = 'user-avatar' src = {{ user.avatar.url }}>       
-        <form method = 'POST' >
+        <img class = 'user-avatar' src = {{ user.avatar.url }}>       
+        <form method = 'POST' enctype="multipart/form-data">
             {% csrf_token %}
             <div class='dj-form'>
             {{ form }}
@@ -24,22 +24,35 @@
         <div class = 'inner-post-box'>
             <img class = 'user-avatar' src = {{ post.author.avatar.url }}>
             <div style = 'display:flex; flex-direction:column;'>
-            <div class = 'same-line'>
-            <a class = 'user-name' href="{% url 'profile' post.author.pk %}"> {{post.author}} </a>
-            <p style = 'padding-right:20px'> {{post.postdate}}</p>
-            <p>{{post.posttime}}</p>
-            </div>
-    <a href= "{% url 'detailed' post.id %}">
-            <p class = 'post-text'> {{post.text}} </p>
-    </a>
-    <div class = 'bottom-card'>
-    <i class="fas fa-comment"></i>
-    <p>{{post.comment_count}}</p>
-    <i class="fas fa-chevron-up"></i>
-    
-    </div>
+                <div class = 'same-line'>
+                <a class = 'user-name' href="{% url 'profile' post.author.pk %}"> {{post.author}} </a>
+                <p style = 'padding-right:20px'> {{post.postdate}}</p>
+                <p>{{post.posttime}}</p>
+                </div>
+                <a href= "{% url 'detailed' post.id %}">
+                <p class = 'post-text'> {{post.text}} </p>
+                </a>
+                <div class = 'bottom-card'>
+                    <i class="fas fa-comment"></i>
+                    <p style='padding-left:10px'>{{post.comment_count}}</p>
+                    <a href='#' style='color:black;padding-left:20px;'><i class="fas fa-chevron-up"></i></a>
+                    <p style='padding-left:10px'>{{post.likes}}</p>
+                    <i class="fas fa-retweet" style='color:black;padding-left:20px;'> </i>
+                    <p style='padding-left:10px'>0</p>
+                    <i class="fas fa-share-square" style='color:black;padding-left:20px;'></i>
+                    <p style='padding-left:10px'>0</p>
+                </div>
             </div>
         </div>
+    </div>
+    {% endfor %}
+{% endblock %}
+
+
+
+
+
+
         
         {% comment %} {% for comment in comments%}
         {% if comment != None %}
@@ -58,13 +71,3 @@
         {% endif %}
         {% endif %}
         {%endfor%} {% endcomment %}
-
-
-    </div>
-    {% endfor %}
-{% endblock %}
-
-
-
-
-

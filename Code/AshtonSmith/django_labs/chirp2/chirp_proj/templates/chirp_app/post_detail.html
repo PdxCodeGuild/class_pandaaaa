@@ -15,19 +15,24 @@
         <div class = 'inner-post-box'>
             <img class = 'user-avatar' src = {{ post.author.avatar.url }}>
             <div style = 'display:flex; flex-direction:column;'>
-            <div class = 'same-line'>
-            <a class = 'user-name' href="{% url 'profile' post.author.pk %}"> {{post.author}} </a>
-            <p style = 'padding-right:20px'> {{post.postdate}}</p>
-            <p>{{post.posttime}}</p>
-            </div>
-            <p class = 'post-text'> {{post.text}} </p>      
+                <div class = 'same-line'>
+                    <a class = 'user-name' href="{% url 'profile' post.author.pk %}"> {{post.author}} </a>
+                    <p style = 'padding-right:20px'> {{post.postdate}}</p>
+                    <p>{{post.posttime}}</p>
+                </div>
+                <div class = 'post-text-box'>
+                <p class = 'post-text'> {{post.text}} </p>      
+            {% if post.media %}
+                <img class = 'post-media' src = {{ post.media.url }}>
+            {% endif %}
+                </div>
             </div>
         </div>
         <div class = 'post-box'>
         <img class = 'user-avatar' src = {{ user.avatar.url }}>       
         <form method = 'POST'>
             {% csrf_token %}
-            <div class='dj-form'>
+            <div >
             {{ form }}
             </div>
             <input class="btn btn-primary" type ='submit'>
@@ -36,7 +41,7 @@
         {% for comment in comments%}
         {% if comment != None %}
         {% if comment.post.id == post.id %}
-        <div class = 'inner-post-box'>
+        <div class = 'inner-comment-box'>
             <img class = 'user-avatar' src = {{ comment.author.avatar.url }}>
             <div style = 'display:flex; flex-direction:column;'>
                 <div class = 'same-line'>

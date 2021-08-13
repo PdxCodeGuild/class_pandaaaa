@@ -6,14 +6,38 @@
     {% if not object_list %}
     THIS USER HAS NO POSTS!!!!!!!!!!!!
     {% endif %}
+    <a class="nav-link home-bar" href="{% url 'home' %}">Profile</a>
+    <div class = 'profile-banner-outter'>
+    <img class = 'profile-banner' src = {{ data.profile_banner.url }}>
+    <img class = 'profile-avatar' src = {{ data.avatar.url }}>
+    <p class = 'profile-banner-name'> {{data}}</p>
+    <p class = 'profile-banner-tag'> @{{data.tag}}</p>
+    
+    </div>
+    <div class = 'profile-info'>
+        <i class="far fa-calendar-alt"></i>
+        <p style= 'padding-left:15px;padding-right:15px;'>Joined {{data.joindate}}</p>
+        <i class="fas fa-tag"></i>
+        <p style= 'padding-right:15px;padding-left:15px;'>Tag: @{{data.tag}}</p>
+        <i class="fas fa-clipboard-list"></i>
+        <p style= 'padding-left:15px;padding-right:15px;'>Post Count: {{data.post_count}}</p>
+    </div>
     {% for post in object_list %}
     <div class = 'post-list post-box'>
         <div class = 'inner-post-box'>
             <img class = 'user-avatar' src = {{ post.author.avatar.url }}>
             <div style = 'display:flex; flex-direction:column;'>
             <a class = 'user-name' href="{% url 'profile' post.author.pk %}"> {{post.author}} </a>
-            <p class = 'post-text'> {{post.text}} </p>      
+            <a href= "{% url 'detailed' post.id %}">
+                <p class = 'post-text'> {{post.text}} </p>
+            </a>     
             </div>
+        </div>
+        <div class = 'bottom-card'>
+            <i class="fas fa-comment"></i>
+            <p style='padding-left:10px'>{{post.comment_count}}</p>
+            <a href='#' style='color:black;padding-left:20px;'><i class="fas fa-chevron-up"></i></a>
+            <p style='padding-left:10px'>{{post.likes}}</p>
         </div>
         <p class = 'post-text'> {{post.comments}} </p> 
     </div>

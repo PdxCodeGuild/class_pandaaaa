@@ -21,6 +21,8 @@ class CustomUser(AbstractUser):
     joindate = models.DateField(default=now())
     avatar = models.ImageField(default=None)
     post_count = models.IntegerField(default=0)
+    profile_banner = models.ImageField(default=None,null=True)
+    tag = CharField(max_length=500)
     def __str__(self):
         return self.username
 
@@ -31,5 +33,6 @@ class Post(models.Model):
     postdate = models.DateField(default=now())
     comment_count = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)
+    media = models.ImageField(default=None,null=True,upload_to='media/')
     def __str__(self):
         return self.text

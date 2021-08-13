@@ -10,12 +10,15 @@ class CustomUserCreationForm(UserCreationForm):
 class PostForm(forms.ModelForm):
     # text = forms.CharField(widget=forms.Textarea, label='')
     text = forms.CharField(label='', widget=forms.Textarea(attrs={'placeholder': 'HELLO?'}))
+    
+    media = forms.ImageField(label='')
     class Meta:
         model = Post
-        fields = ('text',)
+        fields = ('text','media')
     def __init__(self, *args, **kwargs):
         super(PostForm, self).__init__(*args, **kwargs)
         self.fields['text'].widget.attrs.update({'class': 'dj-form'})
+        self.fields['media'].widget.attrs.update({'class': 'dj-media'})
 
 
 
