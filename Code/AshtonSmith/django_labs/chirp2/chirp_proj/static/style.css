@@ -27,22 +27,36 @@
 }
 
 
-
+.left-bar{
+  border-bottom-style: solid;
+    border-bottom-color: black;
+    border-bottom-width: thin;
+}
 .left-bar a {
+
+      margin: 1vh; 
+     margin-left: 40px;
+    /* writing-mode: vertical-rl;
+    writing-mode: vertical-lr;
+    margin: 2px; */
+  }
+  
+  
+  
+  .left-bar button {
     margin: 25px;
     margin-left: 40px;
-}
-
-
-
-.left-bar button {
+  }
+  
+  
+  
+  .left-bar form {
     margin: 25px;
-    margin-left: 40px;
-}
+    /* margin-right:40px; */
+  }
 
 
-
-/* ********************************************************************** */
+  /* ********************************************************************** */
 /* RIGHT BAR */
 /* ********************************************************************** */
 .right-bar {
@@ -55,7 +69,7 @@
     background-color: white;
     align-items: center;
     border-color: white;
-    padding-top: 15vh;
+    padding-top: 20%;
 }
 
 .right-bar {
@@ -242,10 +256,6 @@ html {
   color: black;
 }
 
-.left-bar form {
-  margin: 25px;
-  /* margin-right:40px; */
-}
 
 .center-content {
   margin-top: 2px;

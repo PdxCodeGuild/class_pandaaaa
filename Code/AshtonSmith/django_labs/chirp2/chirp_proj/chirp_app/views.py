@@ -7,7 +7,6 @@ from .models import CustomUser, Post, Comment
 from django.views.generic.list import ListView
 from django.utils.translation import ugettext as _
 from django.views.generic.list import ListView
-from django.core.files.storage import FileSystemStorage
 
 
 
@@ -43,19 +42,21 @@ class ProfileView(ListView):
         context['data'] = CustomUser.objects.get(id=self.kwargs['slug'])
         return context
 
+
+
 #home view. This view displays a list of all posts filtered by post time.
 class HomeView(ListView):
     template_name ='chirp_app/home.html'
     context_object_name = 'home'
     model = Post
-
     #this function gets the context data -- returns a context that contains a dictionary of the posts, comments, and post form.
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
         context['form'] = PostForm()
-        context['data'] = Post.objects.order_by('-posttime')
+        context['data'] = Post.objects.order_by('posttime')
         context['comments'] = Comment.objects.all()
         return context
+
 
     #this function is called when a POST request is made. The request is made through a text input and submit button in the view.
     def post(self, request):

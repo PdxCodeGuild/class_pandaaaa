@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href = "styles.css">
+    <script src = "scripts.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class = "header">BANK ATM</div>
+    <div class = "atm_home current" id = "home">
+        <div class = "option balance" id = 'balance'><button class = "btn">Balance</button></div>
+        <div class = "option withdraw" id = 'withdraw'><button class = "btn">Withdraw</button></div>
+        <div class = "option deposit" id = 'deposit'><button class = "btn">Deposit</button></div>
+        <div class = "option intrest" id = 'interest'><button class = "btn">Interest</button></div>
+    </div>
+
+    <div class ="balance-display cleared" id ="bal-display">
+        <div class = "bal_home">
+            BALANCE:
+            <h1 id = "bal-message"></h1>
+            <button class = "btn" id ="bal-back">Back</button>
+        </div>
+    </div>
+
+    <div class ="withdraw-display cleared" id ="wit-display">
+        <div class = "wit_home">
+            WITHDRAW?:
+            <h1 id = "wit-message"></h1>
+            <input type = "number" id="wit-input"></input>
+            <button class = "btn" id ="wit-submit">Withdraw</button>
+            <button class = "btn" id ="wit-back">Back</button>
+        </div>
+    </div>
+
+    <div class ="deposit-display cleared" id ="dep-display">
+        <div class = "dep_home">
+            DEPOSIT?:
+            <h1 id = "dep-message"></h1>
+            <input type = "number" id="dep-input"></input>
+            <button class = "btn" id ="dep-submit">Deposit</button>
+            <button class = "btn" id ="dep-back">Back</button>
+        </div>
+    </div>
+
+    <div class ="interest-display cleared" id ="int-display">
+        <div class = "int_home">
+            ADD INTEREST?:
+            <h1 id = "int-message"></h1>
+            <button class = "btn" id ="int-submit">INTEREST</button>
+            <button class = "btn" id ="int-back">Back</button>
+        </div>
+    </div>
+
+
+</body>
+</html>

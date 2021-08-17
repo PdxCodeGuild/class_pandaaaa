@@ -203,3 +203,6 @@ def use_atm():
             break
         else:
             print('Command not recognized')
+
+
+main()

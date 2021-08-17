@@ -7,14 +7,16 @@ class CustomUserCreationForm(UserCreationForm):
         model = CustomUser
         fields = ('username','email','password')
 
+
+
 class PostForm(forms.ModelForm):
-    # text = forms.CharField(widget=forms.Textarea, label='')
     text = forms.CharField(label='', widget=forms.Textarea(attrs={'placeholder': 'HELLO?'}))
-    
     media = forms.ImageField(label='')
     class Meta:
         model = Post
         fields = ('text','media')
+
+
     def __init__(self, *args, **kwargs):
         super(PostForm, self).__init__(*args, **kwargs)
         self.fields['text'].widget.attrs.update({'class': 'dj-form'})
@@ -23,11 +25,12 @@ class PostForm(forms.ModelForm):
 
 
 class CommentForm(forms.ModelForm):
-    # text = forms.CharField(widget=forms.Textarea, label='')
     text = forms.CharField(label='', widget=forms.Textarea(attrs={'placeholder': 'Chirp a Reply?'}))
     class Meta:
         model = Comment
         fields = ('text',)
+
+
     def __init__(self, *args, **kwargs):
         super(CommentForm, self).__init__(*args, **kwargs)
         self.fields['text'].widget.attrs.update({'class': 'comment-form'})
