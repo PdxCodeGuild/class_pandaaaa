@@ -1,6 +1,5 @@
-console.log("Hello Blackkkkk Jack");
-
-Deck = {
+console.log("Hello Black Jack");
+cardDeck = {
   kc: 10,
   ks: 10,
   kh: 10,
@@ -55,4 +54,110 @@ Deck = {
   ad: 1,
 };
 
-console.log(Deck[]);
+const populateDeck = () => {
+  let deck = Array();
+  for (card in cardDeck) {
+    deck.push(card);
+  }
+  return deck;
+};
+
+const dealCard = (deck) => {
+  const index = Math.floor(Math.random() * deck.length);
+  const card = deck[index];
+  deck.splice(index, 1);
+  return card;
+};
+
+const deal = (deck) => {
+  counter = 0;
+  userHand = Array();
+  dealerHand = Array();
+  while (counter < 2) {
+    userHand.push(dealCard(deck));
+    dealerHand.push(dealCard(deck));
+    counter++;
+  }
+  return [userHand, dealerHand];
+};
+
+const addHand = (hand) => {
+  sum = 0;
+  hand.forEach((card) => {
+    sum += cardDeck[card];
+  });
+  return sum;
+};
+
+const makeHandString = (hand) => {
+  handString = String();
+  for (let i = 0; i < hand.length; i++) {
+    const card = hand[i];
+    if (i + 1 == hand.length) {
+      handString += `and ${card}`;
+    } else handString += `${card}${i + 2 == hand.length ? "" : ","} `;
+  }
+  return handString;
+};
+
+const countAces = (hand) => {
+  let aces = 0;
+  hand.forEach((card) => {
+    if (card.charAt(0) == "a") {
+      aces++;
+    }
+  });
+  return aces;
+};
+
+let playBlackJack = () => {
+  let deck = populateDeck();
+  let hands = deal(deck);
+  let userHand = hands[0];
+  let dealerHand = hands[1];
+  let aces = countAces(userHand);
+  let userTotal = addHand(userHand);
+  let userHandString = makeHandString(userHand);
+
+  if (aces) {
+    console.log("user has an Ace");
+    if (aces == 2) {
+      console.log("user has 2 Aces!!! better split that sh*t");
+    }
+  }
+  if (!aces) {
+    let hitOrStay = prompt(
+      `Your hand is ${userHandString} totaling ${userTotal} \n the dealer is showing a ${dealerHand[1]}. \n Hit or Stay?`
+    )
+      .toLowerCase()
+      .trim();
+    while (hitOrStay != "stay") {
+      if (hitOrStay == "hit") {
+        userHand.push(dealCard(deck));
+        userTotal = addHand(userHand);
+        userHandString = makeHandString(userHand);
+        if (userTotal >= 21) {
+          if (userTotal == 21) {
+            alert(`You got 21! \n your hand: ${userHandString} \n Total: ${userTotal}`);
+            break;
+          }
+          alert(`You Busted! \n your hand: ${userHandString} \n Total: ${userTotal}`);
+          break;
+        }
+        hitOrStay = prompt(
+          `Your hand is ${userHandString} totaling ${userTotal} \n the dealer is showing a ${dealerHand[1]}. \n Hit or Stay?`
+        );
+      } else if (hitOrStay != "stay") {
+        let userHandString = makeHandString(userHand);
+        hitOrStay = prompt(
+          `That's not a valid option \n Your hand is ${userHandString} totaling ${userTotal} \n the dealer is showing a ${dealerHand[1]}. \n Hit or Stay?`
+        );
+      }
+    }
+  }
+  console.log(userHand);
+  console.log(deck);
+  console.log(userTotal);
+};
+
+playBlackJack();
