@@ -97,11 +97,15 @@ alert("Hello " + name + "! How are you today?")
 You can also use `input` elements.
 
 ```html
-<input id="name_input" type="text"/>
+   <input type="text" id="name_input"><button id="btn" value='CLICK'>CLICK</button>
 <script>
+let button = document.querySelector('#btn'
+button.onclick = function() {
     let name_input = document.querySelector('#name_input')
     let name_value = name_input.value
     alert(name_value)
+
+}
 </script>
 ```
 
