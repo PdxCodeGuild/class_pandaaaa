@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block header%}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+{% endblock %}
+
+{% block content %}
+<form method="POST" class="post-form">
+    {% csrf_token %}
+    Enter text to calculate ARI score.<br>
+    <textarea name='ari_text' id= 'ari_text'></textarea><br>
+    <button type="submit" class="save btn btn-default">Submit</button>
+</form>
+{% endblock %}

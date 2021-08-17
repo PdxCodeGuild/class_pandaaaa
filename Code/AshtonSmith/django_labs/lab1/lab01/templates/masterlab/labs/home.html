@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header%}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+{% endblock %}
+{% block content %}
+    <div class = 'home_options'>
+        <a class = 'opt_link' href= 'ari/'>ARI Calculator</a>
+        <a class = 'opt_link' href= 'rps/'>Rock Paper Scissors</a>
+        <a class = 'opt_link' href= 'rot/'>Rot 13 Converter</a>
+        <a class = 'opt_link' href= 'nump/'>Convert Number to Roman Numeral or Text</a>
+        <a class = 'opt_link' href= 'unit/'>Unit Converter</a>
+    </div>
+{% endblock %}
