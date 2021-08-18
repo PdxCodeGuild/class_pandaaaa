@@ -110,14 +110,40 @@ const countAces = (hand) => {
   return aces;
 };
 
-let playBlackJack = () => {
+const evaluateAces = (total, aces) => {
+  if (!aces) return total;
+  if (total > 11) {
+    // return the total because if your hand is 11 or more you wouldn't want an ace to be worth 11
+    return total;
+  }
+  let evaluated = aces * 10 + total;
+  return evaluated;
+};
+
+const evaluateWinner = (dealerTotal, userTotal) => {
+  if (dealerTotal > 21) {
+    return `Dealer busted with ${dealerTotal} 🥳,  \n 🎊  You Win!!! 🎉`;
+  } else if (dealerTotal == userTotal) {
+    return `Push 😒, dealer has ${dealerTotal}`;
+  } else if (userTotal == 21) {
+    return `You got 21! \n 🎊  You Win!!! 🎉 \n dealer has ${dealerTotal}`;
+  } else if (dealerTotal > userTotal) {
+    return `Dealer has ${dealerTotal}, dealer wins 😞 `;
+  } else return `Dealer has ${dealerTotal},\n 🎊  You Win!!! 🎉`;
+};
+
+const playBlackJack = () => {
   let deck = populateDeck();
   let hands = deal(deck);
   let userHand = hands[0];
   let dealerHand = hands[1];
   let aces = countAces(userHand);
   let userTotal = addHand(userHand);
+  let handWithAces = evaluateAces(userTotal, aces);
   let userHandString = makeHandString(userHand);
+  let dealerTotal = addHand(dealerHand);
+  let dealerAces = countAces(dealerHand);
+  let dealerHandWithAces = evaluateAces(dealerTotal, dealerAces);
 
   if (aces) {
     console.log("user has an Ace");
@@ -125,39 +151,78 @@ let playBlackJack = () => {
       console.log("user has 2 Aces!!! better split that sh*t");
     }
   }
-  if (!aces) {
-    let hitOrStay = prompt(
-      `Your hand is ${userHandString} totaling ${userTotal} \n the dealer is showing a ${dealerHand[1]}. \n Hit or Stay?`
-    )
-      .toLowerCase()
-      .trim();
-    while (hitOrStay != "stay") {
-      if (hitOrStay == "hit") {
-        userHand.push(dealCard(deck));
-        userTotal = addHand(userHand);
-        userHandString = makeHandString(userHand);
-        if (userTotal >= 21) {
-          if (userTotal == 21) {
-            alert(`You got 21! \n your hand: ${userHandString} \n Total: ${userTotal}`);
-            break;
-          }
-          alert(`You Busted! \n your hand: ${userHandString} \n Total: ${userTotal}`);
-          break;
-        }
-        hitOrStay = prompt(
-          `Your hand is ${userHandString} totaling ${userTotal} \n the dealer is showing a ${dealerHand[1]}. \n Hit or Stay?`
-        );
-      } else if (hitOrStay != "stay") {
-        let userHandString = makeHandString(userHand);
-        hitOrStay = prompt(
-          `That's not a valid option \n Your hand is ${userHandString} totaling ${userTotal} \n the dealer is showing a ${dealerHand[1]}. \n Hit or Stay?`
-        );
+
+  let hitOrStay = prompt(
+    `Your hand is ${userHandString} totaling ${userTotal} ${
+      userTotal != handWithAces ? `or ${handWithAces}` : ""
+    } \n the dealer is showing a ${dealerHand[1]}. \n Hit or Stay?`
+  )
+    .toLowerCase()
+    .trim();
+  while (true) {
+    if (hitOrStay == "hit") {
+      userHand.push(dealCard(deck));
+      // userHand = ["as", "ks"];
+      // aces = 1;
+      userTotal = addHand(userHand);
+      userTotalPlusAces = evaluateAces(userTotal, aces);
+      userHandString = makeHandString(userHand);
+      handWithAces = evaluateAces(userTotal, aces);
+      if (userTotal > 21) {
+        alert(`You Busted! 😞 , \n your hand: ${userHandString} \n Total: ${userTotal}`);
+        break;
       }
+      hitOrStay = prompt(
+        `Your hand is ${userHandString} totaling ${userTotal} ${
+          userTotal != handWithAces ? `or ${handWithAces}` : ""
+        } \n the dealer is showing a ${dealerHand[1]}. \n Hit or Stay?`
+      )
+        .toLowerCase()
+        .trim();
+    } else if (hitOrStay != "stay") {
+      userHandString = makeHandString(userHand);
+      hitOrStay = prompt(
+        `That's not a valid option \n Your hand is ${userHandString} totaling ${userTotal} \n the dealer is showing a ${dealerHand[1]}. \n Hit or Stay?`
+      )
+        .toLowerCase()
+        .trim();
+      // user either busted or got 21
+    } else if (hitOrStay == "hit" && (userTotal >= 21 || handWithAces == 21)) {
+      break;
+      // user typed 'stay'
+    } else {
+      userTotal = addHand(userHand);
+      handWithAces = evaluateAces(userTotal, aces);
+      dealerTotal = addHand(dealerHand);
+      dealerAces = countAces(dealerHand);
+      dealerHandWithAces = evaluateAces(dealerTotal, dealerAces);
+      console.log("dealer hand", dealerHandWithAces);
+      // while loop draws for dealer until dealer hand satisfied the last || is if the dealer has a soft 17 (an Ace being counted as 11 and a hand adding up to 17)
+      while (
+        dealerHandWithAces < 17 ||
+        (dealerHandWithAces == 17 && dealerHandWithAces != dealerTotal)
+      ) {
+        dealerHand.push(dealCard(deck));
+        if (dealerHandWithAces == 17 && dealerHandWithAces != dealerTotal) {
+          console.log(`Dealer has a soft 17, they hit ${dealerHand[-1]}`);
+        }
+        dealerTotal = addHand(dealerHand);
+        dealerAces = countAces(dealerHand);
+        dealerHandWithAces = evaluateAces(dealerTotal, dealerAces);
+      }
+      break;
     }
   }
-  console.log(userHand);
-  console.log(deck);
-  console.log(userTotal);
+  if (userTotal < 21) {
+    alert(`You have ${makeHandString(userHand)} totaling: ${handWithAces} \n
+    Dealer has: ${makeHandString(dealerHand)} \n
+    ${evaluateWinner(dealerHandWithAces, handWithAces)}
+    `);
+  }
+
+  console.log("userHand", userHand);
+  console.log("deck", deck);
+  console.log("userTotal", userTotal);
 };
 
 playBlackJack();
