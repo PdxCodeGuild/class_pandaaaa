@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="post-entry">
+        <h3><i><a href="{% url 'users:profile' post.author.username %}">{{ post.author.username }}</a></i></h3>
+        <h3><i>Post date: {{ post.date_created }}</i></h3>
+        <h3><i>Updated: {{ post.last_updated }}</i></h3>
+        <p>{{ post.body|linebreaksbr }}</p>
+    </div>
+
+    {% if request.user == post.author %}
+        <p><a href="{% url 'ChirpApp:edit' post.pk %}"> Edit Post</a></p>
+        <p><a href="{% url 'ChirpApp:delete' post.pk %}"> Delete Post</a></p>
+    {% endif %}
+
+{% endblock content %}

@@ -1,10 +1,16 @@
 from django.db import models
-
-class User():
-    
-
+from django.db.models import CharField
+from django.urls import reverse
 
 
-class Post():
+class Post(models.Model):
+    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    body = models.TextField(max_length=140)
+    date_created = models.DateTimeField(auto_now_add=True)
+    last_updated = models.DateTimeField(auto_now_add=True)
 
-c664a2af5afee54a879185be192998a435e132a8
+    def get_absolute_url(self):
+        return reverse('ChirpApp:detail', args={self.id})
+
+class Meta:
+    ordering = ['-date_created']   

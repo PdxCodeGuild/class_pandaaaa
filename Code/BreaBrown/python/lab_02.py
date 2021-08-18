@@ -1,3 +1,4 @@
+# version 1
 num_list = [5, 0, 8, 3, 4, 1, 6]
 
 def avg_nums(x):
