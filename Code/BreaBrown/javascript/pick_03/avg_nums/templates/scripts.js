@@ -23,21 +23,27 @@ function list_popuation() {
     let l = [];
     while (true) {
         let ui = prompt('Enter a number to add to the list or "done" to exit: ');
-        if (ui = 'done') {
+        console.log(ui)
+        if (ui == 'done') {
             break;
         };
-        if (!ui.isNumeric()) {
+        ui = Number(ui)
+        if (isNaN(ui)) {
             console.log('Error, please enter a number!');
             continue;
         }
         else {
-            l.push(int(ui));
+            l.push(parseInt(ui));
+            console.log(l)
         }
-        }
+    }
+    return l
     }
 
 function run() {
     let l = list_popuation();
-        let output = avg_nums(1);
-        console.log('The average of the numbers you entered is: {output}');
+    console.log(l)
+        let output = avg_nums(l);
+        console.log(`The average of the numbers you entered is: ${output}`);
 };
+run()
