@@ -20,12 +20,10 @@ let data3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 2, 3, 4, 5, 6];
 let data0 = [4, 5, 6, 7, 6, 5, 4, 5, 6, 7, 8, 9, 8, 7, 6, 7, 8, 9, 10, 9];
 let dataCounter = 1; //level selector..
 let currLevel = 1;
-
-let myPeaks = findPeak(data);
-let myValleys = findValley(data);
-
 let lastRenderTime = 0;
 
+let myPeaks = findPeak(data); //these are updated when data/terrain is switched.. see after switch like (80?) lines down
+let myValleys = findValley(data);
 
 function main(currentTime) {
     window.requestAnimationFrame(main);
@@ -43,8 +41,8 @@ function update() {
 
     processInput();
     if (playerEnergy < ENERGY_MAX)
+    // playerEnergy += 500;
         playerEnergy += 3;
-    //playerEnergy += 500;
 
     let temp = playerPosition.x
     if ((data[temp] < (20 - playerPosition.y + 1) && inputDirection.x == 1)) {
@@ -69,12 +67,11 @@ function update() {
         playerPosition.y += 1;
         myCounter = 0;
     }
-    // console.log("MY COUNTER: " + myCounter);
     ++myCounter;
-    // console.log("PLAYER ENERGY: " + playerEnergy);
     myEnergy.innerHTML = "Energy: " + playerEnergy;
     myPoints.innerHTML = "Points: " + playerPoints;
     myLevel.innerHTML = "Level: " + currLevel;
+    //player reaches end of the map
     if (playerPosition.x == 20) {
         switch (dataCounter) {
             case 1:
@@ -106,15 +103,10 @@ function update() {
         playerPosition.x = 0;
         playerPosition.y = 20 - (data[0] + 1)
     }
-
-
-
-
-
-
-    // playerPosition.y += inputDirection.y;
     inputDirection = { x: 0, y: 0 };
 }
+
+
 
 function draw() {
     myBoard.innerHTML = ""
@@ -235,6 +227,7 @@ function findValley(data) {
 
 
 
+// playerPosition.y += inputDirection.y;
 
 
 
@@ -272,3 +265,5 @@ function findValley(data) {
 // console.log(data)
 // console.log(data.pop())
 // console.log(data.array.splice(0, 2))
+// console.log("MY COUNTER: " + myCounter);
+// console.log("PLAYER ENERGY: " + playerEnergy);

@@ -82,13 +82,13 @@ class BlackJack {
     //display advice to console
     advice_calc() {
         if (this.mypoints < 17) { // less than 17
-            console.log("Hit!");
+            return "Hit!";
         } else if (this.mypoints < 21) { // greater or equal to 17
-            console.log("Stay");
+            return "Stay";
         } else if (this.mypoints == 21) { // exactly 21
-            console.log("BlackJack");
+            return "BlackJack";
         } else { //Over 21
-            console.log("Already Busted.");
+            return "Already Busted.";
         }
     }
 }
@@ -104,4 +104,48 @@ let test_game = function() {
     mygame.advice_calc();
 }
 
-test_game()
+// test_game()
+
+///////////////////////////////////////////////////////
+const myHand = document.getElementById("hand");
+let setAdvice = function(mygame) {
+    let adviceElement = document.getElementById("advice");
+    adviceElement.innerHTML = "Points: " + mygame.mypoints + ". \n" + mygame.advice_calc();
+}
+
+
+
+let getCards = function(column, mygame) {
+    console.log("COL" + column);
+    let cardElement = document.createElement('div');
+    cardElement.style.gridRowStart = 1;
+    cardElement.style.gridColumnStart = column;
+    cardElement.classList.add('card');
+    temp = mygame.mycards[column - 1];
+    if (temp == 1) temp = 'A';
+    cardElement.innerHTML = temp
+    myHand.appendChild(cardElement);
+}
+
+
+
+let runGame = function() {
+    let mygame = new BlackJack();
+    mygame.fill_hand(mygame)
+    mygame.calc_points();
+    mygame.fix_aces();
+    setAdvice(mygame);
+
+    for (let i = 0; i < mygame.mycards.length; ++i) {
+        console.log(mygame.mycards[i])
+    }
+
+    for (let i = 1; i < 4; ++i) {
+        getCards(i, mygame);
+        console.log(i);
+    }
+}
+
+
+
+runGame();
