@@ -29,6 +29,7 @@ body {
     justify-content: center;
     align-items: center;
     background-color: black;
+    flex-direction: column;
 }
 
 .terrain-top {
@@ -66,4 +67,17 @@ body {
     width: -webkit-fill-available;
     height: 5vh;
     z-index: 2;
+}
+
+.energy,
+.points,
+.level {
+    color: white;
+    font-family: fantasy;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.above-text {
+    display: flex;
 }
