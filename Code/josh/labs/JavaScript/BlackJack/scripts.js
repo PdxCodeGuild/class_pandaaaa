@@ -1,9 +1,7 @@
-console.log("Hello Black Jack");
+console.log("Play Black Jack");
 
-// this works except if the user or dealer gets more then 1 Ace
-// it won't evaluate the hand properly possible solutions.....
-// could let a user split the Aces (or any pair a user gets); that would be difficult with alerts
-// would need to figure out functionality for dealer as well
+// Upgrades that could be made....
+// Let a user split pairs; that would be difficult with alerts
 
 cardDeck = {
   "King ♣️": 10,
@@ -118,12 +116,14 @@ const countAces = (hand) => {
 
 const evaluateAces = (total, aces) => {
   if (!aces) return total;
+  // No Aces means no change in the total
   if (total > 11) {
-    // return the total because if your hand is 11 or more you wouldn't want an ace to be worth 11
+    // return the total because if your hand is 11 or more you wouldn't want an Ace to be worth 11
     return total;
   }
-  let evaluated = aces * 10 + total;
-  return evaluated;
+  //  only add 10 because an Ace is already counted as 1. If you had more then 1 Ace
+  //  you would only want 1 Ace counted as 11 because any more and you would bust
+  return total + 10;
 };
 
 const evaluateWinner = (dealerTotal, userTotal) => {
@@ -228,5 +228,4 @@ const playBlackJack = () => {
   console.log("deck", deck);
   console.log("userTotal", userTotal);
 };
-
 playBlackJack();
