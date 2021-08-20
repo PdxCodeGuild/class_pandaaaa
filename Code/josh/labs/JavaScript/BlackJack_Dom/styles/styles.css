@@ -1,6 +1,9 @@
 body {
   background-color: rgb(13, 92, 138);
 }
+.hidden {
+  display: none;
+}
 .outside-container {
   padding-top: 10%;
 }
@@ -29,6 +32,7 @@ body {
   margin-left: 5px;
 }
 
+/* button Styles */
 .hit {
   box-shadow: inset 0px 1px 0px 0px #3dc21b;
   background: linear-gradient(to bottom, #44c767 5%, #5cbf2a 100%);
@@ -75,6 +79,31 @@ body {
   background-color: #468ccf;
 }
 .stay:active {
+  position: relative;
+  top: 1px;
+}
+
+.play {
+  box-shadow: inset 0px 1px 0px 0px #e184f3;
+  background: linear-gradient(to bottom, #c123de 5%, #a20dbd 100%);
+  background-color: #c123de;
+  border-radius: 6px;
+  border: 1px solid #a511c0;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 6px 24px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #9b14b3;
+}
+.play:hover {
+  background: linear-gradient(to bottom, #a20dbd 5%, #c123de 100%);
+  background-color: #a20dbd;
+}
+.play:active {
   position: relative;
   top: 1px;
 }

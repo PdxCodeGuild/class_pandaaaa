@@ -108,6 +108,7 @@ UIDeck = {
   "Ace ♠️": `<span class='card rank-a spades'><span class='rank'>A</span><span class='suit'>&spades;</span></span>`,
   "Ace ❤️": `<span class='card rank-a hearts'><span class='rank'>A</span><span class='suit'>&hearts;</span></span>`,
   "Ace ♦️": `<span class='card rank-a diams'><span class='rank'>A</span><span class='suit'>&diams;</span></span>`,
+  Down: `<span class="card back">*</span>`,
 };
 
 const populateDeck = () => {
@@ -166,22 +167,38 @@ const evaluateAces = (total, aces) => {
   //  you would only want 1 Ace counted as 11 because any more and you would bust
   return total + 10;
 };
-// Dom Functions
+// Dom Functionality
 let hitBtn = document.querySelector(".hit");
-let playerHand = document.getElementById("player");
+let stayBtn = document.querySelector(".stay");
+let playBtn = document.querySelector(".play");
+let gameBtnDiv = document.getElementById("game-buttons");
+let playBtnDiv = document.getElementById("play-btn");
+let playerDiv = document.getElementById("player");
+let dealerDiv = document.getElementById("dealer");
+let playerScore = document.getElementById("player-score");
+let dealerScore = document.getElementById("dealer-score");
 
-let hitBtnClicked = function () {
-  let cardUI = document.createElement("span");
+// dom updating functions
+const displayCard = (card, user = true) => {
+  const cardUI = document.createElement("span");
+  cardUI.innerHTML = card;
+  if (user) {
+    playerDiv.appendChild(cardUI);
+  } else {
+    dealerDiv.appendChild(cardUI);
+  }
+};
+
+// event functions
+const hitBtnClicked = () => {
+  const cardUI = document.createElement("span");
   cardUI.innerHTML = UIDeck["Ace ♣️"];
   playerHand.appendChild(cardUI);
 };
-
 hitBtn.addEventListener("click", hitBtnClicked);
 
 // main Function
-const playBlackJack = () => {
-  let deck = populateDeck();
-  let hands = deal(deck);
+const playBlackJack = (deck, hands) => {
   let userHand = hands[0];
   let dealerHand = hands[1];
   let aces = countAces(userHand);
@@ -190,10 +207,22 @@ const playBlackJack = () => {
   let dealerTotal = addHand(dealerHand);
   let dealerAces = countAces(dealerHand);
   let dealerHandWithAces = evaluateAces(dealerTotal, dealerAces);
+  displayCard(UIDeck["Down"], false);
+  displayCard(UIDeck[dealerHand[1]], false);
+  displayCard(UIDeck[userHand[0]]);
+  displayCard(UIDeck[userHand[1]]);
 
-  // console.log("handWithAces", handWithAces);
-  // console.log("dealerHandWithAces", dealerHandWithAces);
-  // console.log("deck", deck);
+  console.log("handWithAces", handWithAces);
+  console.log("dealerHandWithAces", dealerHandWithAces);
+  console.log("deck", deck);
 };
 
-playBlackJack();
+// Start game button
+const playBtnClicked = () => {
+  gameBtnDiv.classList.remove("hidden");
+  playBtnDiv.classList.add("hidden");
+  let deck = populateDeck();
+  let hands = deal(deck);
+  playBlackJack(deck, hands);
+};
+playBtn.addEventListener("click", playBtnClicked);
