@@ -169,9 +169,8 @@ const playBlackJack = () => {
     if (hitOrStay == "hit") {
       userHand.push(dealCard(deck));
       userTotal = addHand(userHand);
-      userTotalPlusAces = evaluateAces(userTotal, aces);
-      userHandString = makeHandString(userHand);
       handWithAces = evaluateAces(userTotal, aces);
+      userHandString = makeHandString(userHand);
       if (userTotal > 21) {
         alert(`You Busted! 😞 , \n your hand: ${userHandString} \n Total: ${userTotal}`);
         break;
