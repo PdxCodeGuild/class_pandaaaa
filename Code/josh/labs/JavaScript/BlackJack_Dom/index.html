@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Black Jack</title>
+    <link rel="stylesheet" href="./styles/cards.css" />
+    <link rel="stylesheet" href="./styles/styles.css" />
+  </head>
+  <body>
+    <div class="outside-container">
+      <div class="playingCards faceImages">
+        <div class="container">
+          <div id="dealer" class="center">
+            <span class="card back"></span>
+            <span class="card rank-q spades">
+              <span class="rank">Q</span>
+              <span class="suit">&spades;</span>
+            </span>
+          </div>
+          <h4 id="dealer-score" class="center">21</h4>
+
+          <h4 id="player-score" class="center">21</h4>
+          <div id="player" class="center">
+            <span class="card rank-q clubs">
+              <span class="rank">Q</span>
+              <span class="suit">&clubs;</span>
+            </span>
+            <span class="card rank-q clubs">
+              <span class="rank">Q</span>
+              <span class="suit">&clubs;</span>
+            </span>
+            <span class="card rank-a clubs">
+              <span class="rank">A</span>
+              <span class="suit">&clubs;</span>
+            </span>
+          </div>
+
+          <div class="center buttons">
+            <a href="#" class="hit">Hit!</a>
+            <a href="#" class="stay">Stay</a>
+          </div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+    <script src="scripts.js"></script>
+  </body>
+</html>
