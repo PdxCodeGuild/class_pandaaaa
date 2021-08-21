@@ -1,6 +1,6 @@
 console.log("Hello Black Jack");
 
-cardDeck = {
+const cardDeck = {
   "King ♣️": 10,
   "King ♠️": 10,
   "King ❤️": 10,
@@ -55,7 +55,7 @@ cardDeck = {
   "Ace ♦️": 1,
 };
 
-UIDeck = {
+const UIDeck = {
   "King ♣️": `<span class='card rank-k clubs'><span class='rank'>K</span><span class='suit'>&clubs;</span></span>`,
   "King ♠️": `<span class='card rank-k spades'><span class='rank'>K</span><span class='suit'>&spades;</span></span>`,
   "King ❤️": `<span class='card rank-k hearts'><span class='rank'>K</span><span class='suit'>&hearts;</span></span>`,
@@ -207,7 +207,6 @@ const displayCard = (card, handValue, aces, user = true) => {
 };
 
 // event functions
-
 const evaluateHandVsDealer = () => {
   const userTotal = addHand(userHand);
   const userAces = countAces(userHand);
@@ -219,7 +218,7 @@ const evaluateHandVsDealer = () => {
   dealerDownCard.innerHTML = UIDeck[dealerHand[0]];
   if (userTotal > 21) {
     dealerScoreDiv.innerText = dealerHandWithAces;
-    handResults.innerText = `You Busted! 😞`;
+    handResults.innerHTML = resultAnimationSelector(`You Busted! 😞`);
     return;
   }
   while (
@@ -240,15 +239,19 @@ const evaluateHandVsDealer = () => {
     dealerHandWithAces = evaluateAces(dealerTotal, dealerAces);
   }
   dealerScoreDiv.innerText = dealerHandWithAces;
-  if (dealerTotal > 21) {
-    handResults.innerText = `Dealer busted 🥳  \n 🎊  You Win!!! 🎉`;
-  } else if (dealerTotal == handWithAces) {
-    handResults.innerText = `Push 😒`;
+  playerScoreDiv.innerText = handWithAces;
+  if (dealerHandWithAces == handWithAces) {
+    handResults.innerHTML = resultAnimationSelector(`Push 😒`);
   } else if (handWithAces == 21) {
     handResults.innerHTML = `<div class="animated flip"><h1>21!</h1> \n 🎊  You Win!!! 🎉 <div>`;
-  } else if (dealerTotal > handWithAces) {
-    handResults.innerText = `dealer wins 😞 `;
-  } else handResults.innerText = `Dealer has ${dealerTotal}\n 🎊  You Win!!! 🎉`;
+  } else if (dealerHandWithAces > 21) {
+    handResults.innerHTML = resultAnimationSelector(
+      `Dealer busted 🥳  🎊 You Win!!! 🎉`,
+      true
+    );
+  } else if (dealerHandWithAces > handWithAces) {
+    handResults.innerHTML = resultAnimationSelector(`dealer wins 😞 `);
+  } else handResults.innerHTML = resultAnimationSelector(`🎊  You Win!!! 🎉`, true);
 };
 
 const hitBtnClicked = () => {
@@ -261,7 +264,6 @@ const hitBtnClicked = () => {
   if (handWithAces >= 21) {
     evaluateHandVsDealer();
     toggleButtonDisplay(true);
-    console.log("user is >= 21");
   }
 };
 hitBtn.addEventListener("click", hitBtnClicked);
@@ -286,7 +288,6 @@ const toggleButtonDisplay = (isShowingGameButtons = false) => {
   } else {
     hitBtn.addEventListener("click", hitBtnClicked);
     stayBtn.addEventListener("click", stayBtnClicked);
-    console.log("made it here");
     gameBtnDiv.classList.remove("hidden");
     playBtnDiv.classList.add("hidden");
   }
@@ -302,10 +303,10 @@ const playBtnClicked = () => {
   playerScoreDiv.innerText = "0";
   dealerScoreDiv.innerText = "0";
   dealerDiv.innerHTML = "<span/>";
-  console.log("handResults", handResults);
   handResults.innerText = "";
 
   dealHands(playDeck);
+  // put a check here to see if the user got 21 off the bat then do something to showcase that
   toggleButtonDisplay();
 
   let userAces = countAces(userHand);
@@ -325,3 +326,28 @@ const playBtnClicked = () => {
   console.log("deck", playDeck);
 };
 playBtn.addEventListener("click", playBtnClicked);
+
+const resultAnimationSelector = (text, isWinner = false) => {
+  const loosingClassArray = [
+    "wobble",
+    "fadeInDownBig",
+    "rollIn",
+    // "hinge",
+    "rotateInUpRight",
+  ];
+  const winningClassArray = [
+    "heartBeat",
+    "backInDown",
+    "backInUp",
+    "fadeInDownBig",
+    "fadeInUpBig",
+    "flipInY",
+    "rotateIn",
+  ];
+  const i = isWinner ? winningClassArray.length : loosingClassArray.length;
+  const randIndex = Math.floor(Math.random() * i);
+  const animateClass = isWinner
+    ? winningClassArray[randIndex]
+    : loosingClassArray[randIndex];
+  return `<div class="animated ${animateClass}">${text}</div>`;
+};
