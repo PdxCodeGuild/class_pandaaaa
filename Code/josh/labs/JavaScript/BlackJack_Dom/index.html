@@ -7,6 +7,10 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>Black Jack</title>
     <link rel="stylesheet" href="./styles/cards.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"
+    />
     <link rel="stylesheet" href="./styles/styles.css" />
   </head>
   <body>
@@ -14,21 +18,20 @@
       <div class="playingCards faceImages">
         <div class="container">
           <div id="dealer" class="center"></div>
-          <h3 id="dealer-score" class="center">21</h3>
-
-          <h3 id="player-score" class="center">24</h3>
+          <h3 id="dealer-score" class="center"></h3>
+          <h3 id="player-score" class="center"></h3>
           <div id="player" class="center"></div>
 
           <div class="center buttons">
             <div id="game-buttons" class="hidden">
-              <a href="#" class="hit">Hit!</a>
-              <a href="#" class="stay">Stay</a>
+              <a href="#" id="hit" class="hit">Hit!</a>
+              <a href="#" id="stay" class="stay">Stay</a>
             </div>
             <div id="play-btn">
               <a href="#" class="play">Play BlackJack!</a>
             </div>
           </div>
-          <div></div>
+          <h2 id="game-over" class="center"></h2>
         </div>
       </div>
     </div>

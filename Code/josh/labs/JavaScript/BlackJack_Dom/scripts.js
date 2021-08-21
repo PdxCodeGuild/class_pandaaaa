@@ -110,7 +110,11 @@ UIDeck = {
   "Ace ♦️": `<span class='card rank-a diams'><span class='rank'>A</span><span class='suit'>&diams;</span></span>`,
   Down: `<span class="card back">*</span>`,
 };
-
+// Global vars
+let playDeck = Array();
+let userHand = Array();
+let dealerHand = Array();
+// Game functions
 const populateDeck = () => {
   let deck = Array();
   for (card in cardDeck) {
@@ -126,10 +130,8 @@ const dealCard = (deck) => {
   return card;
 };
 
-const deal = (deck) => {
+const dealHands = (deck) => {
   counter = 0;
-  userHand = Array();
-  dealerHand = Array();
   while (counter < 2) {
     userHand.push(dealCard(deck));
     dealerHand.push(dealCard(deck));
@@ -167,62 +169,159 @@ const evaluateAces = (total, aces) => {
   //  you would only want 1 Ace counted as 11 because any more and you would bust
   return total + 10;
 };
-// Dom Functionality
-let hitBtn = document.querySelector(".hit");
-let stayBtn = document.querySelector(".stay");
+// Dom elements
+let hitBtn = document.getElementById("hit");
+let stayBtn = document.getElementById("stay");
 let playBtn = document.querySelector(".play");
 let gameBtnDiv = document.getElementById("game-buttons");
 let playBtnDiv = document.getElementById("play-btn");
 let playerDiv = document.getElementById("player");
 let dealerDiv = document.getElementById("dealer");
-let playerScore = document.getElementById("player-score");
-let dealerScore = document.getElementById("dealer-score");
+let playerScoreDiv = document.getElementById("player-score");
+let dealerScoreDiv = document.getElementById("dealer-score");
+let handResults = document.getElementById("game-over");
 
 // dom updating functions
-const displayCard = (card, user = true) => {
+
+// arg aces will either be the number of aces in the dealer's hand or the value of the player's hand with aces
+const displayCard = (card, handValue, aces, user = true) => {
   const cardUI = document.createElement("span");
   cardUI.innerHTML = card;
+  // if it's the down facing card put an Id of 'down-card' on the element
+  if (card == `<span class="card back">*</span>`) {
+    cardUI.setAttribute("id", "down-card");
+  }
   if (user) {
     playerDiv.appendChild(cardUI);
+    // check to see if user has 21 if so disable hit button and run end game function
+    // and if it's 21 or busted only display that value
+    if (handValue != aces && aces < 21) {
+      playerScoreDiv.innerText = `${handValue} or ${aces}`;
+    } else {
+      playerScoreDiv.innerText = `${aces}`;
+    }
   } else {
+    dealerScoreDiv.innerText = handValue;
     dealerDiv.appendChild(cardUI);
   }
 };
 
 // event functions
-const hitBtnClicked = () => {
-  const cardUI = document.createElement("span");
-  cardUI.innerHTML = UIDeck["Ace ♣️"];
-  playerHand.appendChild(cardUI);
-};
-hitBtn.addEventListener("click", hitBtnClicked);
 
-// main Function
-const playBlackJack = (deck, hands) => {
-  let userHand = hands[0];
-  let dealerHand = hands[1];
-  let aces = countAces(userHand);
-  let userTotal = addHand(userHand);
-  let handWithAces = evaluateAces(userTotal, aces);
+const evaluateHandVsDealer = () => {
+  const userTotal = addHand(userHand);
+  const userAces = countAces(userHand);
+  const handWithAces = evaluateAces(userTotal, userAces);
   let dealerTotal = addHand(dealerHand);
   let dealerAces = countAces(dealerHand);
   let dealerHandWithAces = evaluateAces(dealerTotal, dealerAces);
-  displayCard(UIDeck["Down"], false);
-  displayCard(UIDeck[dealerHand[1]], false);
-  displayCard(UIDeck[userHand[0]]);
-  displayCard(UIDeck[userHand[1]]);
+  let dealerDownCard = document.getElementById("down-card");
+  dealerDownCard.innerHTML = UIDeck[dealerHand[0]];
+  if (userTotal > 21) {
+    dealerScoreDiv.innerText = dealerHandWithAces;
+    handResults.innerText = `You Busted! 😞`;
+    return;
+  }
+  while (
+    dealerHandWithAces < 17 ||
+    (dealerHandWithAces == 17 && dealerHandWithAces != dealerTotal)
+  ) {
+    const card = dealCard(playDeck);
+    dealerHand.push(card);
+    dealerTotal = addHand(dealerHand);
+    dealerAces = countAces(dealerHand);
+    dealerHandWithAces = evaluateAces(dealerTotal, dealerAces);
+    displayCard(UIDeck[card], dealerTotal, dealerAces, false);
+    if (dealerHandWithAces == 17 && dealerHandWithAces != dealerTotal) {
+      console.log(`Dealer has a soft 17, they hit ${dealerHand[-1]}`);
+    }
+    dealerTotal = addHand(dealerHand);
+    dealerAces = countAces(dealerHand);
+    dealerHandWithAces = evaluateAces(dealerTotal, dealerAces);
+  }
+  dealerScoreDiv.innerText = dealerHandWithAces;
+  if (dealerTotal > 21) {
+    handResults.innerText = `Dealer busted 🥳  \n 🎊  You Win!!! 🎉`;
+  } else if (dealerTotal == handWithAces) {
+    handResults.innerText = `Push 😒`;
+  } else if (handWithAces == 21) {
+    handResults.innerHTML = `<div class="animated flip"><h1>21!</h1> \n 🎊  You Win!!! 🎉 <div>`;
+  } else if (dealerTotal > handWithAces) {
+    handResults.innerText = `dealer wins 😞 `;
+  } else handResults.innerText = `Dealer has ${dealerTotal}\n 🎊  You Win!!! 🎉`;
+};
 
-  console.log("handWithAces", handWithAces);
-  console.log("dealerHandWithAces", dealerHandWithAces);
-  console.log("deck", deck);
+const hitBtnClicked = () => {
+  const card = dealCard(playDeck);
+  userHand.push(card);
+  const userTotal = addHand(userHand);
+  const userAces = countAces(userHand);
+  const handWithAces = evaluateAces(userTotal, userAces);
+  displayCard(UIDeck[card], userTotal, handWithAces);
+  if (handWithAces >= 21) {
+    evaluateHandVsDealer();
+    toggleButtonDisplay(true);
+    console.log("user is >= 21");
+  }
+};
+hitBtn.addEventListener("click", hitBtnClicked);
+
+const stayBtnClicked = () => {
+  toggleButtonDisplay(true);
+  evaluateHandVsDealer();
+};
+stayBtn.addEventListener("click", stayBtnClicked);
+
+const toggleButtonDisplay = (isShowingGameButtons = false) => {
+  if (isShowingGameButtons) {
+    hitBtn.removeEventListener("click", hitBtnClicked);
+    stayBtn.removeEventListener("click", stayBtnClicked);
+    gameBtnDiv.classList.add("animated", "fadeOutUp");
+    setTimeout(() => {
+      gameBtnDiv.classList.add("hidden");
+      playBtnDiv.classList.remove("hidden");
+      playBtnDiv.classList.add("animated", "fadeInDown");
+      gameBtnDiv.classList.remove("animated", "fadeOutUp");
+    }, 1000);
+  } else {
+    hitBtn.addEventListener("click", hitBtnClicked);
+    stayBtn.addEventListener("click", stayBtnClicked);
+    console.log("made it here");
+    gameBtnDiv.classList.remove("hidden");
+    playBtnDiv.classList.add("hidden");
+  }
 };
 
 // Start game button
 const playBtnClicked = () => {
-  gameBtnDiv.classList.remove("hidden");
-  playBtnDiv.classList.add("hidden");
-  let deck = populateDeck();
-  let hands = deal(deck);
-  playBlackJack(deck, hands);
+  playDeck = populateDeck();
+  userHand = Array();
+  dealerHand = Array();
+
+  playerDiv.innerHTML = "<span/>";
+  playerScoreDiv.innerText = "0";
+  dealerScoreDiv.innerText = "0";
+  dealerDiv.innerHTML = "<span/>";
+  console.log("handResults", handResults);
+  handResults.innerText = "";
+
+  dealHands(playDeck);
+  toggleButtonDisplay();
+
+  let userAces = countAces(userHand);
+  let userTotal = addHand(userHand);
+  let handWithAces = evaluateAces(userTotal, userAces);
+  let dealerTotal = addHand(dealerHand);
+  let dealerAces = countAces(dealerHand);
+  let dealerHandWithAces = evaluateAces(dealerTotal, dealerAces);
+  let dealerUpCardValue = cardDeck[dealerHand[1]];
+  displayCard(UIDeck["Down"], dealerUpCardValue, dealerAces, false);
+  displayCard(UIDeck[dealerHand[1]], dealerUpCardValue, dealerAces, false);
+  displayCard(UIDeck[userHand[0]], userTotal, handWithAces);
+  displayCard(UIDeck[userHand[1]], userTotal, handWithAces);
+
+  console.log("handWithAces", handWithAces);
+  console.log("dealerHandWithAces", dealerHandWithAces);
+  console.log("deck", playDeck);
 };
 playBtn.addEventListener("click", playBtnClicked);

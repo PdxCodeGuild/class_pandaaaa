@@ -31,7 +31,9 @@ body {
   margin-right: 5px;
   margin-left: 5px;
 }
-
+#game-over {
+  text-align: center;
+}
 /* button Styles */
 .hit {
   box-shadow: inset 0px 1px 0px 0px #3dc21b;
