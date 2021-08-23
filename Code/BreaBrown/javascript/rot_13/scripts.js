@@ -25,12 +25,14 @@ class Encryptor {
         'w': 'j',
         'x': 'k',
         'y': 'l',
-        'z': 'm'
+        'z': 'm',
+        ' ': ' '
         }
     }
 
     convert() {
-        let user_input = prompt('Enter what you want to encrypt here: ');
+        let user_input = document.getElementById('encrypt').value
+        console.log(user_input)
         let output = '';
         for (let i = 0; i < user_input.length; i++) {
             output += this.rot13_dict[user_input[i]];
@@ -41,6 +43,17 @@ class Encryptor {
         return output;    
         }
     }
+
+let rot_13 = function() {
+    let rot_13_convert = new Encryptor();
+    let solution = document.getElementById('encrypted')
+    let encryption = rot_13_convert.convert()
+    console.log(encryption)
+    solution.innerText = encryption
+}
+
+
+let submit = document.getElementById('submit')
+submit.addEventListener('click',rot_13)
  
-let rot_13_convert = new Encryptor();
-console.log(rot_13_convert.convert())
+// console.log(rot_13_convert.convert())
