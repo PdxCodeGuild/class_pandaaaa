@@ -1,0 +1,65 @@
+.target {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+:root {
+    --bg-color: white;
+}
+
+.quoteAuthor {
+    color: red;
+    font-weight: bolder;
+    text-align: end;
+}
+
+body {
+    background-color: black;
+}
+
+.quoteBody:hover {
+    /* content-visibility: visible; */
+    /* background-color: white; */
+    /* text-transform: uppercase; */
+    font-size: x-large;
+}
+
+.quoteBody {
+    background-color: var(--bg-color);
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    border: 1px solid black;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+    padding-inline: 5vh;
+    border-radius: 99px;
+    margin-inline: 5vh;
+    width: 23%;
+    /* content-visibility: hidden; */
+}
+
+.searchBar {
+    display: grid;
+    align-content: space-around;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.pageBtn {
+    color: black;
+}
+
+.hide {
+    display: none;
+}
+
+.pageBtns {
+    text-align: center;
+}
+
+.pageBtn,
+.currPage {
+    font-size: xxx-large;
+}
