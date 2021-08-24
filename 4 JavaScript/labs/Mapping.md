@@ -10,6 +10,7 @@ You need to:
 2. Get the data for the ten users from [jsonplaceholder](https://jsonplaceholder.typicode.com/)
 3. From that data, extract the latitude and longitude associated with each user
 4. Display a marker on the map marking their location using the extracted lat/lon values. **Note: these locations will be in weird places, that's ok.**
+#optional--------
 5. Create a popup for the marker. When the marker is clicked, a popup should show (see the imgage below) containing information about the name and address of the user associated with that location. 
 6. Display some other information for the users in a different part of the page, off the map. I chose to stuff everything below the map. I encourage (but am not requiring) you to be more creative.
 
