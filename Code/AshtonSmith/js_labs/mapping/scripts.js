@@ -68,3 +68,21 @@ fetch('https://jsonplaceholder.typicode.com/users/')
             currentMarker.addTo(mymap);
         }
     })
+
+
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        message: 'Hello Vue!'
+    },
+    methods: {
+        methodName: function() {
+            if (this.message === 'Hello Vue!') {
+                this.message = 'you clicked something'
+            } else {
+                this.message = 'Hello Vue!'
+            }
+        }
+    }
+})
