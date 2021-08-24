@@ -5,19 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="requests.css">
 </head>
 <body>
+
+    <input type="text" id="search">
+    <button id="searchBtn">Search Quotes</button>
+    <div id="loading"></div>
+
     <div id="target">
         <p id="textTarget"></p>
 
     </div>
-    <input type="text" id="search">
-    <button id="showQuote">Search Quotes</button>
+
     <!-- cdn for axios -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!-- secrets here, dont upload to github, must be above script file that uses it -->
     <script src="secrets.js"></script>
+    <script src="axiosSearch.js"></script>
     <!-- <script src="axios.js"></script> -->
-    <script src="ajax.js"></script>
+    <!-- <script src="ajax.js"></script> -->
 </body>
 </html>

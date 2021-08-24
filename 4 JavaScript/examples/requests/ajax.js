@@ -2,8 +2,6 @@ let target = document.getElementById("target");
 let textTarget = document.getElementById("textTarget")
 let resultHTML = ''
 
-
-
 let btn = document.getElementById('showQuote')
 let setText = function(){
     let req = new XMLHttpRequest();

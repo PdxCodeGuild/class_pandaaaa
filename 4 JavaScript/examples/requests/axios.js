@@ -15,8 +15,8 @@ console.log(response.data)
     target.appendChild(quoteDiv)
 })
 }
-
-let btn = document.getElementById('showQuote')
+let searchinput= document.getElementById('search')
+let btn = document.getElementById('search')
 // let setText = function(){
 //     textTarget.innerHTML = resultHTML;
 //     console.log(resultHTML)
