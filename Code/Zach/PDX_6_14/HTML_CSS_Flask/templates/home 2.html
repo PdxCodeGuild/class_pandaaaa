@@ -1,0 +1,22 @@
+{% extends zach_lab5_flask.html %}
+
+{% block head %}
+<title>Converter</title>
+{% endblock %}
+
+{% block body %}
+  
+<div class="form-div">
+    {{ converter }}
+    <a href="/converter">Get New Conversion</a>
+</div>
+<div> 
+    <form action="" method="get">
+        <input type="text" name="distance" placeholder="Enter the distance"/>
+        <input type="text" name="units" placeholder="What are the starting units?"/>
+        <input type="text" name="new_units" placeholder="What are the new units to be?"/>
+        <input type="text" name="distance" placeholder="enter some the distance"/>
+        <button type="submit">submit</button>
+    </form>
+</div>
+{% endblock %}
