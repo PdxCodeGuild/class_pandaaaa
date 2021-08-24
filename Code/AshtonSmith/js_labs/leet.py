@@ -5,17 +5,11 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        temp = []
-        temp2 = []
+        temp = dict()
         for i in range(len(nums)):
-            if(nums[i] < target):
+            temp2 = target - nums[i]
+            if(temp2 not in temp):
                 temp.append(i)
-        for j in range(len(temp)):
-            print (target - nums[temp[j]])
-            if (target - nums[temp[j]]) in nums and (target - nums[temp[j]] !=  nums[temp[j]]):
-                return [temp[j], nums.index(target-nums[temp[j]])]
-            else:
-                nums.pop(j)
             
         
         
@@ -24,4 +18,4 @@ class Solution(object):
 
 
 mySolution = Solution()
-print(mySolution.twoSum([5,2,11,4],9))
+print(mySolution.twoSum([5,2,11,4,3],5))

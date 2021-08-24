@@ -1,12 +1,14 @@
 // let url = "https://favqs.com/api/qotd"
 let url = "https://favqs.com/api/quotes/?filter="
-
 let target = document.getElementById("target");
 let textTarget = document.getElementById("textTarget")
 let searchTerm = document.getElementById("search")
 let currPage = 1
+let myLoading = document.getElementById("loadingBar")
+
 let getData = function() {
     console.log(url + searchTerm.value)
+    myLoading.classList.remove("hide")
     let myUrl = url + searchTerm.value + "&page=" + currPage
     axios.get(myUrl, {
         headers: {
@@ -28,7 +30,6 @@ let getData = function() {
             target.appendChild(quoteDiv)
         }
         //determine pagination button requirements.. then add or remove buttons.
-
         currPageBtn.innerText = "PAGE: " + currPage;
         if (!response.data.last_page) {
             if (currPage != 1)
@@ -39,6 +40,9 @@ let getData = function() {
         } else {
             nextPageBtn.classList.add('hide')
         }
+    }).finally(() => {
+        myLoading.classList.add("hide")
+        console.log("finally")
     })
 }
 
@@ -70,6 +74,7 @@ let setText = function() {
     console.log(resultHTML)
     console.log(textTarget)
 }
+
 btn.addEventListener('click', searchData)
 nextPageBtn.addEventListener('click', nextPage)
 prePageBtn.addEventListener('click', prePage)
