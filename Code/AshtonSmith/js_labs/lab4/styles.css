@@ -1,0 +1,25 @@
+.hide {
+    display: none;
+}
+
+.todoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #88bbbb;
+    width: min-content;
+    padding: 50px;
+    flex-wrap: wrap;
+    margin: 10px;
+}
+
+.myContent {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.close {
+    background-color: red;
+    color: white;
+}
