@@ -1,0 +1,15 @@
+.completed {
+    text-decoration:line-through;
+}
+.remove_todo_bt {
+    color:red;
+}
+.complete_todo_bt {
+    color:green;
+}
+.edit_todo_bt {
+    color: orange;
+}
+.hidden{
+    display: none;
+}
