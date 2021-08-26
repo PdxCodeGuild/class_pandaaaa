@@ -22,6 +22,7 @@
             </div>
 
         <h1>Hello DOGS</h1>
+        <!-- page 1 create dogs -->
         <div v-if="pageNum == 1">
             <div class="form-floating">
                 <input type="text" id="dogname" class="form-control" v-on:keyup.enter="addDog" v-model="name"/>
@@ -50,9 +51,11 @@
             <button v-on:click="getPic" v-if="dogPic"type="button" class="btn btn-secondary">Not my dog, try again</button>
             <button v-on:click="saveDog" v-if="dogPic"type="button" class="btn btn-secondary">SAVE THIS DOG</button>
         </div>
+        <!-- page 2 ALL DOGS -->
         <div v-else-if="pageNum==2">
             <h3>ALL DOGS</h3>
             <button v-on:click="saveAllDogs" type="button" class="btn btn-secondary">SAVE ALL DOG</button>
+            <button v-on:click="downloadDogs" type="button" class="btn btn-secondary">DOWNLOAD DOG</button>
 
             <div v-for="dog in savedDogs"class="card" style="width: 18rem;">
                 <img class="card-img-top" v-bind:src="dog.dogPic" alt="Card image cap">
@@ -65,7 +68,6 @@
                   </p>
                 </div>
               </div>
-
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/BrowserFS/2.0.0/browserfs.min.js" integrity="sha512-mz0EI+Ay1uIJP7rZEX8C/JlTAcHRIQ8Sny4vxmmj8MSzDJgG9NxxY2pUmOGv1lO7imFIFMyjjCzEXEywNgaUdQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
