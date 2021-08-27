@@ -1,41 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel = "stylesheet" href ="styles.css">
-    <script src = "scripts.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
     <title>Document</title>
 </head>
+
 <body>
     <div id='app'>
-        <div id = "navBar" class = "navBar">
-            <button v-on:click="addTodo">Add</button>
-            <button v-on:click="populateTodo">Populate</button>
-            <button id = "closeBtn" class="close hide" v-on:click="listTodo">X</button>
+        <div id="navBar" class="navBar">
+            <button class="navBtn" v-on:click="addTodo">Add</button>
+            <button class="navBtn" v-on:click="populateTodo">Populate</button>
+            <button id="closeBtn" class="close hide" v-on:click="listTodo">X</button>
         </div>
-        <div id ="myForm" class="myForm hide">
-                ToDo Name: <input type="text" v-model="formName"></input><br>
-                ToDo Description: <input type="text" v-model="formDescription"></input><br>
-                ToDo Due Date: <input type="date" v-model="formDueDate"></input><br>
-                <button v-on:click="submitTodo">Submit</button>
+        <div id="myForm" class="myForm hide">
+            ToDo Name: <input type="text" v-model="formName"></input><br> ToDo Description: <input type="text" v-model="formDescription"></input><br> ToDo Due Date: <input type="date" v-model="formDueDate"></input><br>
+            <button id="submitBtn" v-on:click="submitTodo">Submit</button>
+            <button id="editBtn" v-on:click="submitEdit">EDIT</button>
         </div>
         <div id="myContent" class="myContent">
             <div v-for="(todo,index) in my_todos">
                 <div v-if="!todo.isCompleted">
-                <div class = "todoContainer">
-                    <p class = "todoName">{{todo.name}}</p><br> 
-                    <p class = "todoDate">{{todo.dueDate}}</p><br>
-                    <p class = "todoDescription">{{todo.description}}</p><br>
-                    <button v-on:click="markDone(index)">List</button>
-                </div>
+                    <div class="todoContainer">
+                        <p class="todoName">Name: {{todo.name}}</p><br>
+                        <p class="todoDate">Due Date: {{todo.dueDate}}</p><br>
+                        <p class="todoDescription">Description: {{todo.description}}</p><br>
+                        <button class="todoBtn" v-on:click="markDone(index)">&#10060;</button>
+                        <button class="todoBtn" v-on:click="editTodo(index)">&#9998;</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
-<script src="https://unpkg.com/moment"/></script>
+<script src="https://unpkg.com/moment" /></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
 </html>
