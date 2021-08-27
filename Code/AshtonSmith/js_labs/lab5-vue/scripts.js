@@ -14,7 +14,8 @@ var app = new Vue({
             axios.get(url, {
                 headers: { Authorization: `Token token="${token}"` }
             }).then(response => {
-                // console.log(response.data.last_page)
+                console.log(response.data)
+                    // console.log(response.data.last_page)
                 let preBtn = document.getElementById("preBtn")
                 let nextBtn = document.getElementById("nextBtn")
                 let currPageBtn = document.getElementById("currPageBtn")
@@ -35,6 +36,7 @@ var app = new Vue({
                 }
                 if (this.currentQuotes != [])
                     currPageBtn.classList.remove('hide')
+                this.currPage = response.data.page
             })
 
             // for (let i = 0; i < reponse.length; ++i) {}
