@@ -5,9 +5,11 @@ import json
 # import the Todo model from the models file
 from .models import Todo
 
+# rendering template
 def todo_list(request):
     return render(request, 'todos/list.html')
 
+# getting list from database, sending as JSON response
 def todos(request):
     todos = Todo.objects.order_by('-created_at')
     all_todos= []
@@ -23,12 +25,7 @@ def todos(request):
         )
     return JsonResponse({'todos': all_todos})
 
-# view to get retrieve a specific todo from the database and send it to the 'todos/detail.html' view
-def details(request, id):
-    todo = Todo.objects.get(id = id)
-    return render(request, 'todos/detail.html', {"todo": todo})
-
-
+# handling post request to save new todo in database
 @login_required
 def add_todo(request):
     print(request.body)
@@ -36,38 +33,3 @@ def add_todo(request):
     newTask = Todo(title=data['name'], text=data['description'], status=False)
     newTask.save()
     return HttpResponse('Ok!')
-
-# view to remove a specific todo from the database specified by its id
-def remove_todo(request, id):
-    todo = Todo.objects.get(id = id)
-    todo.delete()
-    
-    return redirect('list')
-
-# helper function for updating a todo. gets the todo info specified by the id and redirects to its detail page
-def update_todo(request, id):
-    todo = Todo.objects.get(id = id)
-    return redirect('details', todo.id)
-
-# view to update a todo in the databse specified by its id
-def update(request, id):
-    todo = Todo.objects.get(id = id)
-    if request.method == 'GET':
-        return render(request, 'todos/update.html', {'todo': todo})
-    elif request.method == 'POST':
-        todo.title = request.POST['title']
-        todo.text = request.POST['text']
-        if (request.POST['status'] == 'False'):
-            todo.status = False
-        else:
-            todo.status = True
-        todo.save()
-        return redirect('details', todo.id)
-
-# mark a todo as done
-def mark_done(request, id):
-    todo = Todo.objects.get(id = id)
-    todo.status = True
-    todo.save()
-
-    return redirect('details', todo.id)
