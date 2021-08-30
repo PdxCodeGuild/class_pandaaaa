@@ -27,7 +27,6 @@ let getData = function () {
         // console.log(i);
         // quote = `<div class="item"> <p class="quote">${data[i].body}</p> <p class="author">${data[i].author}</p></div>`;
         quote = `<div class="item"> <p class="quote">${element.body}</p> <p class="author">${element.author}</p></div>`;
-        
         newDiv1 = document.createElement("div");
         newDiv1.innerHTML = quote;
         quoteContainer = document.getElementById("textTarget");
