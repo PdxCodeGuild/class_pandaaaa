@@ -43,7 +43,8 @@ let app = new Vue({
                         };
                         app.quotes.push(a_quote)
                     }
-                })
+                }) 
         }
     }
 });
+ 
