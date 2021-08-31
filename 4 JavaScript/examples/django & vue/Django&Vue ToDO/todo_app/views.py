@@ -20,7 +20,8 @@ def todos(request):
                 'text': todo.text,
                 'status': todo.status,
                 'created_at': todo.created_at,
-                'priority': todo.priority
+                'priority': todo.priority,
+                'pk': todo.pk
             }
         )
     return JsonResponse({'todos': all_todos})
@@ -33,3 +34,11 @@ def add_todo(request):
     newTask = Todo(title=data['name'], text=data['description'], status=False)
     newTask.save()
     return HttpResponse('Ok!')
+
+# handling removing todo from database
+def delete_todo(request):
+    print(request.body)
+    data = json.loads(request.body)
+    todo = Todo.objects.get(id=data['pk'])
+    todo.delete()
+    return HttpResponse('removed!')
