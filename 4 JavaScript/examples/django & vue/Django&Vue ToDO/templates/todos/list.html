@@ -1,0 +1,44 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div id="app">
+  <div class="row">
+    <input id="todo" type="text" class="validate" v-model="todoName" />
+    <label for="todo">To do title</label>
+  </div>
+  <div class="row">
+    <input
+      id="description"
+      v-on:keyup.enter="addTodo"
+      type="text"
+      class="validate"
+      v-model="todoDescription"
+    />
+    <label for="description">To do description</label>
+  </div>
+  <div class="row">
+    <ul class="col">
+      <h4>Things to do:</h4>
+      <li class="z-depth-2" v-for="todo in todos" v-if="!todo.status">
+        <h6>[[todo.name]]</h6>
+        <blockquote>[[todo.text]]</blockquote>
+      </li>
+    </ul>
+    <div class="col">
+      <ul class="col">
+        <h4>Things you did:</h4>
+        <li class="z-depth-2" v-for="todo in todos" v-if="todo.status">
+          <h6>[[todo.name]]</h6>
+          <blockquote>[[todo.text]]</blockquote>
+        </li>
+      </ul>
+    </div>
+  </div>
+  [[ message ]]
+</div>
+
+<!-- cdn for vue -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<!-- cdn for axios -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<!-- my scripts :)  -->
+<script src="{% static 'js/main.js' %}"></script>
+{% endblock %}
