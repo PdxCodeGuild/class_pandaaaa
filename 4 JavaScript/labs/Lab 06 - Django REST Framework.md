@@ -22,7 +22,7 @@ Use the [WSVincent DRF tutorial](https://learndjango.com/tutorials/django-rest-f
 Your API needs to have the ability to create students, retrieve either a list of students or any specific student, edit a student, and delete students. Make sure you use the browsable API to test all these features out.
 
 ## Make Javascript request to API
-- install django-cors-headers & add to app list in settings.py
+- install django-cors-headers & add "corsheaders" to app list in settings.py
 - add "'corsheaders.middleware.CorsMiddleware'" to MIDDLEWARE on settings.py
 - add CORS_ORIGIN_ALLOW_ALL = True on settings.py
 - add ALLOWED_HOSTS = ['*' ] on settings.py
