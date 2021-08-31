@@ -1,0 +1,18 @@
+.studentInfo {
+    list-style: none;
+    padding-inline: 20px;
+}
+
+.studentContainer {
+    background-color: lightblue;
+    display: grid;
+    justify-content: start;
+    justify-items: start;
+    align-items: start;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
