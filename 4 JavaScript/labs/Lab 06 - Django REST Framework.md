@@ -26,7 +26,6 @@ Your API needs to have the ability to create students, retrieve either a list of
 - add "'corsheaders.middleware.CorsMiddleware'" to MIDDLEWARE on settings.py
 - add CORS_ORIGIN_ALLOW_ALL = True on settings.py
 - add ALLOWED_HOSTS = ['*' ] on settings.py
-- add CORS_ORIGIN_ALLOW_ALL = True on settings.py
 
 
 
