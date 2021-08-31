@@ -9,7 +9,6 @@ var app = new Vue({
       currentRoute: window.location.pathname
     },
     mounted: function () {
-      // get all dog breeds from api to populate form select
       axios.get("http://127.0.0.1:8000/api").then(function (response) {
         app.allBoletes = response.data;
       });
