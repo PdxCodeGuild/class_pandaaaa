@@ -1,6 +1,6 @@
-from django.urls import path
-from .views import BoleteListView
+# from django.urls import path
+# from .views import BoleteListView
 
-urlpatterns = [
-    path('', BoleteListView.as_view(), name='home'),
-]
+# urlpatterns = [
+#     path('', BoleteListView.as_view(), name='home'),
+# ]

@@ -6,7 +6,7 @@ var app = new Vue({
 
     data: {
       allBoletes: [],
-      currentRoute: window.location.pathname
+    //   currentRoute: window.location.pathname
     },
     mounted: function () {
       axios.get("http://127.0.0.1:8000/api").then(function (response) {
