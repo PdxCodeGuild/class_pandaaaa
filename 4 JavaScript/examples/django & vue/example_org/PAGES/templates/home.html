@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+    Hi {{ user.username }}!
+    <p><a href="{% url 'logout' %}">Log Out</a></p>
+    {% else %}
+    <p>You are not logged in</p>
+    <a href="{% url 'login' %}">Log In</a> |
+    <a href="{% url 'signup' %}">Sign Up</a>
+    {% endif %}
+    <div id="app">
+        <div class="container mt-2">
+            <div class="row mb-6">
+                <div class="col-md">
+                <h1>Selected Student</h1>
+                <div v-for="student in allStudents" v-if="student.id == currentStudentPK" style="position:fixed">
+                     [[ student.first_name ]]
+                     [[ student.last_name ]]
+                     <button type="button" class="btn btn-info" v-on:click="editing = !editing">Edit</button>
+                     <button type="button" class="btn btn-warning" v-on:click="deleteStudent(student.id)">Delete</button>
+                    <div v-if="editing">
+                     <input class="form-control" type="text" v-model="first_name" :value="student.first_name">
+                     <input class="form-control" type="text" v-model="last_name" :value="student.last_name">
+                     <input class="form-control" type="text" v-model="cohort" :value="student.cohort">
+                     <input class="form-control" type="text" v-model="fav_teacher" :value="student.favorite_teacher">
+                     <button type="button" class="btn btn-info" v-on:click="updateStudent(student.id)">Submit</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-9">
+                <div class="row"> 
+            <h1>All Students</h1>
+                <div v-for="student in allStudents" class="col-lg-5 col-sm-6 col-xs-12">
+                    <div class="card card-block">
+                    <img src="https://static.pexels.com/photos/7096/people-woman-coffee-meeting.jpg" alt="Photo of sunset">
+                        <h5 class="card-title mt-3">[[ student.first_name ]]</h5>
+                        <p class="card-text ">
+                            <li>cohort: [[ student.cohort ]]</li>
+                            <li>favorite teacher: [[ student.favorite_teacher ]]</li>
+                            <button v-on:click="studentDetail(student.id)">Select this student</button>
+                        </p> 
+                  </div>
+                </div>   
+            </div>
+            </div>
+            </div>
+            </div>
+            <button type="button" v-on:click="adding = !adding" class="btn btn-primary btn-lg btn-block">Add New Student</button>
+            <div v-show="adding">
+                <input class="form-control" type="text" v-model="first_name" placeholder="first name">
+                <input class="form-control" type="text" v-model="last_name" placeholder="last name">
+                <input class="form-control" type="text" v-model="cohort" placeholder="cohort">
+                <input class="form-control" type="text" v-model="fav_teacher" placeholder="favorite teacher">
+                <button type="button" class="btn btn-info" v-on:click="addStudent">Submit</button>
+            </div>
+    
+    </div>
+    
+        <!-- bootstrap -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+        
+        <!-- cdn for vue -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <!-- cdn for axios -->
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <!-- my scripts :)  -->
+        <script src="{% static 'js/app.js' %}"></script>
+
+
+
+    {% endblock %}
+
+
