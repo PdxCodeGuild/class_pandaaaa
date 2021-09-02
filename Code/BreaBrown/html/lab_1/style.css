@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Rouge+Script&display=swap');
+
+body {
+    font-family: 'Special Elite', 'cursive';
+    text-align: center;
+    background-image: url('pics/background.jpg');
+    font-color: #18291b;
+}
+
+.round-corners {
+    border-radius: 50px;
+}
+
+p {
+    margin-top: 15px;
+    margin-bottom: 50px;
+    margin-right: 160px;
+    margin-left: 70px;
+  }
+
+span {
+    background-color: #c4c4c4;
+    display: block;
+    height: auto;
+    width: auto;
+
+}  
+
+a:link {
+    color: #ff0ad5;
+}
+a:visited {
+    color: #ff67ff;
+}
+
+q {
+    font-family: 'Pinyon Script', cursive;
+    font-family: 'Rouge Script', cursive;
+    font-size: 30px;
+}
+
+ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    list-style-type: square;
+}
+

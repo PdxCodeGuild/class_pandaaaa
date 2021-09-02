@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+}
+
+header {
+    background-color: beige;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2rem;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.flex-gallery {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 100%;
+    align-items: center;
+
+}
+
+.pic {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.order-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: auto;
+}
+
+form {
+    margin-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+label {
+    padding-right: 1rem;
+    justify-content: center;
+}
+
+div {
+    padding: 1rem;
+}
+
+span {
+    padding: 5px;
+}
+
+.tortillas {
+    display: flex;
+    flex-direction: row;
+}
+
+.rice {
+    display: flex;
+    flex-direction: row;
+}
+
+.protein {
+    display: flex;
+    flex-direction: row;
+}
+
+.vegetables {
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chirp</title>
+    <link href="{% static 'css/materialize.min.css'%}" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous"/>
+</head>
+<body>
+    <header>
+    <nav class="nav-wrapper">
+
+            <h1><a href="{% url 'ChirpApp:home' %}" class="brand-logo"> Chirp </a></h1>
+            <a href="" class="sidenav-trigger" data-target="mobile-menu">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                {% if user.is_authenticated %}
+                <li>
+                    <div class="flex-container">
+                        Welcome, <a href="{% url 'users:profile' user.username %}">{{ user.username }}</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="{% url 'ChirpApp:new' %}"> +Make New Post </a>
+                </li>
+                <li>
+                    <a href="{% url 'logout' %}"> Logout </a>
+                </li>
+                {% else %}
+                <li>
+                    <a href="{% url 'login' %}"> Login </a>
+                </li>
+                <li>
+                    <a href="{% url 'users:signup' %}"> Sign Up </a>
+                </li>
+                {% endif %}
+            </ul>
+            <ul class="sidenav deep-purple lighten-2" id="mobile-menu">
+                {% if user.is_authenticated %}
+                <li>
+                    <div class="flex-container">
+                        Welcome, <a href="{% url 'users:profile' user.username %}">{{ user.username }}</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="{% url 'ChirpApp:new' %}"> +Make New Post </a>
+                </li>
+                <li>
+                    <a href="{% url 'logout' %}"> Logout </a>
+                </li>
+                {% else %}
+                <li>
+                    <a href="{% url 'login' %}"> Login </a>
+                </li>
+                <li>
+                    <a href="{% url 'users:signup' %}"> Sign Up </a>
+                </li>
+                {% endif %}
+            </ul>
+        
+
+    </nav>
+    </header>
+    <div class="container">
+    {% block content %}
+    {% endblock content %}
+    </div>
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{% static 'js/materialize.min.js' %}"> </script>
+<script>
+    $(document).ready(function(){
+        $('.sidenav').sidenav();
+    });
+
+</script>
+</html>
