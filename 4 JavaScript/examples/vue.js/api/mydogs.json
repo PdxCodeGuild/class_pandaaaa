@@ -1,0 +1,23 @@
+[
+    {
+        "age": 0,
+        "size": "",
+        "name": "Hugo",
+        "breed": "basenji",
+        "dogPic": "https://images.dog.ceo/breeds/basenji/n02110806_749.jpg"
+    },
+    {
+        "age": "3",
+        "size": "Medium",
+        "name": "Daisy",
+        "breed": "havanese",
+        "dogPic": "https://images.dog.ceo/breeds/havanese/00100trPORTRAIT_00100_BURST20191222103956878_COVER.jpg"
+    },
+    {
+        "age": 0,
+        "size": "SUPER big",
+        "name": "Baby",
+        "breed": "dane",
+        "dogPic": "https://images.dog.ceo/breeds/dane-great/n02109047_1533.jpg"
+    }
+]

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+        <!-- Title -->
+        <title>My Todo List</title>
+        
+        <!-- Materialize Stylesheets and JS -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    </head>
+    <body>
+        <div class="container"><h1 class="center align teal lighten-3 white-text">VueTodo!</h1></div><br><br>
+
+        <div id="app">
+            <div class="container" class="container center-align grey">
+                {{message}}<br><br>
+
+        <!-- <div class="container center-align teal lighten-3 white-text" v-if="!todos.length">You don't have any tasks!</div> -->
+        
+       
+        <form>
+            <div class="container">
+                <label for="task" class="form-label">Task</label>
+                <input type="text" class="form-control" id="task" v-model="task">
+            </div>
+            <div class="container">
+                <label>Priority</label>
+                <select class="browser-default">
+                    <option value="" disabled selected>Choose a priority level</option>
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
+            <div class="container"><button v-on:click="addTodo">Submit</button></div><br>
+            </div>
+        </form>
+        </div>
+        </div>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script src="js/site.js"></script>
+    </body>
+</html>

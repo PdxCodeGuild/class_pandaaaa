@@ -1,0 +1,69 @@
+.hide {
+    display: none;
+}
+
+html {
+    background-color: #1e4b4b;
+}
+
+#searchTerm {
+    height: 27px;
+}
+
+.quoteBody {
+    color: white;
+}
+
+.quoteAuthor {
+    color: red;
+    font-family: fantasy;
+}
+
+.quoteContainer {
+    padding-inline: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: rgb(42 42 49);
+}
+
+.quoteContainer:hover {
+    background-color: burlywood;
+    /* color: black; */
+    font-size: larger;
+    transition: 0.5s;
+}
+
+.quoteBody,
+.quoteAuthor {
+    padding-inline: 3vw;
+}
+
+.paginateBtns {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.searchBar {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.myBtn {
+    background-color: darkolivegreen;
+    color: white;
+    border-radius: 5px;
+    border-color: white;
+    border-width: 8px;
+}
+
+.myBtn:hover {
+    background-color: green;
+    font-size: large;
+    transition-duration: 0.25s;
+}

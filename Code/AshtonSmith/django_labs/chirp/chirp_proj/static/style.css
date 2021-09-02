@@ -1,0 +1,44 @@
+.left-bar{
+    background-color: white;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 50px;
+    height:100%;
+    align-items: center;
+}
+.left-bar a{
+    margin:25px;
+    margin-left:40px;
+}
+.left-bar button{
+    margin:25px;
+    margin-left:40px;
+}
+.right-bar{
+    float: right;
+    display: flex; 
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 50px;
+    height: 100vh;
+    background-color: white;
+    align-items: center;
+}
+
+
+.left-bar form{
+    margin:25px;
+    margin-right:40px;
+}
+
+.center-content{
+    margin-top: 2px;
+    margin-left: 206px;
+    margin-right: 324px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    align-items: center;
+}

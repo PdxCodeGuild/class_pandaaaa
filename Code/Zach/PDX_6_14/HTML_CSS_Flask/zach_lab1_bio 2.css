@@ -1,0 +1,50 @@
+html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    font-family: "arial", Arial, Helvetica, sans-serif;
+    color: whitesmoke;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 100px;
+    margin-right: 100px;
+    padding-top: 200px;
+    padding-bottom: 200px;
+    padding-left: 200px;
+    padding-right: 200px;
+    background-image: url("https://wallpaperstock.net/dreamy-night-landscape-wallpapers_42494_1440x900.jpg");
+    background-color: rgb(100, 216, 231);
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 5px;
+    border-color: aqua;
+    list-style-type: circle
+
+}
+img {
+    border-radius: 50%;
+  }
+a:link {
+  color: red;
+}
+a:visited {
+  color: green;
+}
+a:hover {
+  color: hotpink;
+}
+ul.b {
+    list-style-type: circle;
+}
+a:active {
+  color: blue;
+}

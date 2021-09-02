@@ -1,0 +1,11 @@
+{% extends 'base.html' %} {% load static %} {% block content %} <br /><br />
+<div class="block">
+  Would you like to delete this entry?
+  <form method="POST">
+    {% csrf_token %}
+    <button name="option_btn" value="yes">yes</button> <br />
+    <button name="option_btn" value="no">no</button><br />
+  </form>
+</div>
+
+{% endblock %}

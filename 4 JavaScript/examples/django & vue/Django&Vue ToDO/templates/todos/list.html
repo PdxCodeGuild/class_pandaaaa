@@ -1,0 +1,50 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<body>
+    <div class="container p-3">
+    <div id="app">
+
+        <div class="form-floating">
+
+        <input type="text" id="todo" class="form-control" v-on:keyup.enter="addTodo" v-model="todoName"/>
+        <label for="todo">Add to do</label>
+        </div>
+        <ol>
+            <li v-for="(todo, index) in todos">
+                <div v-if="todo.editable">
+                    <span>[[ todo.name ]] EDIT</span>
+                    <input type="text" class="form-control" v-model="todo.name" v-on:keyup.enter="todo.editable=!todo.editable"/>
+                    <button type="button" class="btn btn-secondary" v-on:click="todo.editable=!todo.editable">save</button>
+                </div>
+                <div v-else>
+                    <div v-if="!todo.status">
+                        <span>[[ todo.name ]]</span>
+                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                        <button type="button" class="remove_todo_bt">✗</button>
+                        <button type="button" v-on:click="todo.status=!todo.status" class="complete_todo_bt">✓</button>
+                        <button type="button" v-on:click="todo.editable=!todo.editable" class="edit_todo_bt">&#9998</button>    
+                    </div>
+                    </div>
+                    <div v-else>
+                        <span class="completed">[[ todo.name ]]</span>
+                        <button v-on:click="removeTodo(todo.pk, index)"  class="remove_todo_bt">✗</button>
+                        <button v-on:click="todo.status=!todo.status" class="complete_todo_bt">✓</button>             
+                    </div>                        
+                </div>                    
+
+            </li>
+        </ol>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>    <script src="scripts.js"> </script>
+    </div>
+    </div>
+</body>
+</html>
+<!-- cdn for vue -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<!-- cdn for axios -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<!-- my scripts :)  -->
+<script src="{% static 'js/main.js' %}"></script>
+{% endblock %}

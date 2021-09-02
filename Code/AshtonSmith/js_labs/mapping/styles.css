@@ -1,0 +1,31 @@
+#mapid {
+    height: 65vh;
+    width: 100vw;
+    border-radius: 999px;
+}
+
+body {
+    text-align: -webkit-center;
+}
+
+
+/* .leaflet-top,
+.leaflet-bottom {
+    display: flex;
+    flex-direction: column;
+} */
+
+.leaflet-bottom,
+.leaflet-right {
+    right: 302px;
+    /* display: flex;
+    flex-direction: column; */
+}
+
+.leaflet-left .leaflet-control {
+    margin-left: 178px;
+}
+
+.leaflet-top .leaflet-control {
+    margin-top: 88px;
+}

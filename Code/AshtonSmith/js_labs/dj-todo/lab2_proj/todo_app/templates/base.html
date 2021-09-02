@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}" />
+    </head>
+    <div id="app">
+        <body>
+            <div class="block">
+                <div class ="myForm row" >
+                    Name:<input v-on:keyup.enter="addTodo" class="input" id = "todoname" type = "text" v-model="name"></input>
+                    Details:<input v-on:keyup.enter="addtodo" class="input" id = "tododetails" type = "text" v-model="details"></input>
+                    Priority:<select v-on:keyup.enter="addtodo" class="input" id = "todopriority" v-model="priority">
+                        <option value="high">high</option>
+                        <option value="medium">medium</option>
+                        <option value="low">low</option>
+                    </select>
+                    Start Date:<input v-on:keyup.enter="addtodo" class="input" id = "startdate" type = "date" v-model="startdate"></input>
+                    Start Time:<input v-on:keyup.enter="addtodo" class="input" id = "starttime" type = "time" v-model="starttime"></input>
+                    {% comment %} <input class="searchBar" id = "tododetails" type = "text" v-model="details"></input> {% endcomment %}
+                </div>
+                <ul class = "col todo_item">
+                    <li class="todo_li">Name: </li>
+                    <li class="todo_li">Details: </li>
+                    <li class="todo_li">Start time: </li>
+                    <li class="todo_li">Start Date: </li>
+                    <li class="todo_li">Priority: </li>
+                </ul>
+                <ul class="col" v-for="todo in todos">
+                <div class = "todo_item" v-if= "!todo.completed">
+                    <li class="todo_li">[[todo.name]] </li>
+                    <li class="todo_li">[[todo.details]] </li>
+                    <li class="todo_li">[[todo.starttime]] </li>
+                    <li class="todo_li">[[todo.startdate]] </li>
+                    <li class="todo_li">[[todo.priority]] </li>
+                </div>
+                
+                </ul>
+            </div>
+        </body>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="{% static 'scripts.js'%}"></script>
+</html>

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    You've been logged out.
+    <a class="nav-link" href="{% url 'home' %}">Home</a>
+    <a class="nav-link" href="{% url 'login' %}">Login</a>
+{% endblock %}
+
+
+
+
+

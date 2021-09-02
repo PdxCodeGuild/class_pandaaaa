@@ -1,10 +1,35 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load musicapp_extras %}
 
 
 {% block content %}
-{% for album in albums%}
-<a href = "{% url 'album' pk=album.pk %}">{{album.name}} </a><br>
-<a href = "{% url 'artist' pk=album.artist.pk %}">{{album.artist}} </a><br>
+<div class= 'card-container' style = "background: white;">
+{% for i in data%}
+    {{i.user}}<br>
+    <img class = 'card-img-top' src = {{ i.avatar.url }} style= 'width:200px!important; height: 200px!important; background-clip: padding-box; object-fit: cover; padding-top:10px;'>  
+    {% get_liked_songs i.liked_songs as liked_songs %}
+    {% for song in liked_songs %}
+    <div class="card flex-fill m-4" style='align-items:center; width:fit-content' >
+        <img class = 'card-img-top' src = {{ song.album.cover }} style= 'width:100px!important; height: 100px!important; background-clip: padding-box; object-fit: cover; padding-top:10px;'>       
+        <div class='card-body'>
+            <ul>
+                {% comment %} <li>POSITION: {{song.position}}<br></li> {% endcomment %}
+                <li>SONG   :<a href = "{% url 'song_detail' song.id %}">{{song.title }}</a><br></li>
+                {% comment %} <li>ALBUM  :{{song.album.title}}<br></li> {% endcomment %}
+                <li>ARTIST :<a href= "{% url 'api_artist' song.artist.id %}">{{song.artist.name}}</a><br></li>
+                {% comment %} <a href = "{% url 'like_song' song.id %}" class="btn btn-danger">like</a>  {% endcomment %}
+            </ul>
+            {% comment %} <audio controls="controls" src="{{song.preview}}" ></audio> {% endcomment %}
+        </div>
+    </div>
 {% endfor %}
+{% endfor %}
+</div>
+</div>
 {% endblock %}
+
+
+
+
+

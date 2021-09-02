@@ -7,9 +7,9 @@ Code/Theo/quote_login.py
 .env
 Code/josh/labs/API_lab/.env
 env
-<<<<<<< HEAD
+
 Code/Theo/django/blog/db.sqlite3
-=======
+
 
 
 # Django #
@@ -128,4 +128,6 @@ GitHub.sublime-settings
 !.vscode/launch.json 
 !.vscode/extensions.json 
 .history
->>>>>>> master
+
+.vscode/settings.json
+
