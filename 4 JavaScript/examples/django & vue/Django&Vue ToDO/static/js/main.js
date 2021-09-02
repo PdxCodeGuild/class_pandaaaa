@@ -47,7 +47,7 @@ let app = new Vue({
         },
       }).then(function () {
         // only hands DOM
-      this.todos.splice(index, 1);
+      app.todos.splice(index, 1);
       });
 
     },

@@ -10,10 +10,28 @@
 </head>
 <body>
     <div id='app'> 
-        <h1>All Students</h1>
         <div class="container mt-2">
         <div class="row mb-6">
-            <div v-for="student in allStudents" class="col-lg-3 col-sm-6 col-xs-12">
+            <div class="col-md">
+            <h1>Selected Student</h1>
+            <div v-for="student in allStudents" v-if="student.id == currentStudentPK" style="position:fixed">
+                 {{ student.first_name }}
+                 {{student.last_name}}
+                 <button type="button" class="btn btn-info" v-on:click="editing = !editing">Edit</button>
+                 <button type="button" class="btn btn-warning" v-on:click="deleteStudent(student.id)">Delete</button>
+                <div v-if="editing">
+                 <input class="form-control" type="text" v-model="first_name" :value="student.first_name">
+                 <input class="form-control" type="text" v-model="last_name" :value="student.last_name">
+                 <input class="form-control" type="text" v-model="cohort" :value="student.cohort">
+                 <input class="form-control" type="text" v-model="fav_teacher" :value="student.favorite_teacher">
+                 <button type="button" class="btn btn-info" v-on:click="updateStudent(student.id)">Submit</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="row"> 
+        <h1>All Students</h1>
+            <div v-for="student in allStudents" class="col-lg-5 col-sm-6 col-xs-12">
                 <div class="card card-block">
                 <img src="https://static.pexels.com/photos/7096/people-woman-coffee-meeting.jpg" alt="Photo of sunset">
                     <h5 class="card-title mt-3">{{ student.first_name }}</h5>
@@ -26,6 +44,8 @@
             </div>   
         </div>
         </div>
+        </div>
+        </div>
         <button type="button" v-on:click="adding = !adding" class="btn btn-primary btn-lg btn-block">Add New Student</button>
         <div v-show="adding">
             <input class="form-control" type="text" v-model="first_name" placeholder="first name">
@@ -34,22 +54,8 @@
             <input class="form-control" type="text" v-model="fav_teacher" placeholder="favorite teacher">
             <button type="button" class="btn btn-info" v-on:click="addStudent">Submit</button>
         </div>
-        <h1>Selected Student</h1>
-        <div v-for="student in allStudents" v-if="student.id == currentStudentPK" class="col-lg-3 col-sm-6 col-xs-12">
-             {{ student.first_name }}
-             {{student.last_name}}
-             <button type="button" class="btn btn-info" v-on:click="editing = !editing">Edit</button>
-             <button type="button" class="btn btn-warning" v-on:click="deleteStudent(student.id)">Delete</button>
-            <div v-if="editing">
-             <input class="form-control" type="text" v-model="first_name" :value="student.first_name">
-             <input class="form-control" type="text" v-model="last_name" :value="student.last_name">
-             <input class="form-control" type="text" v-model="cohort" :value="student.cohort">
-             <input class="form-control" type="text" v-model="fav_teacher" :value="student.favorite_teacher">
-             <button type="button" class="btn btn-info" v-on:click="updateStudent(student.id)">Submit</button>
-            </div>
-        </div>
-    </div>
 
+    </div>
 
     <!-- bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>

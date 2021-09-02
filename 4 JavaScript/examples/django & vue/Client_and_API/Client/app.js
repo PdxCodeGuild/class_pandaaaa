@@ -3,7 +3,6 @@ axios.defaults.xsrfCookieName = "csrftoken";
 
 var app = new Vue({
     el: "#app",
-
     data: {
       allBoletes: [],
     //   currentRoute: window.location.pathname

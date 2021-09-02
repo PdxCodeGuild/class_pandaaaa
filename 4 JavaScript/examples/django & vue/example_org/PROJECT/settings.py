@@ -41,10 +41,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     # local
-    'student_list',
     'API',
     'PAGES',
-    'USERS'
+    'USERS',
+    'student_list'
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">All Movies Here</h1>
+      <p class="lead">Here's all the movies</p>
+      <a href="http://localhost:8000/add_movie"><p class="lead">Add More Movies</p></a>
+
+    </div>
+  </div>
+
+{% for movie in movies %}
+    <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+        <h5 class="card-title">{{ movie.title }}</h5>
+        <p class="card-text">{{ movie.rating }}</p>
+        <a href="" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+{% endfor %}
+
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">All Villains Here</h1>
+      <p class="lead">Here's all the villains</p>
+      <a href="http://localhost:8000/add_villain"><p class="lead">Add More Villains</p></a>
+
+    </div>
+  </div>
+{% for villain in villains %}
+<div class="card" style="width: 18rem;">
+    <img src="{{ villain.image }}" class="card-img-top" alt="...">
+    <div class="card-body">
+    <h5 class="card-title">{{ villain.name }}</h5>
+    <p class="card-text">{{ villain.movie }}</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
+{% endfor %}
+
+  {% endblock %}

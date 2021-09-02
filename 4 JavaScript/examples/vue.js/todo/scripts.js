@@ -16,9 +16,6 @@ let app = new Vue({
         },
         removeTodo: function(index) {
             this.todos.splice(index, 1);
-        },
-        youSure: function(){
-            this.isHidden = !this.isHidden;
         }
     }
 });

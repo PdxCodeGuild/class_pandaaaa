@@ -14,7 +14,7 @@ class BoleteAPIView(generics.ListAPIView):
 
 class BoleteDetail(APIView):
     """
-    Retrieve, update or delete a snippet instance.
+    Retrieve, update or delete a bolete instance.
     """
     def get_object(self, pk):
         try:

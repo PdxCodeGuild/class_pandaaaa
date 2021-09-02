@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>&#128054
+    </title>
+    <link rel="stylesheet" href="style.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+    <div class="container p-3">
+    <div id="app">
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button v-on:click="getPage(1)" type="button" class="btn btn-outline-primary">One</button>
+            <button v-on:click="getPage(2)"type="button" class="btn btn-outline-secondary">Two</button>
+            <button v-on:click="getPage(3)" type="button" class="btn btn-outline-success">Three</button>
+            <button v-on:click="getPage(4)" type="button" class="btn btn-outline-danger">Four</button>
+            <button v-on:click="getPage(5)" type="button" class="btn btn-outline-warning">Five</button>
+            <button v-on:click="getPage(6)" type="button" class="btn btn-outline-info">Six</button>
+
+        </div>
+        <h3>Dogs R Us</h3>
+        <div v-if="pageNum===1">
+            <div class="form-floating">
+            <input type="text" id="todo" class="form-control" v-on:keyup.enter="" v-model="dogName"/>
+            <label for="todo">Dog Name</label>
+            <select class="form-control" v-model="dogBreed" @change="getPic">
+                <option v-for="dog in breedsList">{{dog}}</option>
+            </select>
+            <img v-if="dogPic" v-bind:src="dogPic" class="img-fluid" alt="...">
+            <button v-on:click="getPic" v-if="dogPic"type="button" class="btn btn-secondary">Not my dog, try again</button>
+            <button v-on:click="saveDog" v-if="dogPic"type="button" class="btn btn-info">Save This Dog</button>
+        </div>
+        <div v-else-if="pageNum==2">
+            TWO
+        </div>
+        <div v-else-if="pageNum==3">
+        </div>
+        <div v-else-if="pageNum==4">
+        </div>
+        <div v-else-if="pageNum==5">
+        </div>
+        <div v-else-if="pageNum==6">
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>    <script src="scripts.js"> </script>
+    <script src="app.js"></script>
+    </div>
+    </div>
+</body>
+</html>

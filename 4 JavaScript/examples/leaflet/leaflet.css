@@ -1,0 +1,29 @@
+#mapid {
+  height: 700px;
+  width: 1600px;
+  margin: auto;
+}
+#name {
+  font-weight: bold;
+}
+#location {
+  font-style: italic;
+}
+
+/* .scrolling-flexbox {display: flex} */
+
+/* .scrolling-box {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+} */
+.card {
+  flex: 0 0 auto;
+  display: inline-block;
+
+}
+.scrolling-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
