@@ -1,0 +1,94 @@
+html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+
+.p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.footer {
+  display: block;
+  text-align: center;
+}
+
+body {
+    font-family: "arial", Arial, Helvetica, sans-serif;
+    color: white;
+    display: white;
+    vertical-align: middle;
+    text-align: left;
+    background-color: black;
+    background-size: contain;
+    font-size: 0.8em;
+    line-height: 1.62em;
+}
+
+.main {
+  text-align: center;
+  background-color: black;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1279px) {
+.power_menu_container .power_menu_left {
+    padding-right: 88px;
+    position: relative;
+}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1279px) {
+.power_menu_section .power_menu_section_leftstrip, .power_menu_container .power_menu_left, .power_menu_container .power_menu_right {
+    height: 54px;
+}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1279px) {
+.power_menu_container .power_menu_left {
+    padding-right: 88px;
+    position: relative;
+}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1279px) {
+.power_menu_section .power_menu_section_leftstrip, .power_menu_container .power_menu_left, .power_menu_container .power_menu_right {
+    height: 54px;
+}
+}
+.power_menu_container .power_menu_left {
+  float: left;
+}
+.block{
+  display: block;
+  flex-flow: column;
+  padding: 0;
+  margin: 0;  
+  justify-content: space-around;
+  height: auto;
+  width: auto;
+}
+
+a:link {
+  color: red;
+}
+a:visited {
+  color: green;
+}
+a:hover {
+  color: hotpink;
+}
+ul.b {
+  list-style-type: circle;
+}
+a:active {
+  color: blue;
+}
+
