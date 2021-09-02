@@ -1,0 +1,207 @@
+____
+def func_a(string):
+    print(f'{string}runs only when funca is called')
+
+def main():
+    print("runs only when main is called")
+
+# runs to check if there is a main function:
+if __name__ == "__main__":
+    main()
+
+print("global scope: runs automatically")
+# print("Value in built variable name is:  ",__name__)
+____
+import moduleA
+
+print(moduleA.func_a('inside module loader'))
+____
+# REPL:
+# Read-Evaluate-Print
+
+# Function anatomy:
+# def: the def keyword, telling Python we’re about to start a function definition
+# a name for the function
+# (: opening parenthesis
+# (optional) the names of one or more arguments, separated with ,
+# (optional) the names and values of one or more default arguments, separated with (,) 
+# ) closing parenthesis
+# : a colon
+
+# Function Contents: 
+# a new line
+# indentation (press tab on your keyboard)
+# one or more lines
+# (optional) a return statement (with no return, function returns None)
+
+
+# A Basic Function that accepts no arguments and returns nothing.
+def hello_world():
+    print("Hello, World!")
+
+
+# A Function that accepts two arguments, and returns the value of
+# those numbers added together.
+def add_numbersA(x, y):
+    return x - y
+
+
+
+# functions can have default values:
+def add_numbersB(x, y=6):
+    return x + y
+
+
+#function parameters can have default values that will be used if no value is passed in
+def add_numbersC(x, y, operation = "add"):
+    if operation =="add":
+        return x + y
+    elif operation == "sub":
+        return x - y
+
+print(add_numbersC(4, 10, 'sub'))
+
+____
+
+# version 1____
+num_list = [5, 0, 8, 3, 4, 1, 6]
+sum_ = 0
+for num in num_list:
+    sum_ += num
+# sum_ = sum(num_list) -> using built in function
+average = (sum_ / len(num_list))
+
+# version 2______
+nums = []
+again = 1
+
+while again:
+    try:
+        next_num = input('enter the next number or done:   ')
+        if next_num =='done': #if user input is 'done'
+            again = 0
+            # break
+        nums.append(int(next_num)) #add int to list
+    
+    except ValueError: #check for valid entry
+        print('please enter a valid number')
+        pass
+print(nums)
+
+print(f'average:{sum(nums)/len(nums)}')
+
+next_num = 1
+type = type(next_num)
+
+print(type)
+
+
+____
+
+#x = 0
+#while True:
+   # x+=1
+    #print(x)
+    #ctrlz-> breaks out of loop 
+convert_dict = { 
+  "ft" : 0.3048, 
+  "mi": 1609.34, 
+  "m": 1, 
+  "km": 1000,
+  "yd": 0.9144,
+  "in": 0.0254
+   }
+
+
+# for num in range(10):
+    # print(num)
+
+string = 'zach'
+# for char in string:
+    # print(char)
+
+list_items = [99, 98, 25, 23, 40]
+doubled_list = []
+for element in list_items:
+    doubled_list.append(element * 2)
+# print(doubled_list)
+list_list = [['brea', 'red', 'tacos'], ['Ashton', 'blue', 'wraps'], ['Zach', 'teal', 'cheesecake']]
+
+# for list in list_list:
+#     for item in list:
+#         if item == 'red':
+#             print(item)
+#         else: 
+#             print('lesser color')
+
+# for unit in convert_dict: 
+#     print(unit)
+# x = 4
+# y = 6
+# z = 7
+# for i in range(x, y, z):
+#     print('hello')
+fruit =  input('what fruit do you want?')
+fruits = ['apples', 'bananas', 'pears', 'dragon fruit', 'kiwi']
+
+for i in range(len(fruits)):
+    print(i)
+
+counter = 0
+# for item in fruits:
+#     counter += 1
+#     if item == fruit: 
+#         print('we have that fruit')
+#         break 
+# print(counter)
+
+for item in fruits: 
+    if item == 'pear':
+        fruits.remove(item)
+
+nums = [1, 2, 3, 4, 33, 32, 6, 90]
+nums.pop(1)
+print(nums)
+____
+alpha_grade = ''
+while True: 
+    try:
+        grade = int(input('Enter a grade 0-100: '))
+        break
+    except ValueError:
+        print('type a NUMBER between 0-100')
+
+if grade <= 100 and grade >= 90:
+    alpha_grade = 'A'
+elif grade <=89 and grade >= 80:
+    alpha_grade = 'B'
+elif grade <=79 and grade >= 70:
+    alpha_grade = 'C'
+elif grade <=69 and grade >= 60: 
+    alpha_grade = 'D'
+else:
+    alpha_grade = 'F'    
+print(f'Letter grade = {alpha_grade}')
+
+
+# def get_grade(grade):
+#     alpha_grade = ''
+#     if grade <= 100 and grade >= 90:
+#         alpha_grade = 'A'
+#     elif grade <=89 and grade >= 80:
+#         alpha_grade = 'B'
+#     elif grade <=79 and grade >= 70:
+#         alpha_grade = 'C'
+#     elif grade <=69 and grade >= 60: 
+#         alpha_grade = 'D'
+#     else:
+#         alpha_grade = 'F'    
+#     print(f'Letter grade = {alpha_grade}')
+
+
+# grades = [89, 45, 67, 100, 99]
+
+# for item in grades: 
+#     get_grade(item)
+
+__

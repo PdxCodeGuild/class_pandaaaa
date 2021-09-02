@@ -1,0 +1,22 @@
+
+html{
+    background-image: linear-gradient(red, yellow);
+}
+
+.superuggo {
+   color:rgb(0, 255, 51);
+   background-color:rgb(1, 13, 14);
+   padding: 30px;
+}
+
+#paragraph1 {
+    background-color: aqua;
+}
+
+li {
+    color: tomato
+}
+
+* {
+    color:yellow;
+}
