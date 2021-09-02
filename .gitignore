@@ -8,6 +8,9 @@ Code/Theo/quote_login.py
 Code/josh/labs/API_lab/.env
 env
 
+Code/Theo/django/blog/db.sqlite3
+
+
 
 # Django #
 *.log
@@ -125,4 +128,6 @@ GitHub.sublime-settings
 !.vscode/launch.json 
 !.vscode/extensions.json 
 .history
+
 .vscode/settings.json
+

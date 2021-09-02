@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block nav_item_index %}active{% endblock nav_item_index %}
+
+{% block content %}
+{%for post in posts.all %}
+    <h1>{{post.title}}</h1>
+    <h6>{{post.user}} Created: {{post.date_created}} Updated: {{post.date_edited}}</h6>
+    <p>{{post.body}}</p>
+    {% if post.user == user %}
+        <p><a href="{% url 'edit' pk=post.pk %}">Edit</a></p>
+    {% endif %}
+{% endfor %}
+{% endblock %}

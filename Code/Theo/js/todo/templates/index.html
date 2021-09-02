@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block nav_item_index %}
+active
+{% endblock nav_item_index %}
+
+{% block title %}
+Home
+{% endblock %}
+{% block content %}
+
+<div class="card" v-for='task in tasks'>
+    <div class="card-header">
+        [[task.text]]
+    </div>
+    <ul class='list-group list-group-flush'>
+        <li class='list-group-item'>Priority: [[task.priority]]</li>
+        <li class='list-group-item'>Assigned: [[task.created_date]]</li>
+        <li class='list-group-item'>Completed: [[task.completed_date]]</li>
+    </ul>
+    <div class="card-body">
+        {% comment %} <a href="{% url 'update' pk=task.pk %}" class="btn btn-primary">Edit</a>
+        <a href="#" class="btn btn-primary">Delete</a> {% endcomment %}
+    </div>
+
+</div>
+
+{% endblock %}
