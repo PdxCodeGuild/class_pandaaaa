@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+  </head>
+  <body>
+    <div id="app">
+        <div class = "searchBar">
+            Search Name <input v-on:keyup.enter="searchName" type = "text" v-model="searchBy"></input>
+        </div>
+   
+      <ul class="studentContainer" v-for="student in currentStudents">
+        <div class="row">
+          <p class="studentHeader">First Name:</p>
+          <li class="studentInfo">[[student.firstName]]</li>
+        </div>
+
+        <div class="row">
+          <p class="studentHeader">Last Name:</p>
+          <li class="studentInfo">[[student.lastName]]</li>
+        </div>
+
+        <div class="row">
+          <p class="studentHeader">Favorite Topic:</p>
+          <li class="studentInfo">[[student.favoriteTopic]]</li>
+        </div>
+
+        <div class="row">
+          <p class="studentHeader">Favorite Teacher:</p>
+          <li class="studentInfo">[[student.favoriteTeacher]]</li>
+        </div>
+
+        <div class="row">
+          <p class="studentHeader">Cohort:</p>
+          <li class="studentInfo">[[student.cohort]]</li>
+        </div>
+
+        <div class="row">
+          <p class="studentHeader">Capstone Url:</p>
+          <li class="studentInfo">[[student.capstone]]</li>
+        </div>
+      </ul>
+    </div>
+  </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="scripts.js"></script>
+</html>

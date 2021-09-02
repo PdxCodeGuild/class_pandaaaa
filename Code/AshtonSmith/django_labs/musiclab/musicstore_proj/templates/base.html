@@ -1,15 +1,60 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 </head>
-<body>
+<body style = 'background:black;'>
 
-<a href = "{% url 'home' %}"> HOME</a><br>
-{% block content %}
-{% endblock %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Music Store</a>
+  
+
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'home' %}">Home</a>
+      </li>
+{% if user.is_authenticated %}
+      <li>
+        <a class="nav-link" href="{% url 'api' %}">Top 10</a>
+      </li>
+      <li>
+        <a class="nav-link" href="{% url 'api_radio' %}">Radio</a>
+      </li>
+      <li >
+        <form method = 'GET' class="form-inline my-2 my-lg-0" style = 'display:flex;' action = "{% url 'api_search' %}">
+        {% csrf_token %}
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name= 'Search'>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >Search</button>
+        </form>
+      </li>
+      <li>
+        <a class="nav-link" href="{% url 'logout' %}">logout</a>
+      </li>
+{% endif %}
+
+    </ul>
+</nav>
+
+
+  <div class = 'container'>
+    {% block content %}
+    {% endblock %}
+  </div>
+{% if user.is_authenticated == False%}
+  <div class = 'container' style = 'background:white;'>
+  PLEASE LOGIN <a href = "{% url 'login'%}"> LOGIN</a>
+  OR REGISTER <a href = "{% url 'register'%}"> REGISTER</a>
+  </div>
+{% endif %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script> 
 </body>
+
+
 </html>

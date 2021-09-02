@@ -3,9 +3,22 @@
 
 
 {% block content %}
-{{album.name}}<br>
-<a href = "{% url 'artist' pk=album.artist.pk %}">{{album.artist}} </a><br>
-{% for song in album.songs.all %}
-<a href = "{% url 'song' pk=song.pk %}">{{song.name}} </a><br>
-{% endfor %}
+<div class="row">
+        <div class="col-lg-4 d-flex align-items-stretch">
+            <div class="card" style="width: 18rem;">
+    {% if album.cover_art %}     
+                <img class = 'img-fluid' src = {{ album.cover_art.url }}>       
+    {% endif %}
+
+    album name: {{album.name}}<br>
+    artist name: <a href = "{% url 'artist' pk=album.artist.pk %}">{{album.artist}} </a><br>
+    <ul>
+        {% for song in album.songs.all %}  
+            <i class="bi bi-vinyl"></i>
+            <li>song name: <a href = "{% url 'song' pk=song.pk %}">{{song.name}} </a></li>
+        {% endfor %}
+    </ul>
+            </div>  
+        </div>
+</div>
 {% endblock %}

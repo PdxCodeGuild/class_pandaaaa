@@ -1,0 +1,91 @@
+html {
+    background-color: cadetblue;
+}
+
+.hide {
+    display: none;
+}
+
+.myForm {
+    display: none;
+    text-align: center;
+    /* width: min-content; */
+    padding: 10px;
+    flex-direction: column;
+}
+
+.flex {
+    display: flex;
+}
+
+.todoContainer {
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #000000;
+    /* width: 5vw; */
+    /* padding: 50px; */
+    flex-wrap: nowrap;
+    margin: 10px;
+    border-radius: 15px;
+    padding-inline: 2vw;
+}
+
+.myContent {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.close {
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+    border-color: white;
+    border-width: 8px
+}
+
+.close:hover {
+    background-color: green;
+    font-size: large;
+    transition-duration: 0.25s;
+}
+
+.todoBtn {
+    background-color: darkolivegreen;
+    color: white;
+    border-radius: 5px;
+    border-color: white;
+    border-width: 8px;
+}
+
+.todoBtn:hover {
+    background-color: green;
+    font-size: large;
+    transition-duration: 0.25s;
+}
+
+.todoName,
+.todoDate,
+.todoDescription {
+    padding-inline: 5vh;
+}
+
+.navBtn {
+    background-color: darkolivegreen;
+    color: white;
+    border-radius: 5px;
+    border-color: white;
+    border-width: 8px;
+}
+
+.navBtn:hover {
+    background-color: green;
+    font-size: large;
+    transition-duration: 0.25s;
+}
+
+.navBar {
+    text-align: -webkit-center;
+}

@@ -1,0 +1,110 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+.atm_home {
+    width: 50vw;
+    height: 50vh;
+    /* display: grid; */
+    grid-template-columns: repeat(2, auto);
+    align-self: center;
+    align-content: space-around;
+    justify-content: space-evenly;
+    justify-items: center;
+    border-color: black;
+    border-style: solid;
+    border-width: thin;
+}
+
+.bal_home {
+    width: 50vw;
+    height: 50vh;
+    /* display: grid; */
+    grid-template-columns: repeat(2, auto);
+    align-self: center;
+    align-content: stretch;
+    justify-items: center;
+    border-color: black;
+    border-style: solid;
+    border-width: thin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.wit_home {
+    width: 50vw;
+    height: 50vh;
+    /* display: grid; */
+    grid-template-columns: repeat(2, auto);
+    align-self: center;
+    align-content: stretch;
+    justify-items: center;
+    border-color: black;
+    border-style: solid;
+    border-width: thin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.int_home,
+.dep_home {
+    width: 50vw;
+    height: 50vh;
+    /* display: grid; */
+    grid-template-columns: repeat(2, auto);
+    align-self: center;
+    align-content: stretch;
+    justify-items: center;
+    border-color: black;
+    border-style: solid;
+    border-width: thin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+body {
+    text-align: -webkit-center;
+}
+
+.bg-image {
+    background-image: url(atm.jpg);
+    background-position-x: center;
+    background-position-y: center;
+    position: fixed;
+}
+
+.btn {
+    background-color: rgb(0, 0, 0);
+    border-radius: 20px;
+    padding: 10px;
+    color: white;
+}
+
+.btn:hover {
+    background-color: rgb(25, 27, 155);
+    border-radius: 20px;
+    padding: 10px;
+    color: white;
+}
+
+.header {
+    font-family: fantasy;
+    font-size: xx-large;
+}
+
+.current {
+    display: grid;
+    justify-items: center;
+}
+
+.cleared {
+    display: none;
+}

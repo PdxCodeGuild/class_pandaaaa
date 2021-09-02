@@ -1,0 +1,8 @@
+.card-container {
+    background: black;
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;;
+}

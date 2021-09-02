@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    {% if user.is_authenticated  == False%}
+                <a href="{% url 'login' %}"> login </a> <br>
+                <a href='#'> register </a> <br>
+    {% else %}
+        <a class="nav-link home-bar" href="{% url 'home' %}">Chirp</a>
+    {% endif %}
+    
+    {% for post in object_list %}
+    <div class = 'post-list'>
+        <div class = 'inner-post-box'>
+            <img class = 'user-avatar' src = {{ post.author.avatar.url }}>
+            <div style = 'display:flex; flex-direction:column;'>
+                <div class = 'same-line'>
+                    <a class = 'user-name' href="{% url 'profile' post.author.pk %}"> {{post.author}} </a>
+                    <p style = 'padding-right:20px'> {{post.postdate}}</p>
+                    <p>{{post.posttime}}</p>
+                </div>
+                <div class = 'post-text-box'>
+                <p class = 'post-text'> {{post.text}} </p>      
+            {% if post.media %}
+                <img class = 'post-media' src = {{ post.media.url }}>
+            {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class = 'post-box'>
+        <img class = 'user-avatar' src = {{ user.avatar.url }}>       
+        <form method = 'POST'>
+            {% csrf_token %}
+            <div >
+            {{ form }}
+            </div>
+            <input class="btn btn-primary" type ='submit'>
+        </form>
+        </div>
+        {% for comment in comments%}
+        {% if comment != None %}
+        {% if comment.post.id == post.id %}
+        <div class = 'inner-comment-box'>
+            <img class = 'user-avatar' src = {{ comment.author.avatar.url }}>
+            <div style = 'display:flex; flex-direction:column;'>
+                <div class = 'same-line'>
+                    <a class = 'user-name' href="{% url 'profile' comment.author.pk %}"> {{comment.author}} </a>
+                    <p style = 'padding-right:20px'> {{comment.postdate}}</p>
+                    <p> {{comment.posttime}}</p>
+                </div>
+                <p class = 'post-text'> {{comment}} </p>      
+            </div>
+        </div>
+        {% endif %}
+        {% endif %}
+        {%endfor%}
+    </div>
+    {% endfor %}
+{% endblock %}
+
+
+

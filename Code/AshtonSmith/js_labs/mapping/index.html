@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" defer></script>
+    <script src = "scripts.js" defer></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin=""/>
+    <link rel = "stylesheet" href ="styles.css">
+    <title>Mapping Lab</title>
+</head>
+<body>
+    
+</body>
+<div id="dataDisplay" class ="dataDisplay"></div>
+
+<div id="mapid"></div>
+<div id="app">
+    {{ message }}
+    <br><button v-on:click="getUsers">getUSERS</button><br>
+    <br><button v-on:click="getMap">getMAP</button><br>
+    Name<input type="text" id ="username" v-model="name"></input><br>
+    Lat<input type="text" id ="lat" v-model="lat"></input><br>
+    Long<input type="text" id ="long" v-model="long"></input><br>
+    <br><button v-on:click="addUser">add user</button><br>
+</div>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</html>
