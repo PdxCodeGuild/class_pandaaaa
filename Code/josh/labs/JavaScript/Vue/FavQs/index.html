@@ -15,17 +15,33 @@
   <body>
     <div class="container p-3">
       <div id="app">
-        <div class="text-center pb-5">
-          <div>{{qotd}}</div>
-          <div>- {{qotdAuthor}}</div>
+        <div class="card">
+          <!-- <div class="card-header">
+            Quote
+          </div> -->
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <p>{{qotd}}</p>
+              <footer class="blockquote-footer">{{qotdAuthor}}</footer>
+            </blockquote>
+          </div>
         </div>
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Search Term</label>
           <input type="text" class="form-control" v-model="searchTerm" id="searchTerm" placeholder="funny" />
           <button type="button" v-on:click="getQuotes" class="btn btn-primary">Search</button>
           <div v-for="quote in quotes">
-            <div>{{quote.body}}</div>
-            <div>- {{quote.author}}</div>
+            <div class="card m-2">
+              <div class="card-header">
+                <a v-bind:href="quote.url">Quote</a>
+              </div>
+              <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                  <p>{{quote.body}}</p>
+                  <footer class="blockquote-footer">{{quote.author}}</footer>
+                </blockquote>
+              </div>
+            </div>
           </div>
         </div>
       </div>
