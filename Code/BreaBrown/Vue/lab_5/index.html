@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue FavQ's</title>
+</head>
+<body>
+    <div id="app">
+    <label for="search">Search by author, keyword, or tag:</label>
+    <input type="text" id="search" name="search" v-model="search"><br><br>
+    <button v-on:click="searchQuotes">Search</button>
+    <div>
+    <p id="qotd">{{ qotd }}</p>
+    <p id="qotdAuthor">{{ qotdAuthor }}</p>
+    <p id="keyword"></p>
+    <p id="tag"></p>
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="js/secrets.js"></script>
+    <!-- <script src="js/scripts.js"></script> -->
+    <script src="js/scripts2.js"></script>
+</body>
+</html>

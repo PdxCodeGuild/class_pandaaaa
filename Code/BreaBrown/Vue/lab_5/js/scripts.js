@@ -1,9 +1,7 @@
 axios.get("https://favqs.com/api/qotd")
 .then(function(response){
     author = document.getElementById("author")
-    quote = document.getElementById("quote")
-    console.log(quote)
-    console.log(response)
-    quote.innerText = response.data.quote.body
+    keyword = document.getElementById("keyword")
+    tag = document.getElementById("tag")
     author.innerText = response.data.quote.author
 })

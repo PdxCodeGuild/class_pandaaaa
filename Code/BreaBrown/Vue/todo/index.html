@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+    <label for="todo">Add todo:</label>
+    <input type="text" v-model="newToDo" id="todo" name="todo"><br><br>
+    <button v-on:click="add">Add</button>
+    <ul>
+        <p>to do:</p>
+        <li v-if="!todo.completed" v-for="(todo, index) in todos">{{ todo.name }}<button v-on:click="todo.completed=!todo.completed">Complete</button><button v-on:click="todo.edit=!todo.edit">Edit</button>
+    <input type="text" v-if="todo.edit" v-model="todo.name" id="todo" name="todo"><br><br>
+    <button v-on:click="todo.edit=!todo.edit" v-if="todo.edit">Save</button>
+        </li>
+
+    </ul>
+    <ul>
+        <p>done:</p>
+        <li v-if="todo.completed" v-for="(todo, index) in todos">{{ todo.name }}<button v-on:click="todo.completed=!todo.completed">Repeat</button><button v-on:click="remove(index)">Remove</button></li>
+    </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
