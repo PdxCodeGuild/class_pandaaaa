@@ -6,7 +6,11 @@ class StudentSerializer(serializers.ModelSerializer):
     class Meta:
         fields = (
             'id',
-            'title',
-            'description',
+            'fname',
+            'lname',
+            'Cohort',
+            'fav_topic',
+            'fav_teacher',
+            'Capstone',
         )
         model = models.Students

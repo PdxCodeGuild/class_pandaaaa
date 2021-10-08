@@ -8,7 +8,6 @@ class ListStudent(generics.ListCreateAPIView):
     queryset = models.Students.objects.all()
     serializer_class = StudentSerializer
 
-
 class DetailStudent(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.Students.objects.all()
     serializer_class = StudentSerializer

@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-$j!722)r@c-d8j9i2m=mz@y(u01up5pxxz9a0b&2v%(jqv7n)-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+CSRF_COOKIE_NAME = "csrftoken"
 
 
 # Application definition
@@ -40,6 +41,8 @@ INSTALLED_APPS = [
     'studentsapp',
     'rest_framework',
     'apis',
+    'corsheaders',
+
 ]
 
 
@@ -57,6 +60,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'studentsproject.urls'
@@ -133,3 +138,4 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+CORS_ORIGIN_ALLOW_ALL = True
